@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 var session = require('express-session')
 var Store = require('express-sequelize-session')(session.Store)
 var jsonfile = require('jsonfile')
-var sequelize = new Sequelize('postgres', 'postgres', 'ceaser12', {
+var sequelize = new Sequelize('postgres', 'postgres', '1111', {
   host: 'localhost',
   dialect: 'postgres',
   pool: {
@@ -33,7 +33,7 @@ var User = sequelize.define('Users', {
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });
-
+/*
 var cards = sequelize.define('Cards',{
 	cardName: {
 		type: Sequelize.STRING,
@@ -67,7 +67,7 @@ cards.sync()
 cards.findAll().then(function(cards){
 	jsonfile.writeFile('tmp/cards.json', cards)
 })
-
+*/
 User.belongsTo(store.Session, {targetKey: 'sid'});
 
 User.sync();
@@ -108,11 +108,11 @@ function compile(str, path)	{
 app.set('views', __dirname +'/views')
 app.set('view engine', 'jade')
 app.use(express.logger('dev'))
-/*app.use(stylus.middleware(
+app.use(stylus.middleware(
 	{ src: __dirname + '/public'
 	, compile: compile
 	}
-))*/
+))
 app.use(express.static(__dirname + '/public'))
 app.use(cookieParser())
 app.use(session(
@@ -133,7 +133,7 @@ app.configure('development', function(){
   app.locals.pretty = true;
 });
 
-app.get('/tmp/cards', function(req, res){
+/*app.get('/tmp/cards', function(req, res){
 	var options = {
     root: __dirname + '/tmp/',
     dotfiles: 'deny',
@@ -151,7 +151,7 @@ app.get('/tmp/cards', function(req, res){
 	}
 	})
 })
-
+*/
 app.post('/login', function(req, res, next){
 	login(req, function (err, user) {
 		if (err)
