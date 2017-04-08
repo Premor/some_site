@@ -166,7 +166,9 @@ app.post('/login', function(req, res, next){
 app.get('/registration',function(req, res, next){
 	res.render('registration', {user: req.session.user})
 })
-
+app.get('/admin',function(req, res, next){
+	res.render('admin', {user: req.session.user})
+})
 app.get('/login',function(req, res, next){
 	res.render('login', {user: req.session.user})
 })
