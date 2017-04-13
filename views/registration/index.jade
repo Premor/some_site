@@ -1,0 +1,26 @@
+include ../layout.jade
+.overlay
+  form
+    p Регистрация
+      .registrn
+        .email
+          .header.mid
+            p Ваше мыльцо:
+            input(type="text" name="email" placeholder="name = 'email'")
+        //Мобильный телефон (mbphn)
+        .reg.mbphn 
+          .header.mid
+            p Ваш телефон:
+            input(type="text" name="mbphn" placeholder="name = 'mbphn'")
+            //Допилю потом форму номера, в которую можно вводить только определенные цифры.
+        .reg.pass
+          .header.mid
+            p Пароль:
+          input(type="password" name="pass" placeholder="name = 'pass'")
+        .reg.ver.pass
+          .header.mid
+            p Повторите пароль:
+          input(type="password" name="ver_pass" placeholder="name = 'ver_pass'")
+          //Сравнение паролей добавлю позже.
+        button(type="submit") Зарегистрироваться!  
+include ../layout_ft.jade

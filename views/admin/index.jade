@@ -1,8 +1,13 @@
-include layout.jade
-form
-  input(type="text" placeholder="Название статьи" name="name")
-  br
-  textarea(rows="8" cols="80" placeholder="Текст статьи" name="text")
-  br
-  button(type="submit") Отправить на сервер!
-include layout_ft.jade
+include ../layout.jade
+.overlay
+  form
+    .a_login
+      .header.mid
+        p Логин
+      input(type="text" name="a_log" placeholder="name = 'a_log'")
+    .a_pass
+      .header.mid
+        p Пароль
+      input(type="password" name="a_pass" placeholder="name = 'a_pass'")
+    button(type="submit") Войти!  
+include ../layout_ft.jade
