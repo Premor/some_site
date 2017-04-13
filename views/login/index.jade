@@ -1,3 +1,13 @@
-extends layout
-block content
-	h1 MY GREETINGS
+include ../layout.jade
+.overlay
+  form
+    .login
+      .header.mid
+        p Логин
+      input(type="text" name="log" placeholder="name = 'log'")
+    .pass
+      .header.mid
+        p Пароль
+      input(type="password" name="pass" placeholder="name = 'pass'")
+    button(type="submit") Войти!  
+include ../layout_ft.jade
