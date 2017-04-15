@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 var session = require('express-session')
 var Store = require('express-sequelize-session')(session.Store)
 var jsonfile = require('jsonfile')
-var sequelize = new Sequelize('postgres', 'postgres', '1111', {
+var sequelize = new Sequelize('postgres', 'test', null, {
   host: 'localhost',
   dialect: 'postgres',
   pool: {
@@ -28,7 +28,10 @@ var User = sequelize.define('Users', {
   password: {
     type: Sequelize.STRING,
 	allowNull:false
-	
+  },
+  email: {
+  	type: Sequelize.STRING,
+  	unique: true
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
@@ -73,7 +76,7 @@ User.belongsTo(store.Session, {targetKey: 'sid'});
 User.sync();
 
 function login(req, done){
-	User.findOne({where: {login: req.body.login.login, password: req.body.login.password}}).then(function (user){
+	User.findOne({where: {login: req.body.log, password: req.body.pass}}).then(function (user){
 		if (!user)
 			throw new Error ('login failed')
 		else{
@@ -157,7 +160,8 @@ app.post('/login', function(req, res, next){
 		if (err)
 			next(err);
 		else
-			{req.session.user = req.body.login.login
+			
+			{req.session.user = req.body.log
 			 res.redirect('')}
 			
 	})
@@ -187,17 +191,18 @@ app.get('/logout', function(req, res, next){
 })
 
 app.post('/registration', function(req, res, next){
-	User.count({where:{login: req.body.regist.login}}).then(function(user){
+	User.count({where:{login: req.body.mbphn}}).then(function(user){
 		if (user){
 			res.render('registration', {user: req.session.user, used: true})
 		}
-		else if ((req.body.regist.login=='')||(req.body.regist.password=='')){
+		else if ((req.body.mbphn=='')||(req.body.pass=='')||(req.body.email=='')){
 			res.render('registration', {user: req.session.user, invalid: true})
 		}
 		else{
 			User.create({
-				login: req.body.regist.login,
-				password: req.body.regist.password
+				login: req.body.mbphn,
+				password: req.body.pass,
+				email: req.body.email
 			})
 			res.redirect('/login')
 		}
