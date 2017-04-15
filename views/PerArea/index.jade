@@ -1,0 +1,21 @@
+include ./layout.jade
+
+  form
+    //data change, поля, содержащие имя, e-mail и телефон, которые можно менять.
+    .dtchng
+      .name
+        input(type="text" name="dtc_name" placeholder="dtc_name") 
+        input(type="button" name="dtc_name_ch") Ш
+        //Ш - шестеренка!
+      .email
+        input(type="text" name="dtc_email" placeholder="dtc_email") 
+        input(type="button" name="dtc_email_ch") Ш
+      .mbph
+        input(type="text" name="dtc_mbph" placeholder="dtc_mbph") 
+        input(type="button" name="dtc_mbph") Ш
+      input(type="button" name="submit") Сохранить изменения
+      
+      .pass 
+        input(type="button" name="dtc_pass_ch") Сменить пароль
+      
+include ./layout_ft.jade
