@@ -37,6 +37,6 @@ int main(int argc, char const *argv[])
 		system("nodejs app.js");
 		openlog("Visage_school",LOG_PID,LOG_DAEMON);
 		syslog(LOG_DAEMON,"новый демон %d запущен!\n",getpid());
-		for(;;){	sleep(30);}}	
+		}	
 	return 0;
 }
