@@ -32,6 +32,22 @@ body, html {
   font-size: 16px;
   margin: 0px; }
 
+/*top_menu*/
+.top_menu {
+  background-color: #000;
+  color: #fff; }
+
+.top_menu a {
+  color: #fff; }
+
+.hd_buttons ul {
+  list-style-type: none; }
+
+.hd_buttons li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px; }
+
 /*admin*/
 .overlay {
   background-color: #000;
@@ -41,7 +57,20 @@ body, html {
   text-align: center;
   color: #fff; }
 
+/*login*/
+.all_center_block {
+  text-align: center;
+  margin-top: 27vh; }
+
+/*
+.login_window {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+*/
 /*╨ж╨▓╨╡╤В╨░. ╨Ъ╨╛╤И╨║╨╕.*/
+/*╨Ю╤Б╨╜╨╛╨▓╨╜╤Л╨╡:*/
 /*flatuicolors.com :*/
 
 /*# sourceMappingURL=main.css.map */

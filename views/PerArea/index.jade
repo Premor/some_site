@@ -1,4 +1,6 @@
-include ./layout.jade
+include ../layout.jade
+
+include ../top_menu.jade
 
   form(action="/login" method="post")
     //data change, поля, содержащие имя, e-mail и телефон, которые можно менять.
@@ -18,4 +20,4 @@ include ./layout.jade
       .pass 
         input(type="button" name="dtc_pass_ch") Сменить пароль
       
-include ./layout_ft.jade
+include ../layout_ft.jade

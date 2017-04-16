@@ -35,6 +35,27 @@ body, html {
   margin: 0px;
 }
 
+/*top_menu*/
+
+.top_menu {
+  background-color: #000;
+  color: #fff;
+}
+
+.top_menu a {
+  color: #fff;
+}
+
+.hd_buttons ul {
+  list-style-type: none;
+}
+
+.hd_buttons li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 /*admin*/
 
 .overlay {
@@ -44,6 +65,24 @@ body, html {
   position: relative;
   text-align: center;
   color: #fff;
+} //Изменить
+
+
+
+/*login*/
+
+.all_center_block {
+  text-align: center;
+  margin-top: 27vh;
 }
+
+/*
+.login_window {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+*/
+
 
 @import "colorize";
