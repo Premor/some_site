@@ -195,9 +195,9 @@ app.post('/registration', function(req, res, next){
 		if (user){
 			res.render('registration', {user: req.session.user, used: true})
 		}
-		else if ((req.body.mbphn=='')||(req.body.pass=='')||(req.body.email=='')){
-			res.render('registration', {user: req.session.user, invalid: true})
-		}
+		//else if ((req.body.mbphn=='')||(req.body.pass=='')||(req.body.email=='')){
+		//	res.render('registration', {user: req.session.user, invalid: true})
+		//}
 		else{
 			User.create({
 				login: req.body.mbphn,

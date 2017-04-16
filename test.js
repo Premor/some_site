@@ -14,11 +14,11 @@ var store = new Store(sequelize)
 var Session = sequelize.define('Session', {
   id: {
     type: Sequelize.INTEGER,
-    primaryKey: true,
-	unique: true
+	
   },
   sid:{
   	type: Sequelize.STRING,
+  	primaryKey: true,
   	unique: true
   },
   data:{
