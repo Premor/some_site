@@ -162,7 +162,7 @@ app.post('/login', function(req, res, next){
 		else
 			
 			{req.session.user = req.body.log
-			 res.redirect('')}
+			 res.redirect('/')}
 			
 	})
 })
@@ -182,7 +182,7 @@ app.get('/logout', function(req, res, next){
 		if (err)
 			next(err)
 		else
-			{console.log('жопа')
+			{console.log('logout')
 			 delete req.session.user
 			 req.session.destroy
 			 res.redirect('/')
@@ -209,9 +209,6 @@ app.post('/registration', function(req, res, next){
 	})
 })
 
-app.get('/search', function(req, res, next){
-	res.render('search', {user: req.session.user})
-})
 
 app.get('/', function(req, res){
 	console.log(req.session.user)
