@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 var session = require('express-session')
 var Store = require('express-sequelize-session')(session.Store)
-var sequelize = new Sequelize('postgres', 'test', null, {
+var sequelize = new Sequelize('visage_school', 'root', 7303556, {
   host: 'localhost',
   dialect: 'postgres',
   pool: {
