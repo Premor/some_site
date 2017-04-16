@@ -6,7 +6,7 @@ include ../top_menu.jade
   .container
     .col-md-12
       .row
-        if (user='')
+        if (user="undefined")
           form(action="/registration" method="post")
             p Регистрация
               .registrn
