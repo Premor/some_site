@@ -2,4 +2,39 @@ include ./layout.jade
   
 include ./top_menu.jade
 
+.container
+  .carousel
+    .row
+      .col-md-12
+        img(src="./img/car_example.png", alt="")  
+
+.container
+  .albums
+    .row
+      .header.col-md-12
+        p Альбомы
+    .row
+      .album_form.col-md-3
+        .album_img
+          img(src="" alt="")
+        .album_name
+          p name#1
+      .album_form.col-md-3
+        .album_img
+          img(src="" alt="")
+        .album_name
+          p name#2
+      .album_form.col-md-3
+        .album_img
+          img(src="" alt="")
+        .album_name
+          p name#3
+      .album_form.col-md-3
+        .album_img
+          img(src="" alt="")
+        .album_name
+          p name#4
+
+include ./footer.jade
+
 include ./layout_ft.jade
