@@ -1,3 +1,30 @@
+.container
+  .logo
+    .row
+      .col-md-3
+      .col-md-6
+        p
+          span W
+          | 'Studio
+      .col-md-3
+        //contacts-login block
+        .cl_block
+          p.telephone 
+            i.fa.fa-mobile(aria-hidden="true") 
+            |  +7 (903) 000-00-00
+          if(user==null)      
+            p
+              a(href="./login")Вход
+              a(href="./registration")Регистрация
+          else
+            p
+              a(href="./perarea") Вы собака #{user}
+              a(href="./logout") Выйти
+  .underlogo
+    .col-md-12
+      .row
+        p Школа стилистов
+
 .container-fluid.top_menu
   .container
     .row
