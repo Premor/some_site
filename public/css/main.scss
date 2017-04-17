@@ -1,3 +1,5 @@
+@import "colorize";
+
 @mixin phd {
   color: #666;
   opacity: 1;
@@ -35,6 +37,10 @@ body, html {
   margin: 0px;
 }
 
+a {
+  color: #313131;
+}
+
 /*top_menu*/
 
 .top_menu {
@@ -48,12 +54,29 @@ body, html {
 
 .hd_buttons ul {
   list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.wst {
+  width: 16% !important;
 }
 
 .hd_buttons li {
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px;
+  width: 14%;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 22px;
+}
+
+.hd_buttons li:hover {
+  background-color: $w_vertwo;
 }
 
 /*admin*/
@@ -67,7 +90,58 @@ body, html {
   color: #fff;
 } //Изменить
 
+/*logo*/
 
+.logo {
+  font-family: 'Bradobrei';
+  font-size: 89px;
+}
+
+.logo p {
+  color: #000;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.logo p span {
+  color: $w_vertwo;
+}
+
+.underlogo p {
+  font-size: 31px;
+  font-family: 'Bebas Neue';
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 300;
+}
+
+.underlogo {
+  text-align: center;
+  margin-top: 0px;
+  position: relative;
+  top: -20px;
+}
+
+.cl_block {
+    margin-top: 21px;
+}
+
+.cl_block p {
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 25px;
+  color: #313131;
+  text-align: right;
+}
+
+.cl_block a:hover {
+  font-weight: 400;
+}
+
+.cl_block a:nth-child(2) {
+  margin-left: 15px;
+}
 
 /*login*/
 
@@ -83,6 +157,3 @@ body, html {
   display: table-cell;
 }
 */
-
-
-@import "colorize";

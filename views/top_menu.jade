@@ -1,14 +1,19 @@
 .container-fluid.top_menu
-  .col-md-12
+  .container
     .row
-      nav.hd_buttons
-          ul
-            li
-              a(href="./login") Войти!
-            li
-              a(href="./registration") Зарегистрироваться!
-            li
-              a(href="./admin") /admin
-            li
-              a(href="./logout") Выйти!
-            li Вы вошли как #{user}
+      .col-md-12
+          nav.hd_buttons
+              ul
+                a(href="./about_us")
+                  li О нас
+                a(href="./courses") 
+                  //wst = width sixteen
+                  li.wst Курсы
+                a(href="./price") 
+                  li Цена
+                a(href="./shedule") 
+                  li Расписание
+                a(href="./gallery") 
+                  li Галерея
+                a(href="./contacts") 
+                  li Контакты
