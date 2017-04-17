@@ -14,7 +14,7 @@ include ./layout.jade
           p.telephone 
             i.fa.fa-mobile(aria-hidden="true") 
             |  +7 (903) 000-00-00
-          if(user=='undefined')      
+          if(user==null)      
             p
               a(href="./login")Вход
               a(href="./registration")Регистрация
