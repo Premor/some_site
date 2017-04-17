@@ -1,5 +1,23 @@
 $(document).ready(function() {
 
+	//md5 password hash
+	var pass = $("input[name$='pass']").val();
+	var md5_hash_pass = $.md5(pass, null, true);
+	$.post(
+		"/login",
+		md5_hash_pass,
+		rightOrWrong
+	)
+
+	function rightOrWrong(data) {
+		if (data) {
+
+		}
+		else {
+			
+		}
+	}
+
 	//Таймер обратного отсчета
 	//Документация: http://keith-wood.name/countdown.html
 	//<div class="countdown" date-time="2015-01-07"></div>
@@ -36,7 +54,7 @@ $(document).ready(function() {
 	});
 
   $(".owl-carousel").owlCarousel({
-    
+
   });
 
 	//Кнопка "Наверх"
