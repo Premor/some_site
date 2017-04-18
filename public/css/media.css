@@ -3,7 +3,13 @@
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
   .logo {
-    font-size: 40px; } }
+    font-size: 40px; }
+
+  .underlogo p {
+    font-size: 20px; }
+
+  .underlogo {
+    top: -11px; } }
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
   .logo {
@@ -19,6 +25,9 @@
   .underlogo p {
     font-size: 12px; } }
 /* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  .logo {
+    font-size: 12px; } }
 /*==========  Mobile First Method  ==========*/
 /* Custom, iPhone Retina */
 /* Extra Small Devices, Phones */

@@ -1,9 +1,9 @@
 nav.pushy.pushy-right
   pushy-content
     ul 
-      button.menu-btn.lft
-        i(aria-hidden="true").class.fa.fa-bars
-      br
+      li
+        button.menu-btn.rgt
+          i(aria-hidden="true").class.fa.fa-times
       if (user==null)
         li.pushy-link
           a(href="/login") Вход
@@ -27,7 +27,7 @@ nav.pushy.pushy-right
       li.pushy-link
         a(href="") Контакты
       
-button.menu-btn.hidden-lg.hidden-md
+button.menu-btn.hidden-lg.hidden-md.m-btn
   i(aria-hidden="true").class.fa.fa-bars
 .container
   .logo

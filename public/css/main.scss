@@ -98,13 +98,6 @@ p {
   z-index:3;
 }
 
-.glass {
-  position: absolute;
-  width: 500px;
-  height: 150px;
-  z-index: 10;
-}
-
 .logo p span {
   color: $w_vertwo;
 }
@@ -149,20 +142,32 @@ p {
     margin-top: 21px;
 }
 
-.menu-btn {
-  margin-top: 30px;
-  margin-right: 30px;
-}
-
 .log_reg {
   font-family: 'Bebas Neue';
   font-weight: 300;
   font-size: 25px;
   text-align: right;
 }
+/*
+.rgt {
+  float: left !important;
+}*/
 
-.lft {
-  text-align: left;
+.pushy ul {
+  padding: 0px;
+}
+
+.pushy li {
+  list-style-type: none;
+}
+
+.m-btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.menu-btn p {
+  font-size: 15px;
 }
 
 .menu-btn {
