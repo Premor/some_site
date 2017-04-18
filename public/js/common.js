@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
+
 	//md5 password hash
-	var pass = $("input[name$='pass']").val();
+	/*var pass = $("input[name$='pass']").val();
 	var md5_hash_pass = $.md5(pass, null, true);
 	$.post(
 		"/login",
@@ -14,9 +15,9 @@ $(document).ready(function() {
 
 		}
 		else {
-			
+
 		}
-	}
+	}*/
 
 	//Таймер обратного отсчета
 	//Документация: http://keith-wood.name/countdown.html
@@ -70,7 +71,7 @@ $(document).ready(function() {
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
-	$("form").submit(function() {
+	/*$("form").submit(function() {
 		$.ajax({
 			type: "GET",
 			url: "mail.php",
@@ -82,6 +83,6 @@ $(document).ready(function() {
 			}, 1000);
 		});
 		return false;
-	});
+	});*/
 
 });

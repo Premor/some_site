@@ -55,9 +55,6 @@ p {
   height: 50px;
   line-height: 50px; }
 
-.wst {
-  width: 16% !important; }
-
 .hd_buttons li {
   display: inline-block;
   margin-left: 10px;
@@ -80,7 +77,14 @@ p {
   color: #000;
   text-align: center;
   margin-top: 0px;
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  z-index: 3; }
+
+.glass {
+  position: absolute;
+  width: 500px;
+  height: 150px;
+  z-index: 10; }
 
 .logo p span {
   color: #6B1453; }
@@ -92,6 +96,24 @@ p {
   margin-bottom: 0px;
   font-weight: 300; }
 
+.underlogo p::selection {
+  background: transparent; }
+
+.underlogo p::-moz-selection {
+  background: transparent; }
+
+.logo p::selection {
+  background: transparent; }
+
+.logo p::-moz-selection {
+  background: transparent; }
+
+.logo span::selection {
+  background: transparent; }
+
+.logo span::-moz-selection {
+  background: transparent; }
+
 .underlogo {
   text-align: center;
   margin-top: 0px;
@@ -100,6 +122,25 @@ p {
 
 .cl_block {
   margin-top: 21px; }
+
+.menu-btn {
+  margin-top: 30px;
+  margin-right: 30px; }
+
+.log_reg {
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 25px;
+  text-align: right; }
+
+.lft {
+  text-align: left; }
+
+.menu-btn {
+  float: right;
+  border: medium none;
+  background-color: transparent;
+  font-size: 26px; }
 
 .cl_block p {
   font-family: 'Bebas Neue';
@@ -118,6 +159,9 @@ p {
 .carousel {
   margin-top: 8px; }
 
+.carousel img {
+  width: 100%; }
+
 /*albums*/
 .albums {
   margin-top: 14px; }
@@ -133,9 +177,33 @@ footer {
   color: #fff;
   margin-top: 40px; }
 
+footer a {
+  color: #fff; }
+
 .contacts, .diamant {
   font-family: 'Bebas Neue';
   font-size: 20px; }
+
+.soc {
+  text-align: center;
+  margin-top: 40px; }
+
+.ro_sq {
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 8px;
+  color: #000;
+  font-size: 30px;
+  padding-top: 3px; }
+
+.ro_sq:hover {
+  background-color: #6B1453;
+  color: #fff; }
+
+.ro_sq:nth-child(1) {
+  margin-right: 20px; }
 
 .contacts {
   text-align: left;
@@ -147,10 +215,12 @@ footer {
   margin-top: 20px;
   margin-bottom: 13px; }
 
-/*login*/
+/*login, registration*/
 .all_center_block {
   text-align: center;
-  margin-top: 27vh; }
+  margin-top: 10vh;
+  margin-bottom: 150px;
+  margin-top: 150px; }
 
 /*
 .login_window {
