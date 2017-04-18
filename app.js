@@ -170,6 +170,36 @@ app.post('/login', function(req, res, next){
 app.get('/registration',function(req, res, next){
 	res.render('registration', {user: req.session.user})
 })
+
+app.get('/about_us',function(req, res, next){
+	res.render('about_us', {user: req.session.user})
+})
+
+app.get('/gallery',function(req, res, next){
+	res.render('gallery', {user: req.session.user})
+})
+
+app.get('/perarea',function(req, res, next){
+	res.render('perarea', {user: req.session.user})
+})
+
+app.get('/price',function(req, res, next){
+	res.render('price', {user: req.session.user})
+})
+
+app.get('/shedule',function(req, res, next){
+	res.render('shedule', {user: req.session.user})
+})
+
+app.get('/courses',function(req, res, next){
+	res.render('courses', {user: req.session.user})
+})
+
+
+app.get('/contacts',function(req, res, next){
+	res.render('contacts', {user: req.session.user})
+})
+
 app.get('/admin',function(req, res, next){
 	res.render('admin', {user: req.session.user})
 })
