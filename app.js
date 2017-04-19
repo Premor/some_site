@@ -206,7 +206,7 @@ app.post('/admlogin', function(req, res, next){
 		else
 			
 			{req.session.user = req.body.log
-			 res.redirect('/')}
+			 res.redirect('/admin')}
 			
 	})
 })
@@ -243,11 +243,13 @@ app.get('/courses',function(req, res, next){
 app.get('/contacts',function(req, res, next){
 	res.render('contacts', {user: req.session.user})
 })
-
+app.get('/admin',function(req, res, next){
+	res.render('admin', {user: req.session.user})
+})
 app.get('/admlogin',function(req, res, next){
 	res.render('admin/functions/admlogin', {user: req.session.user})
 })
-app.get('/alumschange',function(req, res, next){
+app.get('/albumschange',function(req, res, next){
 	res.render('admin/functions/alumschange', {user: req.session.user})
 })
 app.get('/photochange',function(req, res, next){
