@@ -19,6 +19,19 @@ var sequelize = new Sequelize('visage_school', 'root', 7303556, {
 
 var store = new Store(sequelize)
 
+var Admin = sequelize.define('Admins', {
+  login: {
+    type: Sequelize.STRING,
+    field: 'login', // Will result in an attribute that is firstName when user facing but first_name in the database
+	unique: true
+  },
+  password: {
+    type: Sequelize.STRING,
+	allowNull:false
+  },
+  SessionId:{type:Sequelize.STRING,unique:true}
+});
+
 var User = sequelize.define('Users', {
   login: {
     type: Sequelize.STRING,
@@ -74,6 +87,25 @@ cards.findAll().then(function(cards){
 User.belongsTo(store.Session, {targetKey: 'sid'});
 
 User.sync();
+
+function login_a(req, done){
+	Admin.findOne({where: {login: req.body.log, password: req.body.pass}}).then(function (user){
+		if (!user)
+			throw new Error ('login failed')
+		else{
+			store.Session.findOne({where: {sid: req.sessionID}}).then
+			(function(session)
+				{
+				if (!session)
+					{user}
+				else 
+					{user.setSession (session)}
+				})
+		}
+	}).then(function (user){done (null, user)}).catch(function(err){done (err, null)})
+}
+
+
 
 function login(req, done){
 	User.findOne({where: {login: req.body.log, password: req.body.pass}}).then(function (user){
@@ -167,6 +199,18 @@ app.post('/login', function(req, res, next){
 	})
 })
 
+app.post('/admlogin', function(req, res, next){
+	login_a(req, function (err, user) {
+		if (err)
+			next(err);
+		else
+			
+			{req.session.user = req.body.log
+			 res.redirect('/')}
+			
+	})
+})
+
 app.get('/registration',function(req, res, next){
 	res.render('registration', {user: req.session.user})
 })
@@ -200,8 +244,14 @@ app.get('/contacts',function(req, res, next){
 	res.render('contacts', {user: req.session.user})
 })
 
-app.get('/admin',function(req, res, next){
-	res.render('admin', {user: req.session.user})
+app.get('/admlogin',function(req, res, next){
+	res.render('admin/functions/admlogin', {user: req.session.user})
+})
+app.get('/alumschange',function(req, res, next){
+	res.render('admin/functions/alumschange', {user: req.session.user})
+})
+app.get('/photochange',function(req, res, next){
+	res.render('admin/functions/photochange', {user: req.session.user})
 })
 app.get('/login',function(req, res, next){
 	res.render('login', {user: req.session.user})
