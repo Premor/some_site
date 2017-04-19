@@ -19,6 +19,25 @@ $(document).ready(function() {
 		}
 	}*/
 
+
+
+	$('.owl-carousel').owlCarousel({
+		loop: true,
+		nav: true,
+		dots: true,
+		responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
+        }
+    }
+	});
+
 	//Таймер обратного отсчета
 	//Документация: http://keith-wood.name/countdown.html
 	//<div class="countdown" date-time="2015-01-07"></div>

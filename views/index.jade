@@ -6,34 +6,47 @@ include ./top_menu.jade
   .carousel
     .row
       .col-md-12
-        img(src="./img/car_example.png", alt="")  
+        .owl-carousel
+          .slide
+            .onslide
+              .info.header
+                p Зарегистрируйся и получи бесплатный урок
+              .info.text
+                p Видео-урок от ведущих преподавателей школы
+              a(href="#").button
+                p Заказать!
+            img(src="./img/car_example.png", alt="")
+          .slide
+            .onslide
+              .info.header
+                p Зарегистрируйся и получи бесплатный урок
+              .info.text
+                p Видео-урок от ведущих преподавателей школы
+              a(href="#").button
+                p Заказать!
+            img(src="./img/car_example.png", alt="")  
 
+
+- var i = 0
 .container
   .albums
     .row
       .header.col-md-12
         p Альбомы
     .row
-      .album_form.col-md-3
+      //.album_form.col-md-3
         .album_img
-          img(src="" alt="")
+          img(src="./img/example.png" alt="")
         .album_name
           p name#1
-      .album_form.col-md-3
-        .album_img
-          img(src="" alt="")
-        .album_name
-          p name#2
-      .album_form.col-md-3
-        .album_img
-          img(src="" alt="")
-        .album_name
-          p name#3
-      .album_form.col-md-3
-        .album_img
-          img(src="" alt="")
-        .album_name
-          p name#4
+      while i < #{count}
+        .album_form.col-md-3
+          .album_img
+            img(src="./img/main/#{i}.png" alt="")
+          .album_name
+            p #{list_name}
+      
+      
 
 include ./footer.jade
 

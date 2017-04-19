@@ -161,14 +161,47 @@ p {
 
 /*carousel*/
 .carousel {
-  margin-top: 8px; }
+  margin-top: 8px;
+  position: relative;
+  top: -115px; }
 
+/*
 .carousel img {
-  width: 100%; }
+  width: 100%;
+}*/
+.button {
+  font-family: 'Bebas Neue';
+  font-size: 25px;
+  background-color: #501640;
+  display: block;
+  width: 167px;
+  height: 36px;
+  color: #fff;
+  text-align: center;
+  border-radius: 18px; }
+
+.onslide {
+  position: relative;
+  top: 167px;
+  left: 15%; }
+
+.info {
+  color: #fff;
+  font-family: "Bebas Neue"; }
+
+.info.header p {
+  font-size: 31px; }
+
+.info.text p {
+  font-size: 20px;
+  font-family: "RobotoLight";
+  margin-bottom: 10px; }
 
 /*albums*/
 .albums {
-  margin-top: 14px; }
+  margin-top: 14px;
+  position: relative;
+  top: -110px; }
 
 .albums .header p {
   font-family: 'Bebas Neue';
