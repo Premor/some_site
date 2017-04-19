@@ -244,6 +244,8 @@ app.get('/', function(req, res){
 	console.log(req.session.user)
 	res.render('index',
 	{title: 'Home',
+	 count: 1,
+	 listname: JSON.stringify(['syka','blend\'','fuk']),
 	 user: req.session.user}
 	)
 })
