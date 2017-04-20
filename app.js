@@ -2,6 +2,7 @@ var express = require('express')
   , stylus = require('stylus')
   , nib = require('nib')
   , bodyParser = require('body-parser')
+var fs = require('fs');
 var cookieParser = require('cookie-parser')
 var Sequelize = require('sequelize');
 var session = require('express-session')
@@ -293,10 +294,17 @@ app.post('/registration', function(req, res, next){
 
 
 app.get('/', function(req, res){
-	console.log(req.session.user)
+	var files = fs.readdir('/home/www/visage_school/img/main',function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+			return ar_fil.length
+	});
+});
+
 	res.render('index',
 	{title: 'Home',
-	 count: 4,
+	 count: files,
 	 list_name: JSON.stringify(["Брови","Волосы","Ногти","Умелые ручки"]),
 	 user: req.session.user}
 	)
