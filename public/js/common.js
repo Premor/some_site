@@ -23,10 +23,12 @@ $(document).ready(function() {
 
 	$('.owl-carousel').owlCarousel({
 		loop: true,
-		nav: true,
+		//nav: true,
 		autoplay:true,
     autoplayTimeout:6000,
     autoplayHoverPause:true,
+		navText: ["<i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>","<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>"],
+		nav: true,
 		responsive:{
         0:{
             items:1

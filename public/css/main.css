@@ -175,6 +175,26 @@ p {
 .carousel img {
   width: 100%;
 }*/
+.owl-dots {
+  position: relative;
+  top: -120px; }
+
+.owl-nav {
+  position: relative;
+  top: -120px; }
+
+.owl-prev, .owl-next {
+  color: #fff;
+  position: relative;
+  top: -150px;
+  font-size: 3em; }
+
+.owl-prev {
+  left: -530px; }
+
+.owl-next {
+  right: -530px; }
+
 .button {
   font-family: 'Bebas Neue';
   font-size: 25px;
@@ -207,7 +227,7 @@ p {
 .albums {
   margin-top: 14px;
   position: relative;
-  top: -110px; }
+  top: -200px; }
 
 .albums .header p {
   font-family: 'Bebas Neue';
@@ -218,7 +238,9 @@ p {
 footer {
   background-color: #000;
   color: #fff;
-  margin-top: 40px; }
+  margin-top: 40px;
+  position: relative;
+  top: -120px; }
 
 footer a {
   color: #fff; }
