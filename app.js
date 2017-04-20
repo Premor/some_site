@@ -261,7 +261,7 @@ app.get('/albumschange',function(req, res, next){
 				else
 					res.render('admin/functions/albumschange',
 						{count: ar_fil.length,
-	 					list_name: JSON.stringify(data),
+	 					list_name: data.toString('utf-8'),
 				 		user: req.session.user})
 
 			});
@@ -321,8 +321,9 @@ app.get('/', function(req, res){
 					res.render('index',
 						{title: 'Home',
 	 					count: ar_fil.length,
-	 					list_name: JSON.stringify(data),
+	 					list_name: data.toString('utf-8'),
 				 		user: req.session.user})
+
 
 			});
 			
