@@ -251,7 +251,23 @@ app.get('/admlogin',function(req, res, next){
 	res.render('admin/functions/admlogin', {user: req.session.user})
 })
 app.get('/albumschange',function(req, res, next){
-	res.render('admin/functions/alumschange', {user: req.session.user})
+	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					res.render('admin/functions/albumschange',
+						{count: ar_fil.length,
+	 					list_name: JSON.stringify(data),
+				 		user: req.session.user})
+
+			});
+			
+	
+	});
 })
 app.get('/photochange',function(req, res, next){
 	res.render('admin/functions/photochange', {user: req.session.user})
@@ -294,16 +310,23 @@ app.post('/registration', function(req, res, next){
 
 
 app.get('/', function(req, res){
-	var files = fs.readdir('/home/www/visage_school/img/main',function(err,ar_fil){
+	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
 		if (err)
 			next(err);
 		else
-			res.render('index',
-			{title: 'Home',
-	 			count: ar_fil.length,
-	 			list_name: JSON.stringify(["Брови","Волосы","Ногти","Умелые ручки"]),
-				 user: req.session.user}
-	)
+			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					res.render('index',
+						{title: 'Home',
+	 					count: ar_fil.length,
+	 					list_name: JSON.stringify(data),
+				 		user: req.session.user})
+
+			});
+			
+	
 	});
 
 	
