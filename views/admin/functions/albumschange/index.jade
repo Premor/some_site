@@ -2,11 +2,11 @@ include ./../includes/layout.jade
 
 include ./../includes/top_menu.jade
 
-//- var i = 0
+- var i = 0
   - var co = count
   - var list = JSON.parse(list_name)
   .container
-    .albums
+    .albums.no_top
       .row
         .header.col-md-12
           p Альбомы
@@ -19,6 +19,24 @@ include ./../includes/top_menu.jade
               p #{list[i]}
           - i= i+1
           
-include ./../includes/footer.jade
+footer.container-fluid.no_top
+  .container
+    .row
+      .col-md-4.contacts
+        p W'Studio Школа стилистов ....-2017
+        p Адрес: Г. Москва, ул. Рязанский проспект, 22/2
+        p Телефон: +7 (...) ... - .. - ..
+        p Как проехать?
+      .col-md-4.soc
+        //ro_sq = round square
+        a(href="#vk").ro_sq
+          i(aria-hidden="true").fa.fa-vk
+        a(href="#instagram").ro_sq
+          i(aria-hidden="true").fa.fa-instagram
+      .col-md-4.diamant
+        p Дизайн сайта:
+        br
+        p 
+          a(href="#") Diamant Studio
 
 include ./../includes/layout_ft.jade

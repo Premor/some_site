@@ -234,6 +234,9 @@ p {
   font-weight: 500;
   font-size: 31px; }
 
+.no_top {
+  top: 0px; }
+
 /*footer*/
 footer {
   background-color: #000;
