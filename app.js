@@ -298,15 +298,15 @@ app.get('/', function(req, res){
 		if (err)
 			next(err);
 		else
-			return ar_fil.length
+			res.render('index',
+			{title: 'Home',
+	 			count: ar_fil.length,
+	 			list_name: JSON.stringify(["Брови","Волосы","Ногти","Умелые ручки"]),
+				 user: req.session.user}
+	)
 	});
 
-	res.render('index',
-	{title: 'Home',
-	 count: files,
-	 list_name: JSON.stringify(["Брови","Волосы","Ногти","Умелые ручки"]),
-	 user: req.session.user}
-	)
+	
 })
 
 app.use(function(err, req, res, next){
