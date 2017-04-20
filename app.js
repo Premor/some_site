@@ -300,7 +300,6 @@ app.get('/', function(req, res){
 		else
 			return ar_fil.length
 	});
-});
 
 	res.render('index',
 	{title: 'Home',
