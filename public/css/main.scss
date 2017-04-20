@@ -169,6 +169,8 @@ p {
 .m-btn {
   margin-top: 10px;
   margin-right: 10px;
+  position: relative;
+  z-index: 20;
 }
 
 .menu-btn p {
