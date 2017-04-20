@@ -40,10 +40,13 @@ p {
   margin-top: 0px;
   margin-bottom: 0px; }
 
+/*owl-carousel*/
 /*top_menu*/
 .top_menu {
   background-color: #000;
-  color: #fff; }
+  color: #fff;
+  z-index: 20;
+  position: relative; }
 
 .top_menu a {
   color: #fff; }
@@ -163,7 +166,8 @@ p {
 .carousel {
   margin-top: 8px;
   position: relative;
-  top: -115px; }
+  top: -115px;
+  z-index: 5; }
 
 /*
 .carousel img {

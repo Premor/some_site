@@ -2,17 +2,12 @@ include ../layout.jade
 
 include ../top_menu.jade
 
-.overlay
-  form(action="/login" method="post")
-    .a_login
-      .header.mid
-        p Логин
-      input(type="text" name="a_log" placeholder="name = 'a_log'")
-    .a_pass
-      .header.mid
-        p Пароль
-      input(type="password" name="a_pass" placeholder="name = 'a_pass'")
-    button(type="submit") Войти! 
+
+
+a(href="/albumschange")
+  button.albumschange
+    p albumschange
+  
     
 include ../footer.jade
  

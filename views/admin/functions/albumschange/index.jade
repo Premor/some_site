@@ -1,0 +1,24 @@
+include ./../includes/layout.jade
+
+include ./../includes/top_menu.jade
+
+//- var i = 0
+  - var co = count
+  - var list = JSON.parse(list_name)
+  .container
+    .albums
+      .row
+        .header.col-md-12
+          p Альбомы
+      .row
+        while i < count
+          .album_form.col-md-3
+            .album_img
+              img(src="/img/main/#{i}.png" alt="")
+            .album_name
+              p #{list[i]}
+          - i= i+1
+          
+include ./../includes/footer.jade
+
+include ./../includes/layout_ft.jade

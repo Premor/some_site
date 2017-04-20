@@ -6,7 +6,7 @@ include ./top_menu.jade
   .carousel
     .row
       .col-md-12
-        .owl-carousel
+        .owl-carousel.owl-theme
           .slide
             .onslide
               .info.header
@@ -38,18 +38,19 @@ include ./top_menu.jade
     .row
       //.album_form.col-md-3
         .album_img
-          img(src="./img/example.png" alt="")
+          img(src="/img/example.png" alt="")
         .album_name
           p name#1
       while i < count
         .album_form.col-md-3
           .album_img
-            img(src="./img/main/#{i}.png" alt="")
+            img(src="/img/main/#{i}.png" alt="")
           .album_name
             p #{list[i]}
         - i= i+1
-      p #{co}
       
+
+a(href="/admin") Admin
       
 
 include ./footer.jade

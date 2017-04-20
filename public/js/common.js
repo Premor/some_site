@@ -24,7 +24,9 @@ $(document).ready(function() {
 	$('.owl-carousel').owlCarousel({
 		loop: true,
 		nav: true,
-		dots: true,
+		autoplay:true,
+    autoplayTimeout:6000,
+    autoplayHoverPause:true,
 		responsive:{
         0:{
             items:1
@@ -72,11 +74,6 @@ $(document).ready(function() {
 			offset: -90
 		});
 	});
-
-  $(".owl-carousel").owlCarousel({
-
-  });
-
 	//Кнопка "Наверх"
 	//Документация:
 	//http://api.jquery.com/scrolltop/
@@ -87,21 +84,5 @@ $(document).ready(function() {
 		}, 800);
 		return false;
 	});
-
-	//Аякс отправка форм
-	//Документация: http://api.jquery.com/jquery.ajax/
-	/*$("form").submit(function() {
-		$.ajax({
-			type: "GET",
-			url: "mail.php",
-			data: $("form").serialize()
-		}).done(function() {
-			alert("Спасибо за заявку!");
-			setTimeout(function() {
-				$.fancybox.close();
-			}, 1000);
-		});
-		return false;
-	});*/
 
 });
