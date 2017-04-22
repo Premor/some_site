@@ -157,7 +157,7 @@ app.use(session(
 	store:  store,
 	resave: false,
 saveUninitialized: true,
-cookie:{maxAge: 3600000}}
+cookie:{maxAge: 3600000}}//1 час
 ))
 app.use(bodyParser.urlencoded({
     extended: true
@@ -212,6 +212,21 @@ app.post('/admlogin', function(req, res, next){
 	})
 })
 
+app.get('/photos',function(req, res, next){
+	fs.readdir('/home/www/visage_school/public/img/'+req.body.name_albums,function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+			res.render('photos',
+			{count: ar_fil.length,
+	 		name_albums: req.body.name_albums,
+	 		user: req.session.user})
+
+			});
+			
+	
+})
+
 app.get('/registration',function(req, res, next){
 	res.render('registration', {user: req.session.user})
 })
@@ -220,8 +235,45 @@ app.get('/about_us',function(req, res, next){
 	res.render('about_us', {user: req.session.user})
 })
 
+
 app.get('/gallery',function(req, res, next){
-	res.render('gallery', {user: req.session.user})
+	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					res.render('gallery',
+						{count: ar_fil.length,
+	 					list_name: data.toString('utf-8'),
+				 		user: req.session.user})
+
+			});
+			
+	
+	});
+})
+
+app.post('/gallery',function(req, res, next){
+	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					res.render('gallery',
+						{count: ar_fil.length,
+	 					list_name: data.toString('utf-8'),
+				 		user: req.session.user})
+
+			});
+			
+	
+	});
 })
 
 app.get('/perarea',function(req, res, next){
