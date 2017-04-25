@@ -235,6 +235,22 @@ app.get('/about_us',function(req, res, next){
 	res.render('about_us', {user: req.session.user})
 })
 
+app.get('/gallery/:album',function(req, res, next){
+	fs.readdir('/home/www/visage_school/public/img/'+album,function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+					res.render('gallery/photos',
+						{count: ar_fil.length,
+	 					list_name: album,
+				 		user: req.session.user})
+
+			});
+			
+	
+	});
+})
+
 
 app.get('/gallery',function(req, res, next){
 	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
@@ -257,23 +273,7 @@ app.get('/gallery',function(req, res, next){
 })
 
 app.post('/gallery',function(req, res, next){
-	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
-		if (err)
-			next(err);
-		else
-			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
-				if (err)
-					next(err);
-				else
-					res.render('gallery',
-						{count: ar_fil.length,
-	 					list_name: data.toString('utf-8'),
-				 		user: req.session.user})
-
-			});
-			
-	
-	});
+	res.redirect('/gallery/'+req.body.album_name)
 })
 
 app.get('/perarea',function(req, res, next){
