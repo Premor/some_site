@@ -1,1 +1,4 @@
-["sobaka КЛОП", "lobok", "sovek", "chelovek", "verochel"]
+{
+    "russian": ["Брови", "Ресницы", "Собаки", "Ногти", "Вертолет"],
+    "english": ["Eyebrows", "Eyelashes", "Dogs", "Nails", "Helicopter"]
+}

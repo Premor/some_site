@@ -1,4 +1,6 @@
 @import "colorize";
+@import "variables";
+
 
 @mixin phd {
   color: #666;
@@ -231,11 +233,12 @@ p {
 }
 
 .owl-prev {
-  left: -530px;
+  left: $car_but_mgn;
+
 }
 
 .owl-next {
-  right: -530px;
+  right: $car_but_mgn;
 }
 
 .button {
@@ -274,6 +277,14 @@ p {
 
 
 /*albums*/
+
+.danone {
+  display: none;
+}
+
+.dibl {
+  display: block;
+}
 
 .albums {
   margin-top: 14px;

@@ -18,8 +18,33 @@ $(document).ready(function() {
 
 		}
 	}*/
-
-
+/*
+	function getZapros() {
+		var xhr = new XMLHttpRequest();
+		var params = 'data=' + encodeURIComponent(list[i]);
+		xhr.open("GET", '/photos/' + params, true);
+		xhr.onreadystatechange = ...;
+		xhr.send();
+	};*/
+/*
+$(".album_form").submit(function() {
+	$.ajax({
+		type: "GET",
+		url: "pozner",
+		data: {name: list[i]}
+	});
+	return false;
+});*/
+	
+	/*$("form#sob").submit(function() {
+		$.ajax({
+			type: "GET",
+			url: "/photos",
+			data: $("form#sob").serialize()
+		})
+		alert($("form#sob").serialize())
+	})
+*/
 
 	$('.owl-carousel').owlCarousel({
 		loop: true,

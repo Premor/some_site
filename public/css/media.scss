@@ -1,3 +1,5 @@
+@import "variables";
+
 /*==========  Desktop First Method  ==========*/
 
 /* Large Devices, Wide Screens */
@@ -18,6 +20,7 @@
   .underlogo {
     top: -11px;
   }
+
 }
 
 /* Small Devices, Tablets */
@@ -28,6 +31,14 @@
 
   .underlogo p {
     font-size: 16px;
+  }
+
+  .owl-next {
+    left:-200px;
+  }
+
+  .owl-prev {
+    left:-500px;
   }
 
 }

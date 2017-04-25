@@ -224,6 +224,12 @@ p {
   margin-bottom: 10px; }
 
 /*albums*/
+.danone {
+  display: none; }
+
+.dibl {
+  display: block; }
+
 .albums {
   margin-top: 14px;
   position: relative;

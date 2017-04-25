@@ -1,24 +1,4 @@
-include ./../includes/layout.jade
-
-include ./../includes/top_menu.jade
-
-- var i = 0
-- var co = count
-  .container
-    .albums.no_top
-      .row
-        .header.col-md-12
-          p Альбомы
-      .row
-        while i < count
-          .album_form.col-md-3
-            .album_img
-              img(src="/img/main/#{i}.png" alt="")
-            .album_name
-              p #{list.russian[i]}
-          - i= i+1
-          
-footer.container-fluid.no_top
+footer.container-fluid
   .container
     .row
       .col-md-4.contacts
@@ -37,5 +17,3 @@ footer.container-fluid.no_top
         br
         p 
           a(href="#") Diamant Studio
-
-include ./../includes/layout_ft.jade

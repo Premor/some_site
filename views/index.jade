@@ -29,7 +29,6 @@ include ./top_menu.jade
 
 - var i = 0
 - var co = count
-- var list = JSON.parse(list_name)
 .container
   .albums
     .row
@@ -46,7 +45,7 @@ include ./top_menu.jade
           .album_img
             img(src="/img/main/#{i}.png" alt="")
           .album_name
-            p #{list[i]}
+            p #{list.russian[i]}
         - i= i+1
       
 
