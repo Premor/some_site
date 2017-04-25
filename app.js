@@ -236,13 +236,13 @@ app.get('/about_us',function(req, res, next){
 })
 
 app.get('/gallery/:album',function(req, res, next){
-	fs.readdir('/home/www/visage_school/public/img/'+album,function(err,ar_fil){
+	fs.readdir('/home/www/visage_school/public/img/'+req.params.album,function(err,ar_fil){
 		if (err)
 			next(err);
 		else
 					res.render('gallery/photos',
 						{count: ar_fil.length,
-	 					list: album,
+	 					list: req.params.album,
 				 		user: req.session.user})
 
 			});
@@ -313,7 +313,7 @@ app.get('/albumschange',function(req, res, next){
 				else
 					res.render('admin/functions/albumschange',
 						{count: ar_fil.length,
-	 					list: data.toString('utf-8'),
+	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user})
 
 			});
@@ -373,7 +373,7 @@ app.get('/', function(req, res){
 					res.render('index',
 						{title: 'Home',
 	 					count: ar_fil.length,
-	 					list: data.toString('utf-8'),
+	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user})
 
 
