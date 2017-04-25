@@ -15,7 +15,7 @@ include ./top_menu.jade
                 p Видео-урок от ведущих преподавателей школы
               a(href="#").button
                 p Заказать!
-            img(src="./img/car_example.png", alt="")
+            img(src="public/img/car_example.png", alt="")
           .slide
             .onslide
               .info.header
@@ -24,7 +24,7 @@ include ./top_menu.jade
                 p Видео-урок от ведущих преподавателей школы
               a(href="#").button
                 p Заказать!
-            img(src="./img/car_example.png", alt="")
+            img(src="public/img/car_example.png", alt="")
 
 
 - var i = 0
@@ -36,13 +36,13 @@ include ./top_menu.jade
     .row
       //.album_form.col-md-3
         .album_img
-          img(src="/img/example.png" alt="")
+          img(src="public/img/example.png" alt="")
         .album_name
           p name#1
       while i < count
         .album_form.col-md-3
           .album_img
-            img(src="/img/main/#{i}.png" alt="")
+            img(src="public/img/main/#{i}.png" alt="")
           .album_name
             p #{list.russian[i]}
         - i= i+1
