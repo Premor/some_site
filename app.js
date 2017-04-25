@@ -242,13 +242,13 @@ app.get('/gallery/:album',function(req, res, next){
 		else
 					res.render('gallery/photos',
 						{count: ar_fil.length,
-	 					list_name: album,
+	 					list: album,
 				 		user: req.session.user})
 
 			});
 			
 	
-	});
+	
 })
 
 
@@ -263,7 +263,7 @@ app.get('/gallery',function(req, res, next){
 				else
 					res.render('gallery',
 						{count: ar_fil.length,
-	 					list_name: data.toString('utf-8'),
+	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user})
 
 			});
@@ -313,7 +313,7 @@ app.get('/albumschange',function(req, res, next){
 				else
 					res.render('admin/functions/albumschange',
 						{count: ar_fil.length,
-	 					list_name: data.toString('utf-8'),
+	 					list: data.toString('utf-8'),
 				 		user: req.session.user})
 
 			});
@@ -373,7 +373,7 @@ app.get('/', function(req, res){
 					res.render('index',
 						{title: 'Home',
 	 					count: ar_fil.length,
-	 					list_name: data.toString('utf-8'),
+	 					list: data.toString('utf-8'),
 				 		user: req.session.user})
 
 
