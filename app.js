@@ -224,7 +224,7 @@ app.post('/admlogin', function(req, res, next){
 			next(err);
 		else
 			
-			{req.session.user = req.body.log
+			{req.session.admin = req.body.log
 			 res.redirect('/admin')}
 			
 	})
@@ -315,10 +315,10 @@ app.get('/contacts',function(req, res, next){
 	res.render('contacts', {user: req.session.user})
 })
 app.get('/admin',function(req, res, next){
-	res.render('admin', {user: req.session.user})
+	res.render('admin', {user: req.session.admin})
 })
 app.get('/admlogin',function(req, res, next){
-	res.render('admin/functions/admlogin', {user: req.session.user})
+	res.render('admin/functions/admlogin', {user: req.session.admin})
 })
 app.get('/albumschange',function(req, res, next){
 	fs.readdir('./public/img/main',function(err,ar_fil){
@@ -332,7 +332,7 @@ app.get('/albumschange',function(req, res, next){
 					res.render('admin/functions/albumschange',
 						{count: ar_fil.length,
 	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user})
+				 		user: req.session.admin})
 
 			});
 			
@@ -347,7 +347,7 @@ app.post('/albumschange',function(req, res, next){
 app.get('/albumschange/:album',function(req, res, next){
 					res.render('admin/functions/photochange',
 						{field: req.params.album,
-				 		user: req.session.user})
+				 		user: req.session.admin})
 
 	
 })
@@ -359,9 +359,6 @@ app.post('/albumschange/:album',function(req, res, next){
 	
 })
 
-app.get('/photochange',function(req, res, next){
-	res.render('admin/functions/photochange', {user: req.session.user})
-})
 app.get('/login',function(req, res, next){
 	res.render('login', {user: req.session.user})
 })
