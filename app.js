@@ -3,6 +3,24 @@ var express = require('express')
   , nib = require('nib')
   , bodyParser = require('body-parser')
 var fs = require('fs');
+var multer  = require('multer')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/img/'+file.fieldname)
+  },
+  filename: function (req, file, cb) {
+    
+    fs.readdir('./public/img/'+file.fieldname,function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+    	cb(null, ar_fil.length+(file.originalname).slice((file.originalname).lastIndexOf('.')))
+  })
+  }
+})
+
+var upload = multer({ storage: storage })
+
 var cookieParser = require('cookie-parser')
 var Sequelize = require('sequelize');
 var session = require('express-session')
@@ -213,7 +231,7 @@ app.post('/admlogin', function(req, res, next){
 })
 
 app.get('/photos',function(req, res, next){
-	fs.readdir('/home/www/visage_school/public/img/'+req.body.name_albums,function(err,ar_fil){
+	fs.readdir('./public/img/'+req.body.name_albums,function(err,ar_fil){
 		if (err)
 			next(err);
 		else
@@ -236,7 +254,7 @@ app.get('/about_us',function(req, res, next){
 })
 
 app.get('/gallery/:album',function(req, res, next){
-	fs.readdir('/home/www/visage_school/public/img/'+req.params.album,function(err,ar_fil){
+	fs.readdir('./public/img/'+req.params.album,function(err,ar_fil){
 		if (err)
 			next(err);
 		else
@@ -253,11 +271,11 @@ app.get('/gallery/:album',function(req, res, next){
 
 
 app.get('/gallery',function(req, res, next){
-	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
+	fs.readdir('./public/img/main',function(err,ar_fil){
 		if (err)
 			next(err);
 		else
-			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+			fs.readFile('./public/img/name_albums.json',function(err,data){
 				if (err)
 					next(err);
 				else
@@ -303,11 +321,11 @@ app.get('/admlogin',function(req, res, next){
 	res.render('admin/functions/admlogin', {user: req.session.user})
 })
 app.get('/albumschange',function(req, res, next){
-	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
+	fs.readdir('./public/img/main',function(err,ar_fil){
 		if (err)
 			next(err);
 		else
-			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+			fs.readFile('./public/img/name_albums.json',function(err,data){
 				if (err)
 					next(err);
 				else
@@ -321,6 +339,26 @@ app.get('/albumschange',function(req, res, next){
 	
 	});
 })
+
+app.post('/albumschange',function(req, res, next){
+	res.redirect('/albumschange/'+req.body.album_name)
+})
+
+app.get('/albumschange/:album',function(req, res, next){
+					res.render('admin/functions/photochange',
+						{list: req.params.album,
+				 		user: req.session.user})
+
+	
+})
+app.post('/albumschange/:album',function(req, res, next){
+					upload.single(req.params.album)(req,res,function(err){if (err) next(err);else return});
+					res.redirect('/albumschange/'+req.params.album)
+			
+	
+	
+})
+
 app.get('/photochange',function(req, res, next){
 	res.render('admin/functions/photochange', {user: req.session.user})
 })
