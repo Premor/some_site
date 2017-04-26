@@ -2,9 +2,12 @@ include ./../includes/layout.jade
 
 include ./../includes/top_menu.jade
 
-form(action="/albumschange/#{field}", method="post", enctype="multipart/form-data")
-  input(type="file", name="#{field}")
-  button(type="submit", value="dc") ТЫК
-p #{field}
+- if (user)
+    form(action="/albumschange/#{field}", method="post", enctype="multipart/form-data")
+      input(type="file", name="#{field}")
+      button(type="submit", value="dc") ТЫК
+    p #{field}
+- else
+    p сасамба. 
 
-//include ./../includes/layout_ft.jade
+include ./../includes/layout_ft.jade

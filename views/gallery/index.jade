@@ -4,17 +4,6 @@ include ../top_menu.jade
 
 - var i = 0
 - var co = count
-
-//script(type="text/javascript").
-  function zapros() {
-    var x = new XMLHttpRequest();
-    x.open("GET", "/photos", true);
-    x.click = function (){
-        alert( x.responseText);
-    }
-    x.send(null);
-  }
-  
 .container
   .albums.no_top
     .row
