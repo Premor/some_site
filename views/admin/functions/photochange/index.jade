@@ -1,0 +1,10 @@
+include ./../includes/layout.jade
+
+include ./../includes/top_menu.jade
+
+form(action="/wut", method="post", enctype="multipart/form-data")
+  input(type="file", name="#{field}")
+  button(type="submit", value="dc") ТЫК
+p #{field}
+
+include ./../includes/layout_ft.jade
