@@ -346,7 +346,7 @@ app.post('/albumschange',function(req, res, next){
 
 app.get('/albumschange/:album',function(req, res, next){
 					res.render('admin/functions/photochange',
-						{list: req.params.album,
+						{field: req.params.album,
 				 		user: req.session.user})
 
 	
@@ -400,11 +400,11 @@ app.post('/registration', function(req, res, next){
 
 
 app.get('/', function(req, res){
-	fs.readdir('/home/www/visage_school/public/img/main',function(err,ar_fil){
+	fs.readdir('./public/img/main',function(err,ar_fil){
 		if (err)
 			next(err);
 		else
-			fs.readFile('/home/www/visage_school/public/img/name_albums.json',function(err,data){
+			fs.readFile('./public/img/name_albums.json',function(err,data){
 				if (err)
 					next(err);
 				else
