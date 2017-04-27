@@ -104,8 +104,10 @@ cards.findAll().then(function(cards){
 })
 */
 User.belongsTo(store.Session, {targetKey: 'sid'});
-
+Admin.belongsTo(store.Session, {targetKey: 'sid'});
 User.sync();
+
+Admin.sync();
 
 function login_a(req, done){
 	Admin.findOne({where: {login: req.body.log, password: req.body.pass}}).then(function (user){
