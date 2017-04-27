@@ -229,7 +229,7 @@ app.post('/admlogin', function(req, res, next){
 			
 	})
 })
-
+/*
 app.get('/photos',function(req, res, next){
 	fs.readdir('./public/img/'+req.body.name_albums,function(err,ar_fil){
 		if (err)
@@ -243,7 +243,7 @@ app.get('/photos',function(req, res, next){
 			});
 			
 	
-})
+})*/
 
 app.get('/registration',function(req, res, next){
 	res.render('registration', {user: req.session.user})
@@ -258,14 +258,17 @@ app.get('/gallery/:album',function(req, res, next){
 		if (err)
 			next(err);
 		else
+			fs.readFile('./public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
 					res.render('gallery/photos',
 						{count: ar_fil.length,
-	 					list: req.params.album,
+						engl_name: req.params.album,
+	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user})
-
+				});
 			});
-			
-	
 	
 })
 
