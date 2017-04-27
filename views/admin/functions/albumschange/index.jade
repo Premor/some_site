@@ -2,24 +2,26 @@ include ./../includes/layout.jade
 
 include ./../includes/top_menu.jade
 
-- if (user)
+- if (!user)
     - var i = 0
     - var co = count
-    .container
+    .container-fluid
       .albums.no_top
         .row
           .header.col-md-12
             p Альбомы
         .row
-          while i < count
-            form(method = "POST" action = "/albumschange")
-              input(type="text" value="#{list.english[i]}" name="album_name").danone
-              .album_form.col-md-3
-                .album_img
-                  img(src="public/img/main/#{i}.png" alt="")
-                .album_name
-                  input(type="submit" value="#{list.russian[i]}").dibl
-            - i= i+1
+          .sopka.sortable 
+            while i < count 
+              .itemSortable(id="#{i}")
+                form(method = "POST" action = "/albumschange" draggable="true")
+                  input(type="text" value="#{list.english[i]}" name="album_name").danone   
+                  .album_form.col-md-3
+                      .album_img
+                        img(src="public/img/main/#{i}.png" alt="")
+                      .album_name
+                        input(type="submit" value="#{list.russian[i]}").dibl
+                - i= i+1
 - else
     p сасамба.
 footer.container-fluid.no_top

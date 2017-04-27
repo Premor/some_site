@@ -50,6 +50,19 @@ p {
   margin-bottom: 0px;
 }
 
+/*sortable*/
+.sortable-placeholder {
+  border: 1px dashed #CCC;
+	background: none;
+  width: 250px;
+  height: 270px;
+  display: inline-block;
+}
+
+.itemSortable {
+  display: inline-block;
+}
+
 /*owl-carousel*/
 
 
@@ -298,6 +311,10 @@ p {
   font-family: 'Bebas Neue';
   font-weight: 500;
   font-size: 31px;
+}
+
+.album_img img {
+  width: 270px;
 }
 
 .no_top {

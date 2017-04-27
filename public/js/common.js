@@ -17,9 +17,19 @@ $(document).ready(function() {
 		else {
 
 		}
-	}*/
-
-
+	}*//*
+	$('form').on('click','.del',function() {
+		$.ajax({
+			url: '/albumschange/'+,
+			type: 'POST',
+			data: {'album_name':$(this).val()},
+		})
+	});*/
+		/**/
+	/*
+	$('.sortable').sortable({
+		  items: ':not(.disabled)'
+	});*/
 
 	$('.owl-carousel').owlCarousel({
 		loop: true,

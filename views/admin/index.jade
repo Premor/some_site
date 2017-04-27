@@ -3,7 +3,7 @@ include ../layout.jade
 include ../top_menu.jade
 
 
-- if (user)
+- if (!user)
     a(href="/albumschange")
       button.albumschange
         p albumschange

@@ -11,13 +11,14 @@ include ../top_menu.jade
         p Альбомы
     .row
       while i < count
-        form(method = "POST" action = "/gallery")
+        //form(method = "POST" action = "/gallery")
+        form()
           input(type="text" value="#{list.english[i]}" name="album_name").danone
           .album_form.col-md-3
             .album_img
               img(src="public/img/main/#{i}.png" alt="")
             .album_name
-              input(type="submit" value="#{list.russian[i]}").dibl
+              input(type="button" value="#{list.english[i]}").dibl
         - i= i+1
         
 footer.container-fluid.no_top

@@ -2,11 +2,39 @@ include ./../includes/layout.jade
 
 include ./../includes/top_menu.jade
 
-- if (user)
-    form(action="/albumschange/#{field}", method="post", enctype="multipart/form-data")
-      input(type="file", name="#{field}")
-      button(type="submit", value="dc") ТЫК
-    p #{field}
+- if (!user)
+    .container
+      .row
+        .col-md-12
+          form(action="/albumschange/#{engl_name}", method="post", enctype="multipart/form-data")
+            input(type="file", name="#{engl_name}")
+            button(type="submit") ТЫК
+          p #{engl_name}
+          
+    - var i = 0, j = 0
+    - var co = count
+    -   while(list.english[j] != engl_name) {
+    -      j= j+1
+    -   }
+    .container
+      .albums.no_top
+        .row
+          .header.col-md-12
+            p #{list.russian[j]}
+        .row
+          .sortable  
+            while i < count
+              .itemSortable(id="#{i}")
+                .album_form.col-md-3
+                  .album_img
+                    form(action="/albumschange/#{engl_name}/del" method="POST")
+                      img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
+                      input(type="text" value="#{i}" name="photo_num")
+                      button(type="submit" value="#{i}" class="del") 
+                        i.fa.fa-pencil(aria-hidden="true")
+                          
+                  .album_name
+              - i= i+1
 - else
     p сасамба. 
 
