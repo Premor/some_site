@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
 		if (err)
 			next(err);
 		else
-    	cb(null, ar_fil.length)//+(file.originalname).slice((file.originalname).lastIndexOf('.'))
+    	cb(null, (ar_fil.length).toString())//+(file.originalname).slice((file.originalname).lastIndexOf('.'))
   })
   }
 })
@@ -226,7 +226,7 @@ app.post('/admlogin', function(req, res, next){
 			next(err);
 		else
 			
-			{req.session.admin = req.body.log
+			{req.session.user = req.body.log
 			 res.redirect('/admin')}
 			
 	})
@@ -352,10 +352,21 @@ app.post('/albumschange',function(req, res, next){
 })
 
 app.get('/albumschange/:album',function(req, res, next){
+	fs.readdir('./public/img/'+req.params.album,function(err,ar_fil){
+		if (err)
+			next(err);
+		else
+			fs.readFile('./public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
 					res.render('admin/functions/photochange',
-						{field: req.params.album,
-				 		user: req.session.admin})
-
+						{count: ar_fil.length, 
+						engl_name: req.params.album,
+	 					list: JSON.parse(data.toString('utf-8')),
+				 		user: req.session.user})
+				});
+			});
 	
 })
 app.post('/albumschange/:album',function(req, res, next){
@@ -365,7 +376,14 @@ app.post('/albumschange/:album',function(req, res, next){
 	
 	
 })
-
+app.post('/albumschange/:album/del',function(req, res, next){
+					fs.unlink('./public/img/'+req.params.album+'/'+req.body.photo_num,function(){
+						res.redirect('/albumschange/'+req.params.album)
+				})
+			
+	
+	
+})
 app.get('/login',function(req, res, next){
 	res.render('login', {user: req.session.user})
 })
