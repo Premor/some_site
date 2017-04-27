@@ -14,7 +14,7 @@ var storage = multer.diskStorage({
 		if (err)
 			next(err);
 		else
-    	cb(null, ar_fil.length+(file.originalname).slice((file.originalname).lastIndexOf('.')))
+    	cb(null, ar_fil.length)//+(file.originalname).slice((file.originalname).lastIndexOf('.'))
   })
   }
 })
@@ -163,7 +163,7 @@ app.set('views', __dirname +'/views')
 app.set('view engine', 'jade')
 app.use(express.logger('dev'))
 app.use(stylus.middleware(
-	{ src: __dirname + '/public'
+	{ src: __dirname
 	, compile: compile
 	}
 ))
@@ -253,6 +253,8 @@ app.get('/about_us',function(req, res, next){
 	res.render('about_us', {user: req.session.user})
 })
 
+
+
 app.get('/gallery/:album',function(req, res, next){
 	fs.readdir('./public/img/'+req.params.album,function(err,ar_fil){
 		if (err)
@@ -263,7 +265,7 @@ app.get('/gallery/:album',function(req, res, next){
 					next(err);
 				else
 					res.render('gallery/photos',
-						{count: ar_fil.length,
+						{count: ar_fil.length, 
 						engl_name: req.params.album,
 	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user})
