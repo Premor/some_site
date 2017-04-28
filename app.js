@@ -376,9 +376,14 @@ app.post('/albumschange/:album',function(req, res, next){
 	
 	
 })
-app.post('/albumschange/:album/del',function(req, res, next){
+app.delete('/albumschange/:album',function(req, res, next){
 					fs.unlink('./public/img/'+req.params.album+'/'+req.body.photo_num,function(){
-						res.redirect('/albumschange/'+req.params.album)
+						var i=req.body.photo_num+1;
+						while(i<req.body.count){
+							fs.rename('./public/img/'+req.params.album+'/'+i,'./public/img/'+req.params.album+'/'+(i-1),function(err){if (err) next(err);return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
+							i++;
+						}	
+						
 				})
 			
 	
