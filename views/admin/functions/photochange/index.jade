@@ -27,15 +27,37 @@ include ./../includes/top_menu.jade
               .itemSortable(id="#{i}")
                 .album_form.col-md-3
                   .album_img
-                    form(action="/albumschange/#{engl_name}/del" method="POST")
+                    //form(/action="/albumschange/#{engl_name}/del" method="POST")
+                    form.parTest
                       img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
-                      input(type="text" value="#{i}" name="photo_num")
-                      button(type="submit" value="#{i}" class="del") 
+                      input(type="text" value="#{engl_name}" id="ph_#{i}").danone
+                      input(type="text" value="#{count}" id="co").danone
+                      button(value="#{i}" class="del") 
                         i.fa.fa-pencil(aria-hidden="true")
                           
                   .album_name
               - i= i+1
 - else
     p сасамба. 
+    
+footer.no_top.container-fluid
+  .container
+    .row
+      .col-md-4.contacts
+        p W'Studio Школа стилистов ....-2017
+        p Адрес: Г. Москва, ул. Рязанский проспект, 22/2
+        p Телефон: +7 (...) ... - .. - ..
+        p Как проехать?
+      .col-md-4.soc
+        //ro_sq = round square
+        a(href="#vk").ro_sq
+          i(aria-hidden="true").fa.fa-vk
+        a(href="#instagram").ro_sq
+          i(aria-hidden="true").fa.fa-instagram
+      .col-md-4.diamant
+        p Дизайн сайта:
+        br
+        p 
+          a(href="#") Diamant Studio
 
 include ./../includes/layout_ft.jade

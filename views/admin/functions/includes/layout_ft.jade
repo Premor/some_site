@@ -5,7 +5,6 @@
 <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
 <script src="libs/respond/respond.min.js"></script>
 <![endif]-->
-
 script(src="../public/libs/jquery/jquery-3.2.1.min.js")
 script(src="../public/libs/jquery-md5-hash/jquery.md5.js")
 script(src="../public/libs/jquery-mousewheel/jquery.mousewheel.min.js")
@@ -21,6 +20,10 @@ script(src="../public/js/common.js")
 script(src="../public/libs/owl-carousel/owl.carousel.min.js")
 script(src="../public/libs/pushy/js/pushy.min.js")
 script(src="../public/libs/sortable/jquery.sortable.min.js")
+script(type="text/javascript").
+  $('.sortable').sortable({
+    items: ':not(.disabled)'
+  });
 
 //Yandex.Metrika counter
 //Google Analytics counter

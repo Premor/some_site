@@ -17,20 +17,20 @@ $(document).ready(function() {
 		else {
 
 		}
-	}*//*
-	$('form').on('click','.del',function() {
-		$.ajax({
-			url: '/albumschange/'+,
-			type: 'POST',
-			data: {'album_name':$(this).val()},
-		})
-	});*/
-		/**/
-	/*
-	$('.sortable').sortable({
-		  items: ':not(.disabled)'
-	});*/
+	}*/
 
+
+	$('form').on('click','.del',function() {
+		var needImg = $(this).parents('.parTest').children('.sobka');
+		var lastEl = needImg.attr('src').slice(needImg.attr('src').length-1);
+		var albumPath = $("#ph_" + lastEl).val();
+		$.ajax({
+			url: '/albumschange/'+ albumPath,
+			type: 'DELETE',
+			data: {'photo_num':lastEl, 'count': $("#co").val()}
+		})
+	});
+	
 	$('.owl-carousel').owlCarousel({
 		loop: true,
 		//nav: true,
