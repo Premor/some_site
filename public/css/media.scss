@@ -4,7 +4,19 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
+  .owl-next {
+    right: 0px;
+    top: -110px;
+  }
 
+  .owl-prev {
+    left: 0px;
+    top: -110px;
+  }
+
+  .album_form img {
+    width: 95%;
+  }
 }
 
 /* Medium Devices, Desktops */
@@ -21,6 +33,15 @@
     top: -11px;
   }
 
+  .owl-next, .owl-prev {
+    top: -73px;
+  }
+
+  .contacts, .diamant {
+    font-family: 'Bebas Neue';
+    font-size: 15px;
+  }
+
 }
 
 /* Small Devices, Tablets */
@@ -34,15 +55,45 @@
   }
 
   .owl-next {
-    left:-200px;
+    top: -60px;
   }
 
   .owl-prev {
-    left:-500px;
+    top: -60px;
+  }
+
+  .info.header p {
+    font-size: 25px;
+  }
+
+  .albums .header p {
+    font-size: 21px;
   }
 
 }
 
+
+/*For Carousel*//*
+@media only screen and (max-width : ???px) {
+  .logo {
+    font-size: 30px;
+  }
+
+  .underlogo p {
+    font-size: 16px;
+  }
+
+  .owl-next {
+    right: -303px;
+    top: -60px;
+  }
+
+  .owl-prev {
+    left: -303px;
+    top: -60px;
+  }
+
+}/
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
   .logo {

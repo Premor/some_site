@@ -40,6 +40,14 @@ p {
   margin-top: 0px;
   margin-bottom: 0px; }
 
+.mainHeader {
+  font-family: 'Bebas Neue';
+  font-weight: 500;
+  font-size: 31px; }
+
+.center {
+  text-align: center; }
+
 /*sortable*/
 .sortable-placeholder {
   border: 1px dashed #CCC;
@@ -149,7 +157,7 @@ p {
 
 .m-btn {
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 60px;
   position: relative;
   z-index: 20; }
 
@@ -188,7 +196,8 @@ p {
 }*/
 .owl-dots {
   position: relative;
-  top: -120px; }
+  bottom: 30px;
+  margin-bottom: 50px; }
 
 .owl-nav {
   position: relative;
@@ -196,15 +205,15 @@ p {
 
 .owl-prev, .owl-next {
   color: #fff;
-  position: relative;
+  position: absolute;
   top: -150px;
   font-size: 3em; }
 
 .owl-prev {
-  left: -530px; }
+  left: 0px; }
 
 .owl-next {
-  right: -530px; }
+  right: 0px; }
 
 .button {
   font-family: 'Bebas Neue';
@@ -261,9 +270,7 @@ p {
 footer {
   background-color: #000;
   color: #fff;
-  margin-top: 40px;
-  position: relative;
-  top: -120px; }
+  margin-top: 40px; }
 
 footer a {
   color: #fff; }
