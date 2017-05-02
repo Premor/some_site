@@ -348,7 +348,29 @@ app.get('/albumschange',function(req, res, next){
 })
 
 app.post('/albumschange',function(req, res, next){
-	res.redirect('/albumschange/'+req.body.album_name)
+	if (req.body.new_album_ru && req.body.new_album_en)
+		{fs.mkdir('./public/img/'+req.body.new_album_en,function(err,next){//?
+			if (err) next(err);
+			else
+				fs.readFile('./public/img/name_albums.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					var buf = JSON.parse(data.toString('utf-8'));
+					buf.russian.push(req.body.new_album_ru)
+					buf.english.push(req.body.new_album_en)
+					fs.writeFile('./public/img/name_albums.json',buf,function(err,data){
+						if (err) console.log(err);
+						else
+							upload.single('main')(req,res,function(err){if (err) next(err);else return}); 
+							res.redirect('/albumschange')
+					})
+			})
+			})
+
+		}
+	else
+		res.redirect('/albumschange/'+req.body.album_name)
 })
 
 app.get('/albumschange/:album',function(req, res, next){
