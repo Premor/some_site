@@ -317,6 +317,11 @@ footer a {
   margin-bottom: 150px;
   margin-top: 150px; }
 
+/*admin*/
+/*photochange*/
+.download {
+  border: dashed 1px black; }
+
 /*
 .login_window {
   text-align: center;
