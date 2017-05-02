@@ -169,7 +169,7 @@ app.use(stylus.middleware(
 	, compile: compile
 	}
 ))
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname))
 app.use(cookieParser())
 app.use(session(
 {name: 'sid',
@@ -370,7 +370,7 @@ app.get('/albumschange/:album',function(req, res, next){
 	
 })
 app.post('/albumschange/:album',function(req, res, next){
-					upload.single(req.params.album)(req,res,function(err){if (err) next(err);else return});
+					upload.array(req.params.album)(req,res,function(err){if (err) next(err);else return});
 					res.redirect('/albumschange/'+req.params.album)
 			
 	
@@ -378,7 +378,7 @@ app.post('/albumschange/:album',function(req, res, next){
 })
 app.delete('/albumschange/:album',function(req, res, next){
 					fs.unlink('./public/img/'+req.params.album+'/'+req.body.photo_num,function(){
-						var i=req.body.photo_num+1;
+						var i=req.body.photo_num-(-1);
 						while(i<req.body.count){
 							fs.rename('./public/img/'+req.params.album+'/'+i,'./public/img/'+req.params.album+'/'+(i-1),function(err){if (err) next(err);return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
 							i++;
