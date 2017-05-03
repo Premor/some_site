@@ -20,6 +20,34 @@ $(document).ready(function() {
 	}*/
 
 
+
+
+	$('.adder').on('submit', function() {
+		var formData = new FormData($(this).get(0));
+		var list = JSON.parse(formData.getAll('chiposa'));
+		var alBool = true;
+		formData.delete('chiposa');
+		alert(formData.getAll('main'));
+		for (var i=0; i < list.english.length; i++) {
+			if ((list.english[i] == formData.getAll('new_album_en'))||(list.russian[i] == formData.getAll('new_album_ru'))) {
+				alBool = false;
+				break;
+			}
+		}
+		if (alBool) {
+			$.ajax({
+				url: '/albumschange',
+      	type: 'post',
+				processData: false,
+				contentType: false,
+				data: formData,
+				complete: location.reload(true)
+			})
+		} else {
+			alert('ВВЕДИТЕ ВЕРНЫЕ ЗНАЧЕНИЯ ПО ФОРМЕ');
+		}
+	})
+
 	$('form').on('click','.del',function() {
 		var needImg = $(this).parents('.parTest').children('.sobka');
 		var lastEl = needImg.attr('src').slice(needImg.attr('src').length-1);
@@ -30,7 +58,7 @@ $(document).ready(function() {
 			data: {'photo_num':lastEl, 'count': $("#co").val()}
 		})
 	});
-	
+
 	$('.owl-carousel').owlCarousel({
 		loop: true,
 		//nav: true,
