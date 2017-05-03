@@ -38,18 +38,6 @@ var sequelize = new Sequelize('visage_school', 'root', 7303556, {
 
 var store = new Store(sequelize)
 
-var Admin = sequelize.define('Admins', {
-  login: {
-    type: Sequelize.STRING,
-    field: 'login', // Will result in an attribute that is firstName when user facing but first_name in the database
-	unique: true
-  },
-  password: {
-    type: Sequelize.STRING,
-	allowNull:false
-  },
-  SessionId:{type:Sequelize.STRING,unique:true}
-});
 
 var User = sequelize.define('Users', {
   login: {
@@ -104,13 +92,11 @@ cards.findAll().then(function(cards){
 })
 */
 User.belongsTo(store.Session, {targetKey: 'sid'});
-Admin.belongsTo(store.Session, {targetKey: 'sid'});
 User.sync();
 
-Admin.sync();
 
 function login_a(req, done){
-	Admin.findOne({where: {login: req.body.log, password: req.body.pass}}).then(function (user){
+	User.findOne({where: {login: req.body.log, password: req.body.pass, is_admin:true}}).then(function (user){
 		if (!user)
 			throw new Error ('login failed')
 		else{
@@ -322,10 +308,10 @@ app.get('/contacts',function(req, res, next){
 	res.render('contacts', {user: req.session.user})
 })
 app.get('/admin',function(req, res, next){
-	res.render('admin', {user: req.session.admin})
+	res.render('admin', {user: req.session.user})
 })
 app.get('/admlogin',function(req, res, next){
-	res.render('admin/functions/admlogin', {user: req.session.admin})
+	res.render('admin/functions/admlogin', {user: req.session.user})
 })
 app.get('/albumschange',function(req, res, next){
 	fs.readdir('./public/img/main',function(err,ar_fil){
@@ -336,10 +322,25 @@ app.get('/albumschange',function(req, res, next){
 				if (err)
 					next(err);
 				else
+					if (req.session.user)
+					{
+						User.findOne({where: {login: req.session.user}}).then(function (user){
+							if (!user)
+								throw new Error ('login failed')
+							else{
+								res.render('admin/functions/albumschange',
+						{count: ar_fil.length,
+	 					list: JSON.parse(data.toString('utf-8')),
+				 		user: req.session.user,
+				 		is_admin: user.is_admin})
+
+					}
+
+					else
 					res.render('admin/functions/albumschange',
 						{count: ar_fil.length,
 	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.admin})
+				 		user: req.session.user})
 
 			});
 			
@@ -348,7 +349,9 @@ app.get('/albumschange',function(req, res, next){
 })
 
 app.post('/albumschange',function(req, res, next){
-	if (req.body.new_album_ru && req.body.new_album_en)
+	upload.single('main')(req,res,function(err){if (err) next(err);
+		else 
+			if (req.body.new_album_ru && req.body.new_album_en)
 		{fs.mkdir('./public/img/'+req.body.new_album_en,function(err,next){//?
 			if (err) next(err);
 			else
@@ -359,18 +362,17 @@ app.post('/albumschange',function(req, res, next){
 					var buf = JSON.parse(data.toString('utf-8'));
 					buf.russian.push(req.body.new_album_ru)
 					buf.english.push(req.body.new_album_en)
-					fs.writeFile('./public/img/name_albums.json',buf,function(err,data){
+					fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
 						if (err) console.log(err);
-						else
-							upload.single('main')(req,res,function(err){if (err) next(err);else return}); 
+						else 
 							res.redirect('/albumschange')
 					})
 			})
 			})
 
 		}
-	else
-		res.redirect('/albumschange/'+req.body.album_name)
+		else
+			res.redirect('/albumschange/'+req.body.album_name)});	
 })
 
 app.get('/albumschange/:album',function(req, res, next){
