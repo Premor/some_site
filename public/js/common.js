@@ -5,7 +5,6 @@ $(document).ready(function() {
 	$('.log_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
-		alert(md5_hash_pass);
 		$.ajax({
 			url: '/login',
 			type: 'POST',
@@ -22,7 +21,6 @@ $(document).ready(function() {
 	$('.adm_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
-		alert(md5_hash_pass);
 		$.ajax({
 			url: '/admlogin',
 			type: 'POST',
@@ -38,7 +36,6 @@ $(document).ready(function() {
 
 	$('.albumschange_form').on('click','.delbut',function() {
 		var engName = $(this).parents('.albumschange_form').children('.danone').val();
-		alert(engName);
 		$.ajax({
 			url: '/albumschange',
 			type: 'DELETE',
@@ -59,7 +56,6 @@ $(document).ready(function() {
 	$('.reg_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
-		alert(md5_hash_pass);
 		$.ajax({
 			url: '/registration',
 			type: 'POST',
