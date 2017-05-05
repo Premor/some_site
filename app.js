@@ -201,7 +201,8 @@ app.post('/login', function(req, res, next){
 		else
 			
 			{req.session.user = req.body.log
-			 res.redirect('/')}
+			res.send('suc');}
+			 //res.redirect('/')}
 			
 	})
 })
@@ -332,7 +333,8 @@ app.get('/albumschange',function(req, res, next){
 						{count: ar_fil.length,
 	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user,
-				 		is_admin: user.is_admin})
+				 		is_admin: user.is_admin})}
+							});
 
 					}
 
@@ -477,7 +479,7 @@ app.get('/', function(req, res){
 app.use(function(err, req, res, next){
 	if (err.message != 'logout failed')
 		{return next(err)}
-	res.render('logout_fail')
+	res.send('logout_fail')
 })
 
 
