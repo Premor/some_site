@@ -42,7 +42,6 @@ $(document).ready(function() {
 			data: {'name' : engName},
 			success: function (data) {
 				if (data == 'pisos') {
-					alert('EBAL SOBAKU');
 					window.location.replace('/albumschange');
 				} else if (data == 'pidaras') {
 					alert ('Error : 228 (Вас убьют и сварят в кислоте)')
