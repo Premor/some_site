@@ -132,7 +132,7 @@ function login(req, done){
 }
 
 function logout(req, done){
-	User.findOne({where:{login: req.session.user}}).then(function (user){
+	User.findOne({where:{login: req.session.user.name}}).then(function (user){
 		if (!user)
 			throw new Error('logout failed')
 		else
@@ -200,7 +200,7 @@ app.post('/login', function(req, res, next){
 			next(err);
 		else
 			
-			{req.session.user = req.body.log
+			{req.session.user = {'name': req.body.log,'is_admin':false}
 			res.send('suc');}
 			 //res.redirect('/')}
 			
@@ -213,7 +213,7 @@ app.post('/admlogin', function(req, res, next){
 			next(err);
 		else
 			
-			{req.session.user = req.body.log
+			{req.session.user = {'name': req.body.log,'is_admin':true}
 			 res.redirect('/admin')}
 			
 	})
@@ -235,11 +235,11 @@ app.get('/photos',function(req, res, next){
 })*/
 
 app.get('/registration',function(req, res, next){
-	res.render('registration', {user: req.session.user})
+	res.render('registration', {user: req.session.user.name})
 })
 
 app.get('/about_us',function(req, res, next){
-	res.render('about_us', {user: req.session.user})
+	res.render('about_us', {user: req.session.use.name})
 })
 
 
@@ -257,7 +257,7 @@ app.get('/gallery/:album',function(req, res, next){
 						{count: ar_fil.length, 
 						engl_name: req.params.album,
 	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user})
+				 		user: req.session.user.name})
 				});
 			});
 	
@@ -276,7 +276,7 @@ app.get('/gallery',function(req, res, next){
 					res.render('gallery',
 						{count: ar_fil.length,
 	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user})
+				 		user: req.session.user.name})
 
 			});
 			
@@ -289,30 +289,30 @@ app.post('/gallery',function(req, res, next){
 })
 
 app.get('/perarea',function(req, res, next){
-	res.render('perarea', {user: req.session.user})
+	res.render('perarea', {user: req.session.user.name})
 })
 
 app.get('/price',function(req, res, next){
-	res.render('price', {user: req.session.user})
+	res.render('price', {user: req.session.user.name})
 })
 
 app.get('/shedule',function(req, res, next){
-	res.render('shedule', {user: req.session.user})
+	res.render('shedule', {user: req.session.user.name})
 })
 
 app.get('/courses',function(req, res, next){
-	res.render('courses', {user: req.session.user})
+	res.render('courses', {user: req.session.user.name})
 })
 
 
 app.get('/contacts',function(req, res, next){
-	res.render('contacts', {user: req.session.user})
+	res.render('contacts', {user: req.session.user.name})
 })
 app.get('/admin',function(req, res, next){
-	res.render('admin', {user: req.session.user})
+	res.render('admin', {user: req.session.user.name})
 })
 app.get('/admlogin',function(req, res, next){
-	res.render('admin/functions/admlogin', {user: req.session.user})
+	res.render('admin/functions/admlogin', {user: req.session.user.name})
 })
 app.get('/albumschange',function(req, res, next){
 	fs.readdir('./public/img/main',function(err,ar_fil){
@@ -323,32 +323,56 @@ app.get('/albumschange',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					if (req.session.user)
-					{
-						User.findOne({where: {login: req.session.user}}).then(function (user){
-							if (!user)
-								throw new Error ('login failed')
-							else{
-								res.render('admin/functions/albumschange',
-						{count: ar_fil.length,
-	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user,
-				 		is_admin: user.is_admin})}
-							});
-
-					}
-
-					else
 					res.render('admin/functions/albumschange',
-						{count: ar_fil.length,
-	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user})
-
+					{count: ar_fil.length,
+	 				list: JSON.parse(data.toString('utf-8')),
+				 	user: req.session.user.name,
+				 	is_admin: req.session.user.is_admin})
+				}
 			});
-			
-	
 	});
 })
+
+
+app.delete('/albumschange',function(req, res, next){
+	fs.readFile('./public/img/name_albums.json',function(err,data){
+				if (err)
+					console.log("SYKA");
+				else
+				{
+
+					var buf = JSON.parse(data.toString('utf-8'));
+					var i=buf.english.indexOf(req.body.name);
+					if (i == (-1))
+						res.send('pidaras');
+					else{
+						var len=buf.english.length;
+						buf.english.splice(i,1);
+						buf.russian.splice(i,1);
+						fs.unlink('./public/img/main/'+i,function(err){
+						i=i-(-1);
+						while(i<len){
+							fs.rename('./public/img/main/'+i,'./public/img/main/'+(i-1),function(err){if (err) console.log("SYKA");;return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
+							i++;
+						}	
+						
+					
+					fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
+						if (err) console.log(err);
+						else{ 
+
+							var	exec = require('child_process').exec;
+							exec('rm -rf ./public/img/'+ req.body.name, function (error, stdout, stderr)  {
+  							if (error) {
+    							console.log('exec error: '+error);
+    							return;
+  								}	
+						res.send('pisos')
+})}
+	});})
+	}}
+	});	
+});
 
 app.post('/albumschange',function(req, res, next){
 	upload.single('main')(req,res,function(err){if (err) next(err);
@@ -390,7 +414,7 @@ app.get('/albumschange/:album',function(req, res, next){
 						{count: ar_fil.length, 
 						engl_name: req.params.album,
 	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user})
+				 		user: req.session.user.name})
 				});
 			});
 	
@@ -416,7 +440,7 @@ app.delete('/albumschange/:album',function(req, res, next){
 	
 })
 app.get('/login',function(req, res, next){
-	res.render('login', {user: req.session.user})
+	res.render('login', {user: req.session.user.name})
 })
 
 app.get('/logout', function(req, res, next){
@@ -435,7 +459,7 @@ app.get('/logout', function(req, res, next){
 app.post('/registration', function(req, res, next){
 	User.count({where:{login: req.body.mbphn}}).then(function(user){
 		if (user){
-			res.render('registration', {user: req.session.user, used: true})
+			res.render('registration', {user: req.session.user.name, used: true})
 		}
 		//else if ((req.body.mbphn=='')||(req.body.pass=='')||(req.body.email=='')){
 		//	res.render('registration', {user: req.session.user, invalid: true})
@@ -465,7 +489,7 @@ app.get('/', function(req, res){
 						{title: 'Home',
 	 					count: ar_fil.length,
 	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user})
+				 		user: req.session.user.name})
 
 
 			});
