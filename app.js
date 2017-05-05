@@ -214,7 +214,7 @@ app.post('/admlogin', function(req, res, next){
 		else
 			
 			{req.session.user = {'name': req.body.log,'is_admin':true}
-			 res.redirect('/admin')}
+			 res.send('sopel')}
 			
 	})
 })
@@ -286,7 +286,6 @@ app.get('/gallery',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					else
 					if (req.session.user)
 						res.render('gallery',
 							{count: ar_fil.length,
@@ -344,7 +343,7 @@ app.get('/contacts',function(req, res, next){
 })
 app.get('/admin',function(req, res, next){
 	if (req.session.user)
-		res.render('admin', {user: req.session.user.name})
+		res.render('admin', {user: req.session.user.name,is_admin: req.session.user.is_admin})
 	else
 		res.render('admin')
 })
@@ -445,7 +444,7 @@ app.post('/albumschange',function(req, res, next){
 
 		}
 		else
-			res.redirect('/albumschange/'+req.body.album_name)});	
+			res.send('verify')});	
 })
 
 app.get('/albumschange/:album',function(req, res, next){
@@ -462,7 +461,8 @@ app.get('/albumschange/:album',function(req, res, next){
 							{count: ar_fil.length, 
 							engl_name: req.params.album,
 		 					list: JSON.parse(data.toString('utf-8')),
-					 		user: req.session.user.name})
+					 		user: req.session.user.name,
+					 		is_admin: req.session.user.is_admin})
 					else
 						res.render('admin/functions/photochange',
 							{count: ar_fil.length, 
