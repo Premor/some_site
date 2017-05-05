@@ -52,6 +52,22 @@ $(document).ready(function() {
 		return false;
 	})
 
+	$('.albumschange_form').on('submit',function() {
+		var engName = $("input[name$='album_name']").val()
+		alert(engName)
+		$.ajax({
+			url: '/albumschange',
+			type: 'POST',
+			data: {'album_name' : engName},
+			success: function (data) {
+				if (data == 'verify') {
+					window.location.replace('/albumschange/' + engName);
+				}
+			}
+		})
+		return false;
+	})
+
 	$('.reg_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
