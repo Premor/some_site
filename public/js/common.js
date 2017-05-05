@@ -2,23 +2,34 @@ $(document).ready(function() {
 
 
 	//md5 password hash
-	/*var pass = $("input[name$='pass']").val();
-	var md5_hash_pass = $.md5(pass, null, true);
-	$.post(
-		"/login",
-		md5_hash_pass,
-		rightOrWrong
-	)
+	$('.log_pass').on('submit', function() {
+		var pass = $("input[name$='pass']").val();
+		var md5_hash_pass = $.md5(pass, null, false);
+		alert(md5_hash_pass);
+		$.ajax({
+			url: '/login',
+			type: 'POST',
+			data: {'log' : $('input[name$="log"]').val(), 'pass': md5_hash_pass},
+			success: function(data) {
+				if (data == 'suc') {
+					window.location.replace('/');
+				}
+			}
+		})
+		return false;
+	})
 
-	function rightOrWrong(data) {
-		if (data) {
-
-		}
-		else {
-
-		}
-	}*/
-
+	$('.reg_pass').on('submit', function() {
+		var pass = $("input[name$='pass']").val();
+		var md5_hash_pass = $.md5(pass, null, false);
+		alert(md5_hash_pass);
+		$.ajax({
+			url: '/registration',
+			type: 'POST',
+			data: {'pass': md5_hash_pass, 'mbphn': $('input[name$="mbphn"]').val(), 'email' : $('input[name$="email"]').val()}
+		})
+		return false;
+	})
 
 
 
@@ -27,7 +38,6 @@ $(document).ready(function() {
 		var list = JSON.parse(formData.getAll('chiposa'));
 		var alBool = true;
 		formData.delete('chiposa');
-		alert(formData.getAll('main'));
 		for (var i=0; i < list.english.length; i++) {
 			if ((list.english[i] == formData.getAll('new_album_en'))||(list.russian[i] == formData.getAll('new_album_ru'))) {
 				alBool = false;
@@ -37,15 +47,16 @@ $(document).ready(function() {
 		if (alBool) {
 			$.ajax({
 				url: '/albumschange',
-      	type: 'post',
+      	type: 'POST',
 				processData: false,
 				contentType: false,
 				data: formData,
 				complete: location.reload(true)
 			})
 		} else {
-			alert('ВВЕДИТЕ ВЕРНЫЕ ЗНАЧЕНИЯ ПО ФОРМЕ');
+			alert('Русское или английское название уже используется.');
 		}
+		return false;
 	})
 
 	$('form').on('click','.del',function() {

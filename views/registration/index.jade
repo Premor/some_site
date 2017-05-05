@@ -7,7 +7,7 @@ include ../top_menu.jade
     .col-md-12
       .row
         if (user="undefined")
-          form(action="/registration" method="post")
+          form(action="/registration" method="post").reg_pass
             p Регистрация
               .registrn
                 .email
