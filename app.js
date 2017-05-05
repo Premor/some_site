@@ -328,10 +328,11 @@ app.get('/albumschange',function(req, res, next){
 	 				list: JSON.parse(data.toString('utf-8')),
 				 	user: req.session.user.name,
 				 	is_admin: req.session.user.is_admin})
-				}
-			});
+				
+		})	
 	});
 })
+
 
 
 app.delete('/albumschange',function(req, res, next){
@@ -391,7 +392,7 @@ app.post('/albumschange',function(req, res, next){
 					fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
 						if (err) console.log(err);
 						else 
-							res.redirect('/albumschange')
+							res.send('suc')
 					})
 			})
 			})
