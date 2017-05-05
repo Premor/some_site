@@ -243,7 +243,7 @@ app.get('/registration',function(req, res, next){
 
 app.get('/about_us',function(req, res, next){
 	if (req.session.user)
-		res.render('about_us', {user: req.session.use.name})
+		res.render('about_us', {user: req.session.user.name})
 	else
 		res.render('about_us')
 })
@@ -516,7 +516,7 @@ app.get('/logout', function(req, res, next){
 app.post('/registration', function(req, res, next){
 	User.count({where:{login: req.body.mbphn}}).then(function(user){
 		if (user){
-			res.render('registration', {user: req.session.user.name, used: true})
+			res.render('registration', { used: true})
 		}
 		//else if ((req.body.mbphn=='')||(req.body.pass=='')||(req.body.email=='')){
 		//	res.render('registration', {user: req.session.user, invalid: true})
