@@ -235,11 +235,17 @@ app.get('/photos',function(req, res, next){
 })*/
 
 app.get('/registration',function(req, res, next){
-	res.render('registration', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('registration', {user: req.session.user.name})
+	else
+		res.render('registration')
 })
 
 app.get('/about_us',function(req, res, next){
-	res.render('about_us', {user: req.session.use.name})
+	if (req.session.user)
+		res.render('about_us', {user: req.session.use.name})
+	else
+		res.render('about_us')
 })
 
 
@@ -253,11 +259,18 @@ app.get('/gallery/:album',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					res.render('gallery/photos',
+					if (req.session.user)
+						res.render('gallery/photos',
 						{count: ar_fil.length, 
 						engl_name: req.params.album,
 	 					list: JSON.parse(data.toString('utf-8')),
 				 		user: req.session.user.name})
+					else
+					res.render('gallery/photos',
+						{count: ar_fil.length, 
+						engl_name: req.params.album,
+	 					list: JSON.parse(data.toString('utf-8'))
+	 				})
 				});
 			});
 	
@@ -273,11 +286,17 @@ app.get('/gallery',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					res.render('gallery',
-						{count: ar_fil.length,
-	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user.name})
-
+					else
+					if (req.session.user)
+						res.render('gallery',
+							{count: ar_fil.length,
+		 					list: JSON.parse(data.toString('utf-8')),
+					 		user: req.session.user.name})
+					else
+						res.render('gallery',
+							{count: ar_fil.length,
+		 					list: JSON.parse(data.toString('utf-8')),
+					 		})
 			});
 			
 	
@@ -289,30 +308,51 @@ app.post('/gallery',function(req, res, next){
 })
 
 app.get('/perarea',function(req, res, next){
-	res.render('perarea', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('perarea', {user: req.session.user.name})
+	else
+		res.render('perarea')
 })
 
 app.get('/price',function(req, res, next){
-	res.render('price', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('price', {user: req.session.user.name})
+	else
+		res.render('price')
 })
 
 app.get('/shedule',function(req, res, next){
-	res.render('shedule', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('shedule', {user: req.session.user.name})
+	else
+		res.render('shedule')
 })
 
 app.get('/courses',function(req, res, next){
-	res.render('courses', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('courses', {user: req.session.user.name})
+	else
+		res.render('courses')
 })
 
 
 app.get('/contacts',function(req, res, next){
-	res.render('contacts', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('contacts', {user: req.session.user.name})
+	else
+		res.render('contacts')
 })
 app.get('/admin',function(req, res, next){
-	res.render('admin', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('admin', {user: req.session.user.name})
+	else
+		res.render('admin')
 })
 app.get('/admlogin',function(req, res, next){
-	res.render('admin/functions/admlogin', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('admin/functions/admlogin', {user: req.session.user.name})
+	else
+		res.render('admin/functions/admlogin')
 })
 app.get('/albumschange',function(req, res, next){
 	fs.readdir('./public/img/main',function(err,ar_fil){
@@ -323,12 +363,18 @@ app.get('/albumschange',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					res.render('admin/functions/albumschange',
-					{count: ar_fil.length,
-	 				list: JSON.parse(data.toString('utf-8')),
-				 	user: req.session.user.name,
-				 	is_admin: req.session.user.is_admin})
-				
+					if (req.session.user)
+						res.render('admin/functions/albumschange',
+						{count: ar_fil.length,
+		 				list: JSON.parse(data.toString('utf-8')),
+					 	user: req.session.user.name,
+					 	is_admin: req.session.user.is_admin})
+					else
+						res.render('admin/functions/albumschange',
+						{count: ar_fil.length,
+		 				list: JSON.parse(data.toString('utf-8'))
+		 			})
+
 		})	
 	});
 })
@@ -411,11 +457,18 @@ app.get('/albumschange/:album',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					res.render('admin/functions/photochange',
-						{count: ar_fil.length, 
-						engl_name: req.params.album,
-	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user.name})
+					if (req.session.user)
+						res.render('admin/functions/photochange',
+							{count: ar_fil.length, 
+							engl_name: req.params.album,
+		 					list: JSON.parse(data.toString('utf-8')),
+					 		user: req.session.user.name})
+					else
+						res.render('admin/functions/photochange',
+							{count: ar_fil.length, 
+							engl_name: req.params.album,
+		 					list: JSON.parse(data.toString('utf-8'))
+		 				})
 				});
 			});
 	
@@ -441,7 +494,10 @@ app.delete('/albumschange/:album',function(req, res, next){
 	
 })
 app.get('/login',function(req, res, next){
-	res.render('login', {user: req.session.user.name})
+	if (req.session.user)
+		res.render('login', {user: req.session.user.name})
+	else
+		res.render('login')
 })
 
 app.get('/logout', function(req, res, next){
@@ -486,13 +542,18 @@ app.get('/', function(req, res){
 				if (err)
 					next(err);
 				else
-					res.render('index',
-						{title: 'Home',
-	 					count: ar_fil.length,
-	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user.name})
-
-
+					if (req.session.user)
+						res.render('index',
+							{title: 'Home',
+		 					count: ar_fil.length,
+		 					list: JSON.parse(data.toString('utf-8')),
+					 		user: req.session.user.name})
+					else
+						res.render('index',
+							{title: 'Home',
+		 					count: ar_fil.length,
+		 					list: JSON.parse(data.toString('utf-8'))
+		 				})
 			});
 			
 	
