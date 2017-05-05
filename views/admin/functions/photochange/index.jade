@@ -2,8 +2,7 @@ include ./../includes/layout.jade
 
 include ./../includes/top_menu.jade
 
-- if (!user)
-          
+- if (is_admin)
     - var i = 0, j = 0
     - var co = count
     -   while(list.english[j] != engl_name) {

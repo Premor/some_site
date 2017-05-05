@@ -2,7 +2,7 @@ include ./../includes/layout.jade
 
 include ./../includes/top_menu.jade
 
-- if (!user)
+- if (is_admin)
     - var i = 0
     - var co = count
     .container-fluid
@@ -14,13 +14,15 @@ include ./../includes/top_menu.jade
           .sopka.sortable 
             while i < count 
               .itemSortable(id="#{i}")
-                form(method="POST" action="/albumschange")
-                  input(type="text" value="#{list.english[i]}" name="album_name").danone   
+                form(method="POST" action="/albumschange").albumschange_form
+                  input(type="text" value="#{list.english[i]}" name="album_name" disabled="disabled").danone
                   .album_form.col-md-3
                       .album_img
                         img(src="public/img/main/#{i}" alt="")
                       .album_name
                         input(type="submit" value="#{list.russian[i]}").dibl
+                        button.delbut
+                          i.fa.fa-pencil(aria-hidden="true")
                 - i= i+1
     - var sobaka = JSON.stringify(list);
     .container

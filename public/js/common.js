@@ -19,6 +19,43 @@ $(document).ready(function() {
 		return false;
 	})
 
+	$('.adm_pass').on('submit', function() {
+		var pass = $("input[name$='pass']").val();
+		var md5_hash_pass = $.md5(pass, null, false);
+		alert(md5_hash_pass);
+		$.ajax({
+			url: '/admlogin',
+			type: 'POST',
+			data: {'log' : $('input[name$="log"]').val(), 'pass': md5_hash_pass},
+			success: function(data) {
+				if (data == 'sopel') {
+					window.location.replace('/');
+				}
+			}
+		})
+		return false;
+	})
+
+	$('.albumschange_form').on('click','.delbut',function() {
+		var engName = $(this).parents('.albumschange_form').children('.danone').val();
+		alert(engName);
+		$.ajax({
+			url: '/albumschange',
+			type: 'DELETE',
+			data: {'name' : engName},
+			success: function (data) {
+				if (data == 'pisos') {
+					alert('EBAL SOBAKU');
+					window.location.replace('/albumschange');
+				} else if (data == 'pidaras') {
+					alert ('Error : 228 (Вас убьют и сварят в кислоте)')
+					window.location.replace('/albumschange');
+				}
+			}
+		})
+		return false;
+	})
+
 	$('.reg_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);

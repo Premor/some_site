@@ -3,7 +3,7 @@ include ../layout.jade
 include ../top_menu.jade
 
 
-- if (!user)
+- if (is_admin)
   .container
     .row
       .col-md-12
@@ -14,6 +14,7 @@ include ../top_menu.jade
             p Изменение альбомов и фотографий
 - else
     p сасамба.
+    p SOBAKS #{is_admin} SAVIVAKS
     
 footer.container-fluid.no_top
   .container
