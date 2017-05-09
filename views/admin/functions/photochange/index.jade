@@ -25,9 +25,7 @@ include ./../includes/top_menu.jade
                       input(type="text" value="#{engl_name}" id="ph_#{i}").danone
                       input(type="text" value="#{count}" id="co").danone
                       button(value="#{i}" class="del") 
-                        i.fa.fa-pencil(aria-hidden="true")
-                          
-                  .album_name
+                        i.fa.fa-trash(aria-hidden="true")
               - i= i+1
               
     .container
@@ -40,7 +38,10 @@ include ./../includes/top_menu.jade
             button(type="submit") ТЫК
           p #{engl_name}
 - else
-    p сасамба. 
+  .container
+    .row
+      .col-md-12.all_center_block
+        p Вы не залогинены.
     
 footer.no_top.container-fluid
   .container

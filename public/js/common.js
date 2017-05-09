@@ -27,7 +27,7 @@ $(document).ready(function() {
 			data: {'log' : $('input[name$="log"]').val(), 'pass': md5_hash_pass},
 			success: function(data) {
 				if (data == 'sopel') {
-					window.location.replace('/');
+					window.location.replace('/admin');
 				}
 			}
 		})
@@ -52,9 +52,9 @@ $(document).ready(function() {
 		return false;
 	})
 
-	$('.albumschange_form').on('submit',function() {
-		var engName = $("input[name$='album_name']").val()
-		alert(engName)
+	$('.albumschange_form').on('click', '.dibl', function() {
+		var engName = $(this).parents('.albumschange_form').children('.danone').val();
+		alert(engName);
 		$.ajax({
 			url: '/albumschange',
 			type: 'POST',
@@ -99,7 +99,11 @@ $(document).ready(function() {
 				processData: false,
 				contentType: false,
 				data: formData,
-				complete: location.reload(true)
+				success: function(data) {
+					if (data == 'suc') {
+						window.location.replace('/albumschange');
+					}
+				}
 			})
 		} else {
 			alert('Русское или английское название уже используется.');

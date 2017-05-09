@@ -11,8 +11,8 @@ include ./../includes/top_menu.jade
           .header.col-md-12
             p Альбомы
         .row
-          .sopka.sortable 
-            while i < count 
+          .sopka
+            while i < count
               .itemSortable(id="#{i}")
                 form(method="POST" action="/albumschange").albumschange_form
                   input(type="text" value="#{list.english[i]}" name="album_name" disabled="disabled").danone
@@ -22,7 +22,7 @@ include ./../includes/top_menu.jade
                       .album_name
                         input(type="submit" value="#{list.russian[i]}").dibl
                         button.delbut
-                          i.fa.fa-pencil(aria-hidden="true")
+                          i.fa.fa-trash(aria-hidden="true")
                 - i= i+1
     - var sobaka = JSON.stringify(list);
     .container
@@ -47,7 +47,10 @@ include ./../includes/top_menu.jade
       xhr.send(formData);
       alert(formData)
 - else
-    p сасамба.
+  .container
+    .row
+      .col-md-12.all_center_block
+        p Вы не залогинены.
 footer.container-fluid.no_top
   .container
     .row
