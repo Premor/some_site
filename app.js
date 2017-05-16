@@ -93,7 +93,7 @@ cards.findAll().then(function(cards){
 */
 User.belongsTo(store.Session, {targetKey: 'sid'});
 User.sync();
-
+/*
 
 function login_a(req, done){
 	User.findOne({where: {login: req.body.log, password: req.body.pass, is_admin:true}}).then(function (user){
@@ -111,7 +111,7 @@ function login_a(req, done){
 		}
 	}).then(function (user){done (null, user)}).catch(function(err){done (err, null)})
 }
-
+*/
 
 
 function login(req, done){
@@ -125,10 +125,11 @@ function login(req, done){
 				if (!session)
 					{user}
 				else 
-					{user.setSession (session)}
+					{user.setSession (session);
+					done (null, user);}
 				})
 		}
-	}).then(function (user){done (null, user)}).catch(function(err){done (err, null)})
+	}).catch(function(err){done (err, null)})
 }
 
 function logout(req, done){
@@ -200,13 +201,17 @@ app.post('/login', function(req, res, next){
 			next(err);
 		else
 			
-			{req.session.user = {'name': req.body.log,'is_admin':false}
-			res.send('suc');}
+			{
+				if (user.is_admin==false)
+					{req.session.user = {'name': req.body.log,'is_admin':false};res.send('suc adm false');}
+				else
+					{req.session.user = {'name': req.body.log,'is_admin':true};res.send('suc adm true');}
+				}
 			 //res.redirect('/')}
 			
 	})
 })
-
+/*
 app.post('/admlogin', function(req, res, next){
 	login_a(req, function (err, user) {
 		if (err)
@@ -217,7 +222,7 @@ app.post('/admlogin', function(req, res, next){
 			 res.send('sopel')}
 			
 	})
-})
+})*/
 /*
 app.get('/photos',function(req, res, next){
 	fs.readdir('./public/img/'+req.body.name_albums,function(err,ar_fil){
@@ -347,12 +352,13 @@ app.get('/admin',function(req, res, next){
 	else
 		res.render('admin')
 })
+/*
 app.get('/admlogin',function(req, res, next){
 	if (req.session.user)
 		res.render('admin/functions/admlogin', {user: req.session.user.name})
 	else
 		res.render('admin/functions/admlogin')
-})
+})*/
 app.get('/albumschange',function(req, res, next){
 	fs.readdir('./public/img/main',function(err,ar_fil){
 		if (err)
