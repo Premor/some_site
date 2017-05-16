@@ -10,14 +10,21 @@ $(document).ready(function() {
 			type: 'POST',
 			data: {'log' : $('input[name$="log"]').val(), 'pass': md5_hash_pass},
 			success: function(data) {
-				if (data == 'suc') {
-					window.location.replace('/');
-				}
+				if (data == 'suc adm true') {
+					window.location.replace('/admin');
+				} else
+					if (data == 'suc adm false') {
+						window.location.replace('/')
+					}
 			}
 		})
 		return false;
 	})
 
+	$('.user-data-change').on('click', function () {
+		$(this).parents('form').html('<p>Sobaka</p>');
+	})
+/*
 	$('.adm_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
@@ -32,7 +39,7 @@ $(document).ready(function() {
 			}
 		})
 		return false;
-	})
+	})*/
 
 	$('.albumschange_form').on('click','.delbut',function() {
 		var engName = $(this).parents('.albumschange_form').children('.danone').val();
