@@ -1,0 +1,74 @@
+include ./../includes/layout.jade
+
+include ./../includes/top_menu.jade
+
+- if (is_admin)
+    - var i = 0
+    - var co = count
+    .container-fluid
+      .albums.no_top
+        .row
+          .header.col-md-12
+            p Альбомы
+        .row
+          .sopka
+            while i < count
+              .itemSortable(id="#{i}")
+                form(method="POST" action="/albumschange").albumschange_form
+                  input(type="text" value="#{list.english[i]}" name="album_name" disabled="disabled").danone
+                  .album_form.col-md-3
+                      .album_img
+                        img(src="public/img/main/#{i}" alt="")
+                      .album_name
+                        input(type="submit" value="#{list.russian[i]}").dibl
+                        button.delbut
+                          i.fa.fa-trash(aria-hidden="true")
+                - i= i+1
+    - var sobaka = JSON.stringify(list);
+    .container
+      .row
+        .col-md-3
+        .col-md-3
+        .col-md-6.download
+          .mainHeader Добавление альбома
+          //form(action="/albumschange", method="post")
+          form.adder
+            input(type="text" required placeholder="Название альбома" name="new_album_ru" pattern="[А-Яа-яЁё]{2,15}").col-md-12.new_album_ru
+            input(type="text" required placeholder="Album name" name="new_album_en" pattern="[A-Za-z]{2,15}").col-md-12.new_album_en
+            input(type="text" value="#{sobaka}" name="chiposa").danone
+            input(type="file" name="main").albumCo
+            button(type="submit") NERVNIY TIK
+          p #{engl_name}
+          
+    //script(type="text/javascript").
+      var formData = new FormData(document.forms.GodDamnRight);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST","/albumschange");
+      xhr.send(formData);
+      alert(formData)
+- else
+  .container
+    .row
+      .col-md-12.all_center_block
+        p Вы не залогинены.
+footer.container-fluid.no_top
+  .container
+    .row
+      .col-md-4.contacts
+        p W'Studio Школа стилистов ....-2017
+        p Адрес: Г. Москва, ул. Рязанский проспект, 22/2
+        p Телефон: +7 (...) ... - .. - ..
+        p Как проехать?
+      .col-md-4.soc
+        //ro_sq = round square
+        a(href="#vk").ro_sq
+          i(aria-hidden="true").fa.fa-vk
+        a(href="#instagram").ro_sq
+          i(aria-hidden="true").fa.fa-instagram
+      .col-md-4.diamant
+        p Дизайн сайта:
+        br
+        p 
+          a(href="#") Diamant Studio
+
+include ./../includes/layout_ft.jade

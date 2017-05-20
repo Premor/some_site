@@ -1,0 +1,132 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+  /*menu*/
+  .hd_buttons li {
+    width: 13%;
+  }
+
+  .log_reg {
+    display: block;
+  }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .logo {
+    font-size: 45px;
+  }
+  .underlogo p {
+    font-size: 23px;
+  }
+
+  .sel, p.log_reg {
+    font-size: 20px;
+  }
+
+  .log_reg {
+    display: block;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  /*menu*/
+  .hd_buttons li {
+    width: 11%;
+    font-size: 12px;
+    height: 40px;
+  }
+
+  .hd_buttons ul {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+  }
+
+
+  .log_reg {
+    display: none;
+  }
+
+  p.telephone {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 21px;
+    font-size: 15px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  .underlogo p {
+    font-size: 20px;
+  }
+
+  .log_reg {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+  }
+
+  .log_reg a {
+    font-size: 15px;
+  }
+
+
+
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  /*.log_reg {
+    display: none;
+    position: absolute;
+    top: 40px;
+  }*/
+
+  .hd_buttons li {
+    width: 9%;
+    font-size: 9px;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+ /* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
