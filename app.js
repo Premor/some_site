@@ -333,12 +333,40 @@ app.get('/shedule',function(req, res, next){
 })
 
 app.get('/courses',function(req, res, next){
-	if (req.session.user)
-		res.render('courses', {user: req.session.user.name})
-	else
-		res.render('courses')
+	fs.readFile('./public/img/courses.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					if (req.session.user)
+						res.render('courses',
+						{
+							user: req.session.user.name,
+							is_admin: req.session.user.is_admin,
+							courses:data.toString('utf-8')})
+					else
+						res.render('courses',{courses:data.toString('utf-8')})
+})
+})
+app.post('/courses',function(req, res, next){
+	res.redirect('/courses/'+req.body.course_name)
 })
 
+app.get('/courses/:selected',function(req, res, next){
+	fs.readFile('./public/img/courses.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					if (req.session.user)
+						res.render('courses/selected',
+						{
+							user: req.session.user.name,
+							is_admin: req.session.user.is_admin,
+							courses:data.toString('utf-8'),
+							selected_name:req.params.selected})
+					else
+						res.render('courses/selected',{courses:data.toString('utf-8'),selected_name:req.params.selected})
+})
+})
 
 app.get('/contacts',function(req, res, next){
 	if (req.session.user)
