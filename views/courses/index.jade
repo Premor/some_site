@@ -2,6 +2,22 @@ include ../layout.jade
   
 include ../top_menu.jade
 
+
+- var courses_json = JSON.parse(courses)
+- var i = 0
+- count = courses_json.length
+  .container
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p Курсы
+      while i < count
+       .album_form
+            .album_name #{courses_json[i].name.russian}
+            p #{courses_json[i].briefing_desc}
+            a(href="courses/#{courses_json[i].name.english}") Подробнее
+        - i++
+          
 include ../footer.jade
 
 include ../layout_ft.jade

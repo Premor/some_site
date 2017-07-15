@@ -1,0 +1,14 @@
+[
+  {
+    "name":{"english":"visage","russian":"Визажист"},
+    "briefing_desc":"Курс \"Визажист\" ",
+    "price":42137781,
+    "program": ["sosi","pisos"]
+  },
+  {
+    "name":{"english":"englishlanguage","russian":"English, motherfucker! Do you speak it?"},
+    "briefing_desc":"Курс motherfuckng'а от S.L. Jackson'а",
+    "price":42137781,
+    "program": ["sosi","pisos"]
+  }
+]
