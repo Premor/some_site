@@ -318,6 +318,13 @@ app.get('/perarea',function(req, res, next){
 		res.render('perarea')
 })
 
+app.get('/mycourses',function(req, res, next){
+	if (req.session.user)
+		res.render('perarea/mycourses', {user: req.session.user.name})
+	else
+		res.render('perarea/mycourses')//поменять на переход к регистрации
+})
+
 app.get('/price',function(req, res, next){
 	if (req.session.user)
 		res.render('price', {user: req.session.user.name})
@@ -479,6 +486,73 @@ app.post('/albumschange',function(req, res, next){
 		}
 		else
 			res.send('verify')});	
+})
+
+app.get('/courseschange',function(req, res, next){
+	fs.readFile('./public/img/courses.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					if (req.session.user)
+						res.render('admin/functions/courseschange',
+						{
+							user: req.session.user.name,
+							is_admin: req.session.user.is_admin,
+							courses:data.toString('utf-8')})
+					else
+						res.render('admin/functions/courseschange',{courses:data.toString('utf-8')})
+})
+})
+
+app.post('/courseschange',function(req, res, next){
+	fs.readFile('./public/img/courses.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					var buf=JSON.parse(data.toString('utf-8'))
+					buf.push(
+						{name:{'english':req.body.eng_name,'russian':req.body.rus_name},
+						"briefing_desc":req.body.briefing,
+						"price":req.body.price,
+						"program": req.body.program})
+					fs.writeFile('./public/img/courses.json',JSON.stringify(buf),function(err,data){
+						if (err) console.log(err);
+						else
+						res.send('suc')
+})
+})
+})
+
+app.get('/courseschange/:selected',function(req, res, next){
+	fs.readFile('./public/img/courses.json',function(err,data){
+				if (err)
+					next(err);
+				else
+					if (req.session.user)
+						res.render('admin/functions/selectedchange',
+						{
+							user: req.session.user.name,
+							is_admin: req.session.user.is_admin,
+							courses:data.toString('utf-8'),
+							selected_name:req.params.selected})
+					else
+						res.render('admin/functions/selectedchange',{courses:data.toString('utf-8'),selected_name:req.params.selected})
+})
+})
+
+app.delete('/courseschange',function(req, res, next){
+	fs.readFile('./public/img/courses.json',function(err,data_1){
+				if (err)
+					next(err);
+				else
+					var buf= JSON.parse(data_1.toString('utf-8'))
+					buf.splice(req.body.number,1)
+					fs.writeFile('./public/img/courses.json',JSON.stringify(buf),function(err,data){
+						if (err) console.log(err);
+						else
+							res.send('suc')
+})
+})
 })
 
 app.get('/albumschange/:album',function(req, res, next){
