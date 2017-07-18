@@ -1,0 +1,23 @@
+include ./../includes/layout.jade
+  
+include ./../includes/top_menu.jade
+
+- var courses_json = JSON.parse(courses)
+- var num = 0
+	while courses_json[num].name.english != selected_name
+		- num++
+- var i = 0
+	.container
+		.albums.no_top
+			.row
+				.header.col-md-12
+					p #{courses_json[num].name.russian} 
+				.col-md-12
+					ol
+						while i < courses_json[num].program.length
+							li #{courses_json[num].program[i]}
+							- i++
+
+include ./../includes/footer.jade
+
+include ./../includes/layout_ft.jade

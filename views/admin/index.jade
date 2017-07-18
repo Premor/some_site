@@ -9,9 +9,12 @@ include ../top_menu.jade
       .col-md-12
         .mainHeader.center
           p Управление сайтом
-        a(href="/albumschange")
+        a(href="/albumschange").col-md-6.changer
           button.albumschange
             p Изменение альбомов и фотографий
+        a(href="/courseschange").col-md-6.changer
+          button.courseschange
+            p Изменение курсов
 - else
     .container
       .row

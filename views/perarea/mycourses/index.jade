@@ -1,0 +1,13 @@
+include ./../includes/layout.jade
+  
+include ./../includes/top_menu.jade
+
+p Sobaki, hey!
+script(src='../public/libs/spruto/player.js', type='text/javascript')
+script.splayer.
+  var params = {"playlist":[{"video":[{"url":"https://www.youtube.com/watch?v=c0LBi1MHoaU"}],"duration":0,"posterUrl":"//s3.spruto.org/images/Sps_02_spruto_player_screen_1024.jpg"}],"uiLanguage":"ru","width":"640","height":"360"}; player.embed(params);
+
+
+include ./../includes/footer.jade
+
+include ./../includes/layout_ft.jade

@@ -1,14 +1,41 @@
-[
-  {
-    "name":{"english":"visage","russian":"Визажист"},
-    "briefing_desc":"Курс \"Визажист\" ",
-    "price":42137781,
-    "program": ["sosi","pisos"]
-  },
-  {
-    "name":{"english":"englishlanguage","russian":"English, motherfucker! Do you speak it?"},
-    "briefing_desc":"Курс motherfuckng'а от S.L. Jackson'а",
-    "price":42137781,
-    "program": ["sosi","pisos"]
-  }
-]
+[{
+	"name": {
+		"english": "englishlanguage",
+		"russian": "English, motherfucker! Do you speak it?"
+	},
+	"briefing_desc": "Курс motherfuckng'а от S.L. Jackson'а",
+	"price": 42137781,
+	"program": ["sosi", "pisos"]
+}, {
+	"name": {
+		"english": "qwer",
+		"russian": "qwer"
+	},
+	"briefing_desc": "sver",
+	"price": "mver",
+	"program": ["sobaka", "cloaka"]
+}, {
+	"name": {
+		"english": "rqrqrqrq",
+		"russian": "rqrqrqr1"
+	},
+	"briefing_desc": "rqrqrqrq",
+	"price": "rqrqrqrq",
+	"program": ["sobaka", "cloaka"]
+}, {
+	"name": {
+		"english": "sdfgh",
+		"russian": "ertyuio"
+	},
+	"briefing_desc": "qwsedfghj",
+	"price": "sdfghjk",
+	"program": ["sobaka", "cloaka"]
+}, {
+	"name": {
+		"english": "4567",
+		"russian": "uyhy6tty445"
+	},
+	"briefing_desc": "4567",
+	"price": "467",
+	"program": ["sobaka", "cloaka"]
+}]

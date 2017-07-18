@@ -40,6 +40,9 @@ p {
   margin-top: 0px;
   margin-bottom: 0px; }
 
+.changer {
+  text-align: center; }
+
 .mainHeader {
   font-family: 'Bebas Neue';
   font-weight: 500;
@@ -340,5 +343,8 @@ footer a {
   display: table-cell;
 }
 */
+/*Courseschange*/
+.addingBlock {
+  border: black dashed 1px; }
 
 /*# sourceMappingURL=main.css.map */

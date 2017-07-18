@@ -129,6 +129,43 @@ $(document).ready(function() {
 		})
 	});
 
+	$('form').on('click','.del_course',function() {
+		var buf = $(this).parents('form').children('input');
+		var number = buf.val();
+		$.ajax({
+			url: '/courseschange',
+			type: 'DELETE',
+			data: {'number':number},
+			success: function(data) {
+				if (data == 'suc') window.location.assign('/courseschange');
+				location.reload();
+				alert('SUC');
+			}
+		})
+	})
+
+	$('.addingBlockForm').on('click','.addCourse',function() {
+		var rName = ($(this).parents('.addingBlockForm').children('.rusNameCourse')).val();
+		var eName = ($(this).parents('.addingBlockForm').children('.engNameCourse')).val();
+		var price = ($(this).parents('.addingBlockForm').children('.priceCourse')).val();
+		var briefing = ($(this).parents('.addingBlockForm').children('.briefingCourse')).val();
+		$.ajax({
+			url: 'courseschange',
+			type: 'POST',
+			data: {'eng_name':eName,
+						 'rus_name':rName,
+						 'price': price,
+						 'briefing': briefing,
+						 'program': ["sobaka", "cloaka"]
+			},
+			success: function(data) {
+				if (data == 'suc') /*window.location.assign('/courseschange');*/
+					location.reload();
+				alert('SUC');
+			}
+		})
+	})
+
 	$('.owl-carousel').owlCarousel({
 		loop: true,
 		//nav: true,

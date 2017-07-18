@@ -1,0 +1,32 @@
+include ./../includes/layout.jade
+  
+include ./../includes/top_menu.jade
+
+- var courses_json = JSON.parse(courses)
+- var i = 0
+- count = courses_json.length
+  .container
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p Курсы
+      while i < count
+       .album_form
+          form
+            input(type="text" value="#{i}").danone
+            .album_name #{courses_json[i].name.russian}
+            p #{courses_json[i].briefing_desc}
+            a(href="courseschange/#{courses_json[i].name.english}") Подробнее
+            button.del_course Удалить
+        - i++
+      .row
+        .col-md-6
+        .col-md-6.addingBlock
+          .header Добавление курса
+          form.addingBlockForm
+            input(type="text" placeholder="Название курса - русское").col-md-12.rusNameCourse
+            input(type="text" placeholder="Название курса - англицкое").col-md-12.engNameCourse
+            input(type="text" placeholder="Краткое описание курса").col-md-12.briefingCourse
+            input(type="text" placeholder="Стоимость курса").col-md-12.priceCourse
+            button(type="submit").addCourse Создать курс
+include ./../includes/layout_ft.jade
