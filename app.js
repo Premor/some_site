@@ -212,9 +212,9 @@ app.post('/login', function(req, res, next){
 			
 			{
 				if (user.is_admin==false)
-					{req.session.user = {'name': req.body.log,'is_admin':false};res.send('suc adm false');}
+					{req.session.user = {'name': req.body.log,'is_admin':false,'id':req.sessionID};res.send('suc adm false');}
 				else
-					{req.session.user = {'name': req.body.log,'is_admin':true};res.send('suc adm true');}
+					{req.session.user = {'name': req.body.log,'is_admin':true,'id':req.sessionID};res.send('suc adm true');}
 				}
 			 //res.redirect('/')}
 			
@@ -392,7 +392,10 @@ app.get('/contacts',function(req, res, next){
 })
 app.get('/admin',function(req, res, next){
 	if (req.session.user)
-		res.render('admin', {user: req.session.user.name,is_admin: req.session.user.is_admin})
+		if (req.session.user.id==req.sessionID)
+			res.render('admin', {user: req.session.user.name,is_admin: req.session.user.is_admin})
+		else
+			res.render('admin')
 	else
 		res.render('admin')
 })
@@ -659,12 +662,19 @@ app.get('/', function(req, res){
 				if (err)
 					next(err);
 				else
-					if (req.session.user)
-						res.render('index',
-							{title: 'Home',
-		 					count: ar_fil.length,
-		 					list: JSON.parse(data.toString('utf-8')),
-					 		user: req.session.user.name})
+					if (req.session.user) 
+						if (req.session.user.id==req.sessionID)
+							res.render('index',
+								{title: 'Home',
+		 						count: ar_fil.length,
+		 						list: JSON.parse(data.toString('utf-8')),
+					 			user: req.session.user.name})
+						else
+							res.render('index',
+								{title: 'Home',
+		 						count: ar_fil.length,
+		 						list: JSON.parse(data.toString('utf-8'))
+		 					})
 					else
 						res.render('index',
 							{title: 'Home',
