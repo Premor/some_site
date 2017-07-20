@@ -137,7 +137,16 @@ function logout(req, done){
 		if (!user)
 			throw new Error('logout failed')
 		else
-			{user.setSession(null)}
+		{
+			store.Session.findOne({where: {sid: req.sessionID}}).then
+			(function(session)
+				{
+				if (!session)
+					{user}
+				else 
+				{user.setSession(null)}
+		})}
+
 	}).then(function(user){done(null, user)}).catch(function(err){done(err, null)})
 }
 
