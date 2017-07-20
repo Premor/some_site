@@ -393,6 +393,7 @@ app.get('/contacts',function(req, res, next){
 app.get('/admin',function(req, res, next){
 	if (req.session.user)
 		if (req.session.user.id==req.sessionID)
+			console.log(req.session.user.name+"		"+req.session.user.is_admin)
 			res.render('admin', {user: req.session.user.name,is_admin: req.session.user.is_admin})
 		else
 			res.render('admin')
