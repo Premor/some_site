@@ -5,10 +5,13 @@ include ./../includes/top_menu.jade
 p Sobaki, hey!
 script(src='../public/libs/spruto/player.js', type='text/javascript')
 script.splayer.
-  var params = {"playlist":[{"video":[{"url":"/public/video/test.mp4"}],"duration":0,"posterUrl":""}],"uiLanguage":"ru","width":"640","height":"360"}; player.embed(params);
+  var params = {"playlist":[{"video":[{"url":"http://diamant-s.ru/public/video/test.mp4"}],"duration":0,"posterUrl":""}],"uiLanguage":"ru","width":"640","height":"360"}; player.embed(params);
 
 script.splayer.
-  var params = {"playlist":[{"video":[{"url":"/public/video/test2.mp4"}],"duration":0,"posterUrl":""}],"uiLanguage":"ru","width":"640","height":"360"}; player.embed(params);
+  var params = {"playlist":[{"video":[{"url":"http://diamant-s.ru/public/video/test2.mp4"}],"duration":0,"posterUrl":""}],"uiLanguage":"ru","width":"640","height":"360"}; player.embed(params);
+
+video
+  sourse(src="public/video/test.webm")
 
 include ./../includes/footer.jade
 
