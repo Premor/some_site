@@ -2,17 +2,18 @@ include ./../includes/layout.jade
   
 include ./../includes/top_menu.jade
 
-.col-md-3
-.col-md-6
-	form.passwordchanger
-		p Введите старый пароль:
-		input(type="text").oldpass
-		p Введите новый пароль:
-		input(type="text").newpass_once
-		p Повторите пароль:
-		input(type="text").newpass_twice
-		button Изменить пароль!
-.col-md-3 Виски всегда на уме у вашей киски.
+.container
+	.col-md-3
+	.col-md-6
+		form.passwordchanger
+			p Введите старый пароль:
+			input(type="text").oldpass
+			p Введите новый пароль:
+			input(type="text").newpass_once
+			p Повторите пароль:
+			input(type="text").newpass_twice
+			button Изменить пароль!
+	.col-md-3 Виски всегда на уме у вашей киски.
 
 
 include ./../includes/footer.jade
