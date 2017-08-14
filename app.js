@@ -340,6 +340,27 @@ app.get('/mycourses',function(req, res, next){
 		res.render('perarea/mycourses')//поменять на переход к регистрации
 })
 
+app.get('/changedata',function(req, res, next){
+	if (req.session.user)
+		res.render('perarea/changedata', {user: req.session.user.name})
+	else
+		res.render('perarea/changedata')
+})
+
+app.get('/changepassword',function(req, res, next){
+	if (req.session.user)
+		res.render('perarea/changepassword', {user: req.session.user.name})
+	else
+		res.render('perarea/changepassword')
+})
+
+app.get('/newpass_check',function(req, res, next){
+	if (req.session.user)
+		res.render('perarea/newpass_check', {user: req.session.user.name})
+	else
+		res.render('perarea/newpass_check')
+})
+
 app.get('/price',function(req, res, next){
 	if (req.session.user)
 		res.render('price', {user: req.session.user.name})
@@ -655,7 +676,7 @@ app.post('/registration', function(req, res, next){
 				password: req.body.pass,
 				email: req.body.email
 			})
-			res.redirect('/login')
+			res.send('suc')
 		}
 	})
 })
