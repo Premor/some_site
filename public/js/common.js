@@ -192,6 +192,27 @@ $(document).ready(function() {
     }
 	});
 
+	$('.datachanger').on('click','button',function(){
+		var name = $(this).children('.name_change').val();
+		var surname = $(this).children('.surname_change').val();
+		var mobile = $(this).children('.mobile_change').val();
+		var email = $(this).children('.email_change').val();
+		$.ajax({
+			url: '/changedata',
+			type: 'POST',
+			data: {
+				'name':name,
+				'surname':surname,
+				'mobile':mobile,
+				'email':email
+			},
+			success: function(data) {
+				if (data == 'suc') window.location.assign('/perarea');
+				location.reload();
+				alert('Данные изменены успешно!');
+			}
+		})
+	})
 	//Таймер обратного отсчета
 	//Документация: http://keith-wood.name/countdown.html
 	//<div class="countdown" date-time="2015-01-07"></div>
