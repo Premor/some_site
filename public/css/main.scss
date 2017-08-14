@@ -41,7 +41,9 @@ body, html {
   margin: 0px;
 }
 
-
+.mb5 {
+  margin-bottom: 5px;
+}
 
 a {
   color: #313131;
@@ -426,6 +428,23 @@ footer a {
 
 .personal-data-right {
   text-align: left;
+  margin-top: 33px;
+}
+
+.data-italic {
+  font-style: italic;
+}
+
+.dtchng-sett:hover {
+  font-weight: bold;
+}
+
+.dtchng-sett {
+  display: block;
+}
+
+.mycourses:hover .yt-sett {
+  color: red;
 }
 
 /*

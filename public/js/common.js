@@ -21,9 +21,9 @@ $(document).ready(function() {
 		return false;
 	})
 
-	$('.user-data-change').on('click', function () {
+/*	$('.user-data-change').on('click', function () {
 		$(this).parents('form').html('<p>Sobaka</p>');
-	})
+	})*/
 /*
 	$('.adm_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
@@ -81,7 +81,12 @@ $(document).ready(function() {
 		$.ajax({
 			url: '/registration',
 			type: 'POST',
-			data: {'pass': md5_hash_pass, 'mbphn': $('input[name$="mbphn"]').val(), 'email' : $('input[name$="email"]').val()}
+			data: {'pass': md5_hash_pass, 'mbphn': $('input[name$="mbphn"]').val(), 'email' : $('input[name$="email"]').val()},
+			success: function(data) {
+					if (data == 'suc') {
+						window.location.replace('/login');
+					}
+				}
 		})
 		return false;
 	})

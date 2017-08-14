@@ -24,9 +24,11 @@ include ./../includes/top_menu.jade
         .col-md-6.addingBlock
           .header Добавление курса
           form.addingBlockForm
-            input(type="text" placeholder="Название курса - русское").col-md-12.rusNameCourse
-            input(type="text" placeholder="Название курса - англицкое").col-md-12.engNameCourse
-            input(type="text" placeholder="Краткое описание курса").col-md-12.briefingCourse
-            input(type="text" placeholder="Стоимость курса").col-md-12.priceCourse
-            button(type="submit").addCourse Создать курс
+            input(type="text" placeholder="Название курса - русское").col-md-12.rusNameCourse.mb5
+            input(type="text" placeholder="Название курса - англицкое").col-md-12.engNameCourse.mb5
+            input(type="text" placeholder="Краткое описание курса").col-md-12.briefingCourse.mb5
+            input(type="text" placeholder="Стоимость курса").col-md-12.priceCourse.mb5
+            button(type="submit").addCourse.mb5 Создать курс
+
+include ./../includes/footer.jade
 include ./../includes/layout_ft.jade

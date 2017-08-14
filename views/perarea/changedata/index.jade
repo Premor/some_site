@@ -1,0 +1,23 @@
+include ./../includes/layout.jade
+  
+include ./../includes/top_menu.jade
+
+.container
+	.col-md-3
+	.col-md-6
+		form.datachanger
+			p Имя:
+			input(type="text").name_change.mb5
+			p Фамилия:
+			input(type="text").surname_change.mb5
+			p Телефон:
+			input(type="text").mobile_change.mb5
+			p E-mail:
+			input(type="text").email_change.mb5
+			button Сохранить изменения!
+
+	.col-md-3 Немного водки - всегда неплохо.
+
+include ./../includes/footer.jade
+
+include ./../includes/layout_ft.jade
