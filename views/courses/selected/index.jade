@@ -7,15 +7,20 @@ include ./../includes/top_menu.jade
 	while courses_json[num].name.english != selected_name
 		- num++
 - var i = 0
+- var j = 0
 	.container
 		.albums.no_top
 			.row
 				.header.col-md-12
 					p #{courses_json[num].name.russian} 
 				.col-md-12
-					ol
+					ul
 						while i < courses_json[num].program.length
-							li #{courses_json[num].program[i]}
+							li День #{i}:
+								ul
+									 while i < courses_json[num].program[i].length
+									 	li #{courses_json[num].program[i]}
+										- j++ 
 							- i++
 
 include ./../includes/footer.jade
