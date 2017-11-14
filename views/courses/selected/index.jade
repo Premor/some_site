@@ -6,7 +6,7 @@ include ./../includes/top_menu.jade
 - var num = 0
 	while courses_json[num].name.english != selected_name
 		- num++
-- var i = 0
+- var i = 1
 - var j = 0
 	.container
 		.albums.no_top
@@ -16,10 +16,10 @@ include ./../includes/top_menu.jade
 				.col-md-12
 					ul
 						while i < courses_json[num].program.length
-							li День #{i}:
+							li День #{i+1}:
 								ul
 									while j < courses_json[num].program[i].length
-										li #{courses_json[num].program[i]}
+										li #{courses_json[num].program[i][j]}
 										- j++ 
 							- i++
 
