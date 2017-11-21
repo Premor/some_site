@@ -51,6 +51,11 @@ p {
   font-weight: 500;
   font-size: 31px; }
 
+.block_center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
 .center {
   text-align: center; }
 
@@ -256,6 +261,12 @@ p {
 .dibl {
   display: block; }
 
+.noDec {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  padding: 0 !important; }
+
 .albums {
   margin-top: 14px;
   position: relative;
@@ -267,11 +278,24 @@ p {
   font-size: 31px; }
 
 .album_img img {
-  width: 270px; }
+  width: 270px;
+  height: 270px;
+  object-fit: cover; }
+
+.album_pic_img {
+  margin-bottom: 30px; }
 
 .album_name {
   font-weight: bold;
   font-size: 25px; }
+
+.photo_img {
+  margin-bottom: 20px; }
+
+.photo_img img {
+  width: 270px;
+  height: 270px;
+  object-fit: cover; }
 
 .no_top {
   top: 0px; }
@@ -307,7 +331,7 @@ footer a {
   background-color: #6B1453;
   color: #fff; }
 
-.ro_sq:nth-child(1) {
+.ro_sq:nth-child(1), .ro_sq:nth-child(2) {
   margin-right: 20px; }
 
 .contacts {
