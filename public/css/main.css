@@ -53,7 +53,7 @@ p {
 
 .block_center {
   display: block;
-  margin-left: auto;
+  margin-left: 10%;
   margin-right: auto; }
 
 .center {
@@ -239,7 +239,7 @@ p {
 
 .onslide {
   position: relative;
-  top: 167px;
+  top: 190px;
   left: 15%; }
 
 .info {
@@ -252,7 +252,7 @@ p {
 .info.text p {
   font-size: 20px;
   font-family: "RobotoLight";
-  margin-bottom: 10px; }
+  margin-bottom: 20px; }
 
 /*albums*/
 .danone {
