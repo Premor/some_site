@@ -8,7 +8,7 @@ include ./../includes/top_menu.jade
 -      j= j+1
 -   }
 - var formats = ['png', 'jpg', 'jpeg', 'bmp']
-.container
+//.container
   .albums.no_top
     .row
       .header.col-md-12
@@ -21,9 +21,20 @@ include ./../includes/top_menu.jade
           .album_name
         - i= i+1
 
-
+.container
+  .albums.no_top
+    .row
+      .header.col-md-12
+        p #{list.russian[j]}
+          #gallery
+            .photo_img
+              a(href="../public/img/#{engl_name}/#{i}")
+                img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
 
 include ./../../footer.jade
+
+
+
 
 //footer.container-fluid.no_top
   .container
