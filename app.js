@@ -14,7 +14,24 @@ var storage = multer.diskStorage({
 		if (err)
 			next(err);
 		else
-    	cb(null, (ar_fil.length).toString())//+(file.originalname).slice((file.originalname).lastIndexOf('.'))
+		fs.readFile('./public/img/encoding.json',function(err,data){
+			if (err)
+				next(err);
+			else
+						
+				var buf = JSON.parse(data.toString('utf-8'))
+				var i=0
+				for(i=0;i<buf.length;i++)
+				{
+					if (buf[i].album_name == file.fieldname)
+						break
+
+				}
+				buf[i].encoding.push((file.originalname).slice((file.originalname).lastIndexOf('.')+1))
+				fs.writeFile('./public/img/encoding.json',JSON.stringify(buf),function(err,data){if (err) next(err);
+				})
+			})
+    	cb(null, (ar_fil.length).toString()+(file.originalname).slice((file.originalname).lastIndexOf('.')))//+(file.originalname).slice((file.originalname).lastIndexOf('.'))
   })
   }
 })
@@ -279,18 +296,25 @@ app.get('/gallery/:album',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					if (req.session.user)
-						res.render('gallery/photos',
-						{count: ar_fil.length, 
-						engl_name: req.params.album,
-	 					list: JSON.parse(data.toString('utf-8')),
-				 		user: req.session.user.name})
-					else
-					res.render('gallery/photos',
-						{count: ar_fil.length, 
-						engl_name: req.params.album,
-	 					list: JSON.parse(data.toString('utf-8'))
-	 				})
+					fs.readFile('./public/img/encoding.json',function(err,enc){
+						if (err)
+							next(err);
+						else
+							if (req.session.user)
+								res.render('gallery/photos',
+								{count: ar_fil.length, 
+								engl_name: req.params.album,
+	 							list: JSON.parse(data.toString('utf-8')),
+								encoding: JSON.parse(enc.toString('utf-8')), 
+								user: req.session.user.name})
+							else
+							res.render('gallery/photos',
+								{count: ar_fil.length, 
+								engl_name: req.params.album,
+								encoding: JSON.parse(enc.toString('utf-8')), 
+								list: JSON.parse(data.toString('utf-8'))
+							 })
+					})
 				});
 			});
 	
@@ -605,19 +629,25 @@ app.get('/albumschange/:album',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					if (req.session.user)
-						res.render('admin/functions/photochange',
-							{count: ar_fil.length, 
-							engl_name: req.params.album,
-		 					list: JSON.parse(data.toString('utf-8')),
-					 		user: req.session.user.name,
-					 		is_admin: req.session.user.is_admin})
-					else
-						res.render('admin/functions/photochange',
-							{count: ar_fil.length, 
-							engl_name: req.params.album,
-		 					list: JSON.parse(data.toString('utf-8'))
-		 				})
+					fs.readFile('./public/img/encoding.json',function(err,enc){
+						if (err)
+							next(err);
+						else
+							if (req.session.user)
+								res.render('admin/functions/photochange',
+									{count: ar_fil.length, 
+									engl_name: req.params.album,
+									list: JSON.parse(data.toString('utf-8')),
+									encoding:JSON.parse(enc.toString('utf-8')), 
+							 		user: req.session.user.name,
+							 		is_admin: req.session.user.is_admin})
+							else
+								res.render('admin/functions/photochange',
+									{count: ar_fil.length, 
+									engl_name: req.params.album,
+		 							list: JSON.parse(data.toString('utf-8'))
+								 })
+					})
 				});
 			});
 	
