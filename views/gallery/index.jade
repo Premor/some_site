@@ -1,23 +1,24 @@
-include ../layout.jade
-  
-include ../top_menu.jade
+.content
+  include ../layout.jade
+    
+  include ../top_menu.jade
 
-- var i = 0
-.container
-  .albums.no_top
-    .row
-      .header.col-md-12
-        p Альбомы
-    .row
-      while i < count
-        form(method = "POST" action = "/gallery")
-          input(type="text" value="#{list.english[i]}" name="album_name").danone
-          .album_form.col-md-3
-            .album_img
-              img(src="public/img/main/#{i}" alt="")
-            .album_name
-              input(type="submit" value="#{list.russian[i]}").dibl.noDec
-        - i= i+1
+  - var i = 0
+  .container
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p Альбомы
+      .row
+        while i < count
+          form(method = "POST" action = "/gallery")
+            input(type="text" value="#{list.english[i]}" name="album_name").danone
+            .album_form.col-md-3
+              .album_img
+                img(src="public/img/main/#{i}" alt="")
+              .album_name
+                input(type="submit" value="#{list.russian[i]}").dibl.noDec
+          - i= i+1
         
 include ./../footer.jade
 

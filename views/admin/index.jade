@@ -1,26 +1,27 @@
-include ../layout.jade
+.content
+  include ../layout.jade
 
-include ../top_menu.jade
+  include ../top_menu.jade
 
-p #{is_admin}
-p u - #{user}
-- if (is_admin)
-  .container
-    .row
-      .col-md-12
-        .mainHeader.center
-          p Управление сайтом
-        a(href="/albumschange").col-md-6.changer
-          button.albumschange
-            p Изменение альбомов и фотографий
-        a(href="/courseschange").col-md-6.changer
-          button.courseschange
-            p Изменение курсов
-- else
+  p #{is_admin}
+  p u - #{user}
+  - if (is_admin)
     .container
       .row
-        .col-md-12.all_center_block
-          p Вы не залогинены.
+        .col-md-12
+          .mainHeader.center
+            p Управление сайтом
+          a(href="/albumschange").col-md-6.changer
+            button.albumschange
+              p Изменение альбомов и фотографий
+          a(href="/courseschange").col-md-6.changer
+            button.courseschange
+              p Изменение курсов
+  - else
+      .container
+        .row
+          .col-md-12.all_center_block
+            p Вы не залогинены.
     
 include ../footer.jade
 

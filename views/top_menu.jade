@@ -26,7 +26,7 @@ nav.pushy.pushy-right
         a(href="/gallery") Галерея
       li.pushy-link
         a(href="/contacts") Контакты
-      
+
 button.menu-btn.hidden-lg.hidden-md.m-btn
   i(aria-hidden="true").class.fa.fa-bars
 .container
@@ -41,17 +41,16 @@ button.menu-btn.hidden-lg.hidden-md.m-btn
       .col-md-3.col-xs-4
         //contacts-login block
         .cl_block.hidden-xs.hidden-sm
-          p.telephone 
-            i(aria-hidden="true").fa.fa-mobile
-            span.sel  +7 (903) 000-00-00
-          if(user==null)      
+          div.telephone
+            p #{user}
+          if(user==null)
             p.log_reg
               a(href="/login")Вход
               a(href="/registration")Регистрация
           else
             p.log_reg
-              a(href="/perarea") #{user}
-              a(href="/logout") Выйти
+              a(href="/perarea").right_menu_button Личный кабинет
+              a(href="/logout").right_menu_button Выйти
   .underlogo
     .col-md-3.col-xs-4
     .col-md-6.col-xs-4

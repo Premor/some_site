@@ -1,4 +1,21 @@
 $(document).ready(function() {
+	
+	
+	var date = new Date();
+	var hour = date.getHours();
+	if((hour>=0)&&(hour<6)) {
+		message = "Доброй ночи";
+	} else if ((hour>=6)&&(hour<12)) {
+		message = "Доброе утро"
+	} else if ((hour>=12)&&(hour<18)) {
+		message = "Добрый день"
+	} else {
+		message = "Добрый вечер"
+	}
+
+	name = $('.telephone').text();
+	$('div.telephone').html('<p>' + message + ',' + name + '!</p>');
+
 
 	//md5 password hash
 	$('.log_pass').on('submit', function() {

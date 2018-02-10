@@ -103,7 +103,10 @@ p {
   color: #fff;
 }
 
-
+.right_menu_button {
+  box-sizing: border-box;
+  display: inline-block;
+}
 
 .hd_buttons ul {
   list-style-type: none;
@@ -377,10 +380,36 @@ p {
 
 /*footer*/
 
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+.wrapper {
+  height: 100%;
+}
+
+.emerg_content {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding-bottom: 150px;
+}
+
+.content {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding-bottom: 90px;
+}
+footer {
+  height: 128px;
+  margin-top: -128px;
+}
+
 footer {
   background-color: #000;
   color: #fff;
-  margin-top: 40px; //-120px;
+  //margin-top: 40px; //-120px;
 
 }
 
@@ -406,7 +435,7 @@ footer a {
   border-radius: 8px;
   color: #000;
   font-size: 30px;
-  padding-top: 3px;
+  padding-top: 9px;
 }
 
 .ro_sq:hover {
@@ -448,6 +477,7 @@ footer a {
 
 .download {
   border: dashed 1px black;
+  display: block;
 }
 
 

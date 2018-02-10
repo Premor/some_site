@@ -1,43 +1,44 @@
-include ../layout.jade
+.emerg_content
+  include ../layout.jade
 
-include ../top_menu.jade
+  include ../top_menu.jade
 
--if (user)
-  .container
-    .row
-      .col-md-12.all_center_block
-        .col-md-6.personal-data-left
-          .user-pic
-            //Аватар пользователя? Нужен стандартный. (Или вообще ну его.)
-            img(src="public/img/bandi.png", alt="")
-        .col-md-6.personal-data-right
-            .dtchng
-              .user-name.data-italic
-                p Имя: #{user_name}
-              .user-surname.data-italic
-                p Фамилия: #{user_surname}
-              .user-email.data-italic
-                p E-mail: #{user_email}
-              .user-telephone.data-italic
-                p Номер телефона: #{user_telephone}
-            a(href="/changedata").user-data-change.dtchng-sett
-              i(class="fa fa-pencil" aria-hidden="true") 
-              |  Изменить данные
-            a(href="/changepassword").user-password-change.dtchng-sett
-              i(class="fa fa-pencil" aria-hidden="true")
-              |  Изменить пароль
-            a(href="/changephoto").new_photo.dtchng-sett
-              i(class="fa fa-pencil" aria-hidden="true")
-              |  Изменить фотографию
-            .mycourses
-              a(href="/mycourses") 
-                i(class="fa fa-youtube-play" aria-hidden="true").yt-sett
-                |  Мои курсы
-- else
-  .container
-    .row
-      .col-md-12.all_center_block
-        p Вы не авторизованы!
+  -if (user)
+    .container
+      .row
+        .col-md-12.all_center_block
+          .col-md-6.personal-data-left
+            .user-pic
+              //Аватар пользователя? Нужен стандартный. (Или вообще ну его.)
+              img(src="public/img/bandi.png", alt="")
+          .col-md-6.personal-data-right
+              .dtchng
+                .user-name.data-italic
+                  p Имя: #{user_name}
+                .user-surname.data-italic
+                  p Фамилия: #{user_surname}
+                .user-email.data-italic
+                  p E-mail: #{user_email}
+                .user-telephone.data-italic
+                  p Номер телефона: #{user_telephone}
+              a(href="/changedata").user-data-change.dtchng-sett
+                i(class="fa fa-pencil" aria-hidden="true") 
+                |  Изменить данные
+              a(href="/changepassword").user-password-change.dtchng-sett
+                i(class="fa fa-pencil" aria-hidden="true")
+                |  Изменить пароль
+              a(href="/changephoto").new_photo.dtchng-sett
+                i(class="fa fa-pencil" aria-hidden="true")
+                |  Изменить фотографию
+              .mycourses
+                a(href="/mycourses") 
+                  i(class="fa fa-youtube-play" aria-hidden="true").yt-sett
+                  |  Мои курсы
+  - else
+    .container
+      .row
+        .col-md-12.all_center_block
+          p Вы не авторизованы!
 include ../footer.jade
       
 include ../layout_ft.jade

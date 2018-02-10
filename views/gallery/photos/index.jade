@@ -1,41 +1,42 @@
-include ./../includes/layout.jade
-  
-include ./../includes/top_menu.jade
+.content
+  include ./../includes/layout.jade
+    
+  include ./../includes/top_menu.jade
 
-- var i = 0, j = 0, k=0
-- var co = count
--   while(list.english[j] != engl_name) {
--      j= j+1
--   }
--   while(encoding[k].album_name!=engl_name){
--      k= k+1
--   }
-.container
-  .albums.no_top
-    .row
-      .header.col-md-12
-        p #{list.russian[j]}
-    .row
-      while i < count
-        .album_form.col-md-3
-          a(href="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" data-fancybox-group="group").photo_img.fancybox
-            img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka")
-          .album_name
-        - i= i+1
+  - var i = 0, j = 0, k=0
+  - var co = count
+  -   while(list.english[j] != engl_name) {
+  -      j= j+1
+  -   }
+  -   while(encoding[k].album_name!=engl_name){
+  -      k= k+1
+  -   }
+  .container
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p #{list.russian[j]}
+      .row
+        while i < count
+          .album_form.col-md-3
+            a(href="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" data-fancybox-group="group").photo_img.fancybox
+              img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka")
+            .album_name
+          - i= i+1
 
 
 
-p #{constee}
+  p #{constee}
 
-//.container
-  .albums.no_top
-    .row
-      .header.col-md-12
-        p #{list.russian[j]}
-          #gallery
-            .photo_img
-              a(href="../public/img/#{engl_name}/#{i}")
-                img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
+  //.container
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p #{list.russian[j]}
+            #gallery
+              .photo_img
+                a(href="../public/img/#{engl_name}/#{i}")
+                  img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
 
 include ./../../footer.jade
 
