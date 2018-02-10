@@ -14,7 +14,11 @@ $(document).ready(function() {
 	}
 
 	name = $('.telephone').text();
-	$('div.telephone').html('<p>' + message + ',' + name + '!</p>');
+	if (name!='') {
+		$('div.telephone').html('<p>' + message + ',' + name + '!</p>');
+	} else {
+		$('div.telephone').html('<p>' + message + ',' + name + '!</p>');
+	}
 
 
 	//md5 password hash

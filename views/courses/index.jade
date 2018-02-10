@@ -13,7 +13,7 @@
           .header.col-md-12
             p Курсы
         while i < count
-        .album_form
+          .album_form
               .album_name #{courses_json[i].name.russian}
               p #{courses_json[i].briefing_desc}
               a(href="courses/#{courses_json[i].name.english}") Подробнее
