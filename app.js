@@ -537,14 +537,18 @@ app.post('/albumschange',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					var buf = JSON.parse(data.toString('utf-8'));
-					buf.russian.push(req.body.new_album_ru)
-					buf.english.push(req.body.new_album_en)
-					fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
-						if (err) console.log(err);
-						else 
-							res.send('suc')
-					})
+					fs.readFile('./public/img/encoding.json',function(err,enc){
+						var buf = JSON.parse(data.toString('utf-8'));
+						var encoding = JSON.parse(enc.toString('utf-8'));
+						encoding.push({"album_name":req.body.new_album_en,"encoding":[]})
+						buf.russian.push(req.body.new_album_ru)
+						buf.english.push(req.body.new_album_en)
+						fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
+							if (err) console.log(err);
+							else 
+								res.send('suc')
+						})
+				})
 			})
 			})
 
