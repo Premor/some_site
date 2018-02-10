@@ -2,13 +2,15 @@ include ./../includes/layout.jade
   
 include ./../includes/top_menu.jade
 
-- var i = 0, j = 0
+- var i = 0, j = 0, k=0
 - var co = count
 -   while(list.english[j] != engl_name) {
 -      j= j+1
 -   }
-- var formats = ['png', 'jpg', 'jpeg', 'bmp']
-//.container
+-   while(encoding[k].album_name!=engl_name){
+-      k= k+1
+-   }
+.container
   .albums.no_top
     .row
       .header.col-md-12
@@ -16,12 +18,16 @@ include ./../includes/top_menu.jade
     .row
       while i < count
         .album_form.col-md-3
-          .photo_img
-            img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
+          a(href="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" data-fancybox-group="group").photo_img.fancybox
+            img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka")
           .album_name
         - i= i+1
 
-.container
+
+
+p #{constee}
+
+//.container
   .albums.no_top
     .row
       .header.col-md-12

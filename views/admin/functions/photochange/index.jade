@@ -3,10 +3,13 @@ include ./../includes/layout.jade
 include ./../includes/top_menu.jade
 
 - if (is_admin)
-    - var i = 0, j = 0
+    - var i = 0, j = 0, k=0
     - var co = count
     -   while(list.english[j] != engl_name) {
     -      j= j+1
+    -   }
+    -   while(encoding[k].album_name != engl_name){
+    -      k= k+1
     -   }
     .container
       .albums.no_top
@@ -21,7 +24,7 @@ include ./../includes/top_menu.jade
                   .album_img
                     //form(/action="/albumschange/#{engl_name}/del" method="POST")
                     form.parTest
-                      img(src="../public/img/#{engl_name}/#{i}" alt="" class="sobka")
+                      img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka")
                       input(type="text" value="#{engl_name}" id="ph_#{i}").danone
                       input(type="text" value="#{count}" id="co").danone
                       button(value="#{i}" class="del") 

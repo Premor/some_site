@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
 	//md5 password hash
 	$('.log_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
@@ -61,7 +60,6 @@ $(document).ready(function() {
 
 	$('.albumschange_form').on('click', '.dibl', function() {
 		var engName = $(this).parents('.albumschange_form').children('.danone').val();
-		alert(engName);
 		$.ajax({
 			url: '/albumschange',
 			type: 'POST',
@@ -107,7 +105,7 @@ $(document).ready(function() {
 		if (alBool) {
 			$.ajax({
 				url: '/albumschange',
-      	type: 'POST',
+				type: 'POST',
 				processData: false,
 				contentType: false,
 				data: formData,
@@ -214,42 +212,19 @@ $(document).ready(function() {
 		})
 	})
 
-	// applying photobox on a `gallery` element which has lots of thumbnails links.
-    // Passing options object as well:
-    //-----------------------------------------------
-    $('#gallery').photobox('a',{ time:0 });
-
-    // using a callback and a fancier selector
-    //----------------------------------------------
-    $('#gallery').photobox('li > a.family',{ time:0 }, callback);
-    function callback(){
-       console.log('image has been loaded');
-    }
-
-    // destroy the plugin on a certain gallery:
-    //-----------------------------------------------
-    $('#gallery').photobox('destroy');
-
-    // re-initialize the photbox DOM (does what Document ready does)
-    //-----------------------------------------------
-    $('#gallery').photobox('prepareDOM');
-
-	//Таймер обратного отсчета
-	//Документация: http://keith-wood.name/countdown.html
-	//<div class="countdown" date-time="2015-01-07"></div>
-	var austDay = new Date($(".countdown").attr("date-time"));
-	$(".countdown").countdown({until: austDay, format: 'yowdHMS'});
 
 	//Попап менеджер FancyBox
 	//Документация: http://fancybox.net/howto
 	//<a class="fancybox"><img src="image.jpg" /></a>
 	//<a class="fancybox" data-fancybox-group="group"><img src="image.jpg" /></a>
-	$(".fancybox").fancybox();
+	$(".fancybox").fancybox({
+		'transitionIn'	:	'elastic',
+		'transitionOut'	:	'elastic',
+		'speedIn'		:	600, 
+		'speedOut'		:	200, 
+		'overlayShow'	:	false
+	});
 
-	//Навигация по Landing Page
-	//$(".top_mnu") - это верхняя панель со ссылками.
-	//Ссылки вида <a href="#contacts">Контакты</a>
-	$(".top_mnu").navigation();
 
 	//Добавляет классы дочерним блокам .block для анимации
 	//Документация: http://imakewebthings.com/jquery-waypoints/
