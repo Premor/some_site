@@ -534,11 +534,11 @@ app.post('/albumschange',function(req, res, next){
 	
 	if (req.body.new_album_ru && req.body.new_album_en)
 		{fs.mkdir('./public/img/'+req.body.new_album_en,function(err){//?
-			if (err) next(err);
+			if (err)  {console.log(err);next(err);}
 			else
 				fs.readFile('./public/img/name_albums.json',function(err,data){
 				if (err)
-					next(err);
+						{ console.log(err);next(err);}	
 				else
 					fs.readFile('./public/img/encoding.json',function(err,enc){
 						var buf = JSON.parse(data.toString('utf-8'));
@@ -547,12 +547,12 @@ app.post('/albumschange',function(req, res, next){
 						buf.russian.push(req.body.new_album_ru)
 						buf.english.push(req.body.new_album_en)
 						fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
-							if (err) console.log(err);
+							if (err) {console.log(err);next(err);}
 							else
 							fs.writeFile('./public/img/encoding.json',JSON.stringify(encoding),function(err,data){
-								if (err) console.log(err);
+								if (err) {console.log(err);next(err);}
 								else 
-								upload.single('main')(req,res,function(err){if (err) next(err);
+								upload.single('main')(req,res,function(err){if (err){console.log(err);next(err);}
 									else 
 									res.send('suc')
 							}) 
