@@ -1,5 +1,25 @@
 $(document).ready(function() {
 	
+	var f = 0;
+	var i = 0, buf = 0;
+	for(i=0; i<location.href.length; i++) {
+		if (f==3) {
+			console.log(i);
+			buf=location.href.slice(i);
+			var j=0;
+			for(j=0; j<buf.length; j++) {
+				if (buf[j]=='/') {
+					buf=buf.slice(0,j);
+				}
+			}
+			break;
+		} else if (location.href[i]=='/') f++;
+	}
+	buf = buf + '_selected'
+	console.log('.'+buf)
+	heightToChange=$('.' + buf).css('height');
+	heightToChange=parseInt(heightToChange)-1;
+	$('.' + buf).css({'backgroundColor':'#6B1453', 'font-weight':'700', 'height' : heightToChange + 'px'})
 	
 	var date = new Date();
 	var hour = date.getHours();

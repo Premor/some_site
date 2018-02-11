@@ -239,12 +239,20 @@ p {
   height: 36px;
   color: #fff;
   text-align: center;
-  border-radius: 18px; }
+  display: inline-block;
+  border-radius: 18px;
+  font-weight: 300;
+  margin-right: 50px; }
+
+.button:hover {
+  font-weight: 500; }
 
 .onslide {
   position: relative;
-  top: 190px;
-  left: 15%; }
+  top: 250px;
+  left: 5%;
+  width: 50%;
+  text-align: center; }
 
 .info {
   color: #fff;
@@ -253,10 +261,17 @@ p {
 .info.header p {
   font-size: 31px; }
 
+/*
+.info.text {
+  display: inline-block;
+  text-align: center;
+}*/
 .info.text p {
   font-size: 20px;
-  font-family: "RobotoLight";
-  margin-bottom: 20px; }
+  font-family: "Roboto Condensed";
+  margin-bottom: 20px;
+  font-weight: 300;
+  text-align: center; }
 
 /*albums*/
 .danone {
@@ -290,8 +305,9 @@ p {
   margin-bottom: 30px; }
 
 .album_name {
-  font-weight: bold;
-  font-size: 25px; }
+  font-weight: 700;
+  font-family: 'Roboto Condensed';
+  font-size: 20px; }
 
 .photo_img {
   margin-bottom: 20px; }
@@ -322,7 +338,7 @@ body,
 .content {
   box-sizing: border-box;
   min-height: 100%;
-  padding-bottom: 90px; }
+  padding-bottom: 0px; }
 
 footer {
   height: 128px;
@@ -339,9 +355,13 @@ footer a {
   font-family: 'Bebas Neue';
   font-size: 20px; }
 
+.diamant p:nth-child(1) {
+  margin-top: 20px; }
+
 .soc {
   text-align: center;
-  margin-top: 40px; }
+  margin-top: 40px;
+  padding-left: 49px; }
 
 .ro_sq {
   height: 50px;
