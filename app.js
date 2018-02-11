@@ -18,8 +18,9 @@ var storage = multer.diskStorage({
 			if (err)
 				next(err);
 			else
-				if (file.fieldname != 'main'){
+				
 				var buf = JSON.parse(data.toString('utf-8'))
+				if (file.fieldname != 'main'){
 				var i=0
 				for(i=0;i<buf.length;i++)
 				{
@@ -28,12 +29,14 @@ var storage = multer.diskStorage({
 
 				}
 				buf[i].encoding.push((file.originalname).slice((file.originalname).lastIndexOf('.')+1))
-				fs.writeFile('./public/img/encoding.json',JSON.stringify(buf),function(err,data){if (err) next(err);
-				})}
+				}
 				else
 				{
-						
+					buf.push({"album_name":req.body.new_album_en,"encoding":[]})
 				}
+				fs.writeFile('./public/img/encoding.json',JSON.stringify(buf),function(err,data){if (err) next(err);
+				})
+				
 			})
     	cb(null, (ar_fil.length).toString()+(file.originalname).slice((file.originalname).lastIndexOf('.')))//+(file.originalname).slice((file.originalname).lastIndexOf('.'))
   })
@@ -531,7 +534,8 @@ app.delete('/albumschange',function(req, res, next){
 });
 
 app.post('/albumschange',function(req, res, next){
-	
+	upload.single('main')(req,res,function(err){if (err){console.log(err);next(err);}
+	else 
 	if (req.body.new_album_ru && req.body.new_album_en)
 		{fs.mkdir('./public/img/'+req.body.new_album_en,function(err){//?
 			if (err)  {console.log(err);next(err);}
@@ -552,19 +556,18 @@ app.post('/albumschange',function(req, res, next){
 							fs.writeFile('./public/img/encoding.json',JSON.stringify(encoding),function(err,data){
 								if (err) {console.log(err);next(err);}
 								else 
-								upload.single('main')(req,res,function(err){if (err){console.log(err);next(err);}
-									else 
+								
 									res.send('suc')
 							}) 
 					
-						})
+						//})
 				})
 			})
 			})
 		})
 		}
 		else
-			res.send('verify');	
+			res.send('verify');	})
 })
 
 app.get('/courseschange',function(req, res, next){
