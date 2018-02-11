@@ -32,7 +32,7 @@ var storage = multer.diskStorage({
 				}
 				else
 				{
-					buf.push({"album_name":req.body.new_album_en,"encoding":[]})
+					buf.push({"album_name":req.body.new_album_en,"main_enc":"","encoding":[]})
 				}
 				fs.writeFile('./public/img/encoding.json',JSON.stringify(buf),function(err,data){if (err) next(err);
 				})
@@ -337,16 +337,23 @@ app.get('/gallery',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					if (req.session.user)
-						res.render('gallery',
-							{count: ar_fil.length,
-		 					list: JSON.parse(data.toString('utf-8')),
-					 		user: req.session.user.name})
-					else
-						res.render('gallery',
-							{count: ar_fil.length,
-		 					list: JSON.parse(data.toString('utf-8')),
-					 		})
+					fs.readFile('./public/img/encoding.json',function(err,enc){
+						if (err)
+							next(err);
+						else
+							if (req.session.user)
+								res.render('gallery',
+									{count: ar_fil.length,
+									 list: JSON.parse(data.toString('utf-8')),
+									 encoding: JSON.parse(enc.toString('utf-8')),
+							 		 user: req.session.user.name})
+							else
+								res.render('gallery',
+									{count: ar_fil.length,
+									 encoding: JSON.parse(enc.toString('utf-8')),
+		 							 list: JSON.parse(data.toString('utf-8'))
+									 })
+								})
 			});
 			
 	
@@ -475,18 +482,24 @@ app.get('/albumschange',function(req, res, next){
 				if (err)
 					next(err);
 				else
-					if (req.session.user)
-						res.render('admin/functions/albumschange',
-						{count: ar_fil.length,
-		 				list: JSON.parse(data.toString('utf-8')),
-					 	user: req.session.user.name,
-					 	is_admin: req.session.user.is_admin})
+				fs.readFile('./public/img/encoding.json',function(err,enc){
+					if (err)
+						next(err);
 					else
-						res.render('admin/functions/albumschange',
-						{count: ar_fil.length,
-		 				list: JSON.parse(data.toString('utf-8'))
-		 			})
-
+						if (req.session.user)
+							res.render('admin/functions/albumschange',
+							{count: ar_fil.length,
+							list: JSON.parse(data.toString('utf-8')),
+							encoding: JSON.parse(enc.toString('utf-8')),
+						 	user: req.session.user.name,
+						 	is_admin: req.session.user.is_admin})
+						else
+							res.render('admin/functions/albumschange',
+							{count: ar_fil.length,
+							encoding: JSON.parse(enc.toString('utf-8')),
+		 					list: JSON.parse(data.toString('utf-8'))
+		 				})
+				})
 		})	
 	});
 })
