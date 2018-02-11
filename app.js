@@ -566,15 +566,11 @@ app.post('/albumschange',function(req, res, next){
 						fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
 							if (err) {console.log(err);next(err);}
 							else
-							fs.writeFile('./public/img/encoding.json',JSON.stringify(encoding),function(err,data){
-								if (err) {console.log(err);next(err);}
-								else 
-								
 									res.send('suc')
 							}) 
 					
 						//})
-				})
+				
 			})
 			})
 		})
