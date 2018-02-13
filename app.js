@@ -718,7 +718,7 @@ app.delete('/albumschange/:album',function(req, res, next){
 							fs.rename('./public/img/'+req.params.album+'/'+i+"."+encoding[j].encoding[i],'./public/img/'+req.params.album+'/'+(i-1)+"."+encoding[j].encoding[i],function(err){if (err) next(err);return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
 							i++;
 						}	
-						encoding.splice(i,1);
+						encoding[j].encoding.splice(i,1);
 						fs.writeFile('./public/img/encoding.json',JSON.stringify(encoding),function(err,data){
 							if (err) {console.log(err);next(err);}
 						})}
