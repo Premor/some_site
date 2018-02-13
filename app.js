@@ -699,7 +699,7 @@ app.post('/albumschange/:album',function(req, res, next){
 })
 
 app.delete('/albumschange/:album',function(req, res, next){
-		console.log(req.params.album);	
+		console.log(req.params.name);	
 		fs.readFile('./public/img/encoding.json',function(err,enc){
 				if (err)
 					{next(err);}
