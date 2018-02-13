@@ -711,7 +711,8 @@ app.delete('/albumschange/:album',function(req, res, next){
 						{break;}
 					}
 					console.log(j+" < "+encoding.length)
-					console.log(encoding[j].album_name +" = "+ req.params.album)
+					console.log(encoding[0].album_name +" = "+ req.params.album)
+					console.log(encoding[1].album_name +" = "+ req.params.album)
 					fs.unlink('./public/img/'+req.params.album+'/'+req.body.photo_num+"."+encoding[j].encoding[req.body.photo_num],function(err){
 						if (err) {console.log(err);next(err);}
 						else
