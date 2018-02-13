@@ -526,13 +526,13 @@ app.delete('/albumschange',function(req, res, next){
 						var len=buf.english.length;
 						buf.english.splice(i,1);
 						buf.russian.splice(i,1);
-						fs.unlink('./public/img/main/'+i+'.'+encoding.encoding[i],function(err){
+						fs.unlink('./public/img/main/'+i+'.'+encoding[i].main_enc,function(err){
 						if (err) {next(err);}
 						else{
 							
 						i=i-(-1);
 						while(i<len){
-							fs.rename('./public/img/main/'+i+'.'+encoding.encoding[i],'./public/img/main/'+(i-1)+'.'+encoding.encoding[i],function(err){if (err) console.log("SYKA");next(err)})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
+							fs.rename('./public/img/main/'+i+'.'+encoding[i].main_enc,'./public/img/main/'+(i-1)+'.'+encoding[i].main_enc,function(err){if (err) console.log("SYKA");next(err)})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
 							i++;
 						}	
 						encoding.splice(i,1);
@@ -698,7 +698,8 @@ app.post('/albumschange/:album',function(req, res, next){
 })
 
 app.delete('/albumschange/:album',function(req, res, next){
-			fs.readFile('./public/img/encoding.json',function(err,enc){
+		console.log(req.params.album);	
+		fs.readFile('./public/img/encoding.json',function(err,enc){
 				if (err)
 					{next(err);}
 				else
