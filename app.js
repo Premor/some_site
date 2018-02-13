@@ -32,7 +32,7 @@ var storage = multer.diskStorage({
 				}
 				else
 				{
-					buf.push({"album_name":req.body.new_album_en,"main_enc":"","encoding":[]})
+					buf.push({"album_name":req.body.new_album_en,"main_enc":(file.originalname).slice((file.originalname).lastIndexOf('.')+1),"encoding":[]})
 				}
 				fs.writeFile('./public/img/encoding.json',JSON.stringify(buf),function(err,data){if (err) next(err);
 				})
@@ -509,10 +509,15 @@ app.get('/albumschange',function(req, res, next){
 app.delete('/albumschange',function(req, res, next){
 	fs.readFile('./public/img/name_albums.json',function(err,data){
 				if (err)
-					console.log("SYKA");
+					{console.log("SYKA");next(err)}
 				else
 				{
-
+				fs.readFile('./public/img/encoding.json',function(err,enc){
+					if (err)
+						{console.log("SYKA");next(err)}
+					else
+					{
+					var encoding = JSON.parse(enc.toString('utf-8'));
 					var buf = JSON.parse(data.toString('utf-8'));
 					var i=buf.english.indexOf(req.body.name);
 					if (i == (-1))
@@ -521,28 +526,35 @@ app.delete('/albumschange',function(req, res, next){
 						var len=buf.english.length;
 						buf.english.splice(i,1);
 						buf.russian.splice(i,1);
-						fs.unlink('./public/img/main/'+i,function(err){
+						fs.unlink('./public/img/main/'+i+'.'+encoding.encoding[i],function(err){
+						if (err) {next(err);}
+						else{
+							
 						i=i-(-1);
 						while(i<len){
-							fs.rename('./public/img/main/'+i,'./public/img/main/'+(i-1),function(err){if (err) console.log("SYKA");;return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
+							fs.rename('./public/img/main/'+i+'.'+encoding.encoding[i],'./public/img/main/'+(i-1)+'.'+encoding.encoding[i],function(err){if (err) console.log("SYKA");next(err)})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
 							i++;
 						}	
-						
+						encoding.splice(i,1);
 					
 					fs.writeFile('./public/img/name_albums.json',JSON.stringify(buf),function(err,data){
-						if (err) console.log(err);
-						else{ 
-
+						if (err) {console.log(err);next(err);}
+						else{
+							fs.writeFile('./public/img/encoding.json',JSON.stringify(encoding),function(err,data){
+								if (err) {console.log(err);next(err);}
+								else{ 
+							 
 							var	exec = require('child_process').exec;
 							exec('rm -rf ./public/img/'+ req.body.name, function (error, stdout, stderr)  {
   							if (error) {
     							console.log('exec error: '+error);
-    							return;
-  								}	
-						res.send('pisos')
-})}
-	});})
-	}}
+    							next(err);
+								  }
+						else	
+						{res.send('pisos')}
+})}})}
+	});}})
+	}}})}
 	});	
 });
 
@@ -678,26 +690,42 @@ app.get('/albumschange/:album',function(req, res, next){
 			});
 	
 })
+
 app.post('/albumschange/:album',function(req, res, next){
 					upload.array(req.params.album)(req,res,function(err){if (err) next(err);else return});
 					res.redirect('/albumschange/'+req.params.album)
 			
-	
-	
 })
+
 app.delete('/albumschange/:album',function(req, res, next){
-					fs.unlink('./public/img/'+req.params.album+'/'+req.body.photo_num,function(){
-						var i=req.body.photo_num-(-1);
+			fs.readFile('./public/img/encoding.json',function(err,enc){
+				if (err)
+					{next(err);}
+				else
+					{
+					encoding = JSON.parse(enc.toString("utf-8"))
+					var j=0
+					for(;j<encoding.length;j++)
+					{
+						if (encoding[j].album_name == req.params.album)
+						{break;}
+					}
+					fs.unlink('./public/img/'+req.params.album+'/'+req.body.photo_num+"."+encoding[j].encoding[req.body.photo_num],function(err){
+						if (err) {console.log(err);next(err);}
+						else
+						{var i=req.body.photo_num-(-1);
 						while(i<req.body.count){
-							fs.rename('./public/img/'+req.params.album+'/'+i,'./public/img/'+req.params.album+'/'+(i-1),function(err){if (err) next(err);return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
+							fs.rename('./public/img/'+req.params.album+'/'+i+"."+encoding[j].encoding[i],'./public/img/'+req.params.album+'/'+(i-1)+"."+encoding[j].encoding[i],function(err){if (err) next(err);return})//{WARNING}наверно можно использовать синхронный ренайм т.к. при асинхронном все равно придется ждать завершения всех ренеймов
 							i++;
 						}	
-						
-				})
-			
-	
-	
+						encoding.splice(i,1);
+						fs.writeFile('./public/img/encoding.json',JSON.stringify(encoding),function(err,data){
+							if (err) {console.log(err);next(err);}
+						})}
+				})}
+			})
 })
+
 app.get('/login',function(req, res, next){
 	if (req.session.user)
 		res.render('login', {user: req.session.user.name})
