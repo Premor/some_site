@@ -588,7 +588,8 @@ app.post('/albumschange',function(req, res, next){
 		})
 		}
 		else
-			res.send('verify');	})
+			{console.log(req.body.new_album_ru +"	"+ req.body.new_album_en);
+				res.send('verify');}	})
 })
 
 app.get('/courseschange',function(req, res, next){
