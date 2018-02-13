@@ -132,7 +132,7 @@ $(document).ready(function() {
 
 
 
-	$('.adder').on('submit', function() {
+	$('.adder').on('click', 'add_album', function() {
 		var formData = new FormData($(this).get(0));
 		var list = JSON.parse(formData.getAll('chiposa'));
 		var alBool = true;
@@ -143,13 +143,18 @@ $(document).ready(function() {
 				break;
 			}
 		}
+		var dataToSend = {
+			"new_album_ru" : formData.get('new_album_ru'),
+			"new_album_en" : formData.get('new_album_en')
+		}
+		alert(dataToSend.new_album_ru);
 		if (alBool) {
 			$.ajax({
 				url: '/albumschange',
 				type: 'POST',
 				processData: false,
 				contentType: false,
-				data: formData,
+				data: dataToSend,
 				success: function(data) {
 					if (data == 'suc') {
 						window.location.replace('/albumschange');

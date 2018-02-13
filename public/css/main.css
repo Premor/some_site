@@ -438,4 +438,24 @@ footer a {
 .rotateBtn {
   display: none !important; }
 
+/*about_us*/
+.person_name_header {
+  margin-bottom: 13px; }
+
+.person_name_header p {
+  font-family: 'Bebas Neue';
+  text-align: center;
+  font-size: 31px;
+  font-weight: 700; }
+
+.ab_us_page {
+  margin-top: 13px; }
+
+.ab_us_page .album_img {
+  margin-bottom: 13px; }
+
+.junior_position {
+  text-align: center;
+  margin-bottom: 18px; }
+
 /*# sourceMappingURL=main.css.map */
