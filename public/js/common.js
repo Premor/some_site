@@ -1,5 +1,6 @@
+"use strict";
+
 $(document).ready(function() {
-	
 	var f = 0;
 	var i = 0, buf = 0;
 	for(i=0; i<location.href.length; i++) {
@@ -15,12 +16,13 @@ $(document).ready(function() {
 			break;
 		} else if (location.href[i]=='/') f++;
 	}
+
+	if (buf.indexOf('?')!=-1) buf=buf.slice(0,buf.indexOf('?')); 	
 	buf = buf + '_selected'
 	console.log('.'+buf)
-	heightToChange=$('.' + buf).css('height');
+	var heightToChange=$('.' + buf).css('height');
 	heightToChange=parseInt(heightToChange)-1;
 	$('.' + buf).css({'backgroundColor':'#6B1453', 'font-weight':'700', 'height' : heightToChange + 'px'})
-	
 	var date = new Date();
 	var hour = date.getHours();
 	if((hour>=0)&&(hour<6)) {
@@ -131,12 +133,16 @@ $(document).ready(function() {
 	})
 
 
-
-	$('.adder').on('click', 'add_album', function() {
+	$('.adder').on('click', '.add_album', function() {
+		alert('HERRO0');
 		var formData = new FormData($(this).get(0));
-		var list = JSON.parse(formData.getAll('chiposa'));
+		console.log(formData.getAll('chiposa'));
+		alert('HERRO2');
+		var list = JSON.parse(formData.get('chiposa'));
 		var alBool = true;
+		alert('HERRO3');
 		formData.delete('chiposa');
+		alert('HERRO4');
 		for (var i=0; i < list.english.length; i++) {
 			if ((list.english[i] == formData.getAll('new_album_en'))||(list.russian[i] == formData.getAll('new_album_ru'))) {
 				alBool = false;
@@ -147,7 +153,6 @@ $(document).ready(function() {
 			"new_album_ru" : formData.get('new_album_ru'),
 			"new_album_en" : formData.get('new_album_en')
 		}
-		alert(dataToSend.new_album_ru);
 		if (alBool) {
 			$.ajax({
 				url: '/albumschange',
