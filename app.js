@@ -785,26 +785,34 @@ app.get('/', function(req, res){
 				if (err)
 					next(err);
 				else
-					if (req.session.user) 
-						if (req.session.user.id==req.sessionID)
-							res.render('index',
-								{title: 'Home',
-		 						count: ar_fil.length,
-		 						list: JSON.parse(data.toString('utf-8')),
-					 			user: req.session.user.name})
+				fs.readFile('./public/img/encoding.json',function(err,enc){
+					if (err)
+						next(err);
+					else
+						if (req.session.user) 
+							if (req.session.user.id==req.sessionID)
+								res.render('index',
+									{title: 'Home',
+		 							count: ar_fil.length,
+		 							list: JSON.parse(data.toString('utf-8')),
+									encoding: JSON.parse(enc.toString('utf-8')),
+									 user: req.session.user.name})
+							else
+								res.render('index',
+									{title: 'Home',
+									 count: ar_fil.length,
+									 encoding: JSON.parse(enc.toString('utf-8')),
+		 							list: JSON.parse(data.toString('utf-8'))
+		 						})
 						else
 							res.render('index',
 								{title: 'Home',
-		 						count: ar_fil.length,
+								 count: ar_fil.length,
+								 encoding: JSON.parse(enc.toString('utf-8')),
 		 						list: JSON.parse(data.toString('utf-8'))
 		 					})
-					else
-						res.render('index',
-							{title: 'Home',
-		 					count: ar_fil.length,
-		 					list: JSON.parse(data.toString('utf-8'))
-		 				})
-			});
+						});
+					});
 			
 	
 	});
