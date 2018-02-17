@@ -250,12 +250,12 @@ p {
 .onslide {
   position: relative;
   top: 250px;
-  left: 5%;
+  left: 45%;
   width: 50%;
   text-align: center; }
 
 .info {
-  color: #fff;
+  color: #000000;
   font-family: "Bebas Neue"; }
 
 .info.header p {
