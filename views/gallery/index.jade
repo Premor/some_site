@@ -1,18 +1,10 @@
 .content
   include ../layout.jade
+
+  include ./../top_menu.jade
     
-  include ../top_menu.jade
-  - var i = 0, j = 0, k=0
-  - var co = count
-  - while(list.english[j] != engl_name) {
-  -   j= j+1
-  - }
-  - while(encoding[0] != engl_name){
-  -   k= k+1
-  - }
-
-
-  - var i = 0
+  -   var i = 0
+  -   var co = count
   .container
     .albums.no_top
       .row
@@ -21,10 +13,10 @@
       .row
         while i < count
           form(method = "POST" action = "/gallery")
-            input(type="text" value="#{list.english[i]}.#{encoding.}" name="album_name").danone
+            input(type="text" value="#{list.english[i]}" name="album_name").danone
             .album_form.col-md-3
               .album_img
-                img(src="public/img/main/#{i}" alt="")
+                img(src="public/img/main/#{i}.#{encoding[i].main_enc}" alt="")
               .album_name
                 input(type="submit" value="#{list.russian[i]}").dibl.noDec
           - i= i+1

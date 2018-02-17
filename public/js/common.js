@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 	var f = 0;
-	var i = 0, buf = 0;
+	var i = 0, buf = '';
 	for(i=0; i<location.href.length; i++) {
 		if (f==3) {
 			console.log(i);
@@ -18,6 +18,7 @@ $(document).ready(function() {
 	}
 
 	if (buf.indexOf('?')!=-1) buf=buf.slice(0,buf.indexOf('?')); 	
+	var message = '';
 	buf = buf + '_selected'
 	console.log('.'+buf)
 	var heightToChange=$('.' + buf).css('height');
@@ -132,34 +133,24 @@ $(document).ready(function() {
 		return false;
 	})
 
-
-	$('.adder').on('click', '.add_album', function() {
-		alert('HERRO0');
+	$('.adder').on('submit', function() {
 		var formData = new FormData($(this).get(0));
-		console.log(formData.getAll('chiposa'));
-		alert('HERRO2');
-		var list = JSON.parse(formData.get('chiposa'));
+		var list = JSON.parse(formData.getAll('chiposa'));
 		var alBool = true;
-		alert('HERRO3');
 		formData.delete('chiposa');
-		alert('HERRO4');
 		for (var i=0; i < list.english.length; i++) {
 			if ((list.english[i] == formData.getAll('new_album_en'))||(list.russian[i] == formData.getAll('new_album_ru'))) {
 				alBool = false;
 				break;
 			}
 		}
-		var dataToSend = {
-			"new_album_ru" : formData.get('new_album_ru'),
-			"new_album_en" : formData.get('new_album_en')
-		}
 		if (alBool) {
 			$.ajax({
 				url: '/albumschange',
-				type: 'POST',
+		type: 'POST',
 				processData: false,
 				contentType: false,
-				data: dataToSend,
+				data: formData,
 				success: function(data) {
 					if (data == 'suc') {
 						window.location.replace('/albumschange');
@@ -171,11 +162,13 @@ $(document).ready(function() {
 		}
 		return false;
 	})
-
 	$('form').on('click','.del',function() {
 		var needImg = $(this).parents('.parTest').children('.sobka');
-		var lastEl = needImg.attr('src').slice(needImg.attr('src').length-1);
+		var path = needImg.attr('src');
+		var lastEl = path.slice(path.lastIndexOf('/')+1, path.lastIndexOf('.'));
+		alert(lastEl);
 		var albumPath = $("#ph_" + lastEl).val();
+		alert(albumPath);
 		$.ajax({
 			url: '/albumschange/'+ albumPath,
 			type: 'DELETE',

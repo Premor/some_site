@@ -69,7 +69,7 @@
             input(type="text" value="#{list.english[i]}" name="album_name").danone
             .album_form.col-md-3
               .album_img
-                img(src="public/img/main/#{i}" alt="")
+                img(src="public/img/main/#{i}.#{encoding[i].main_enc}" alt="")
               .album_name
                 input(type="submit" value="#{list.russian[i]}").dibl.noDec
           - i= i+1
