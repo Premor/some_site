@@ -971,9 +971,9 @@ function authorize(credentials, callback,req,res,next) {
 		 //console.log(req.req)
 		 //console.log(req.session)
 		 if (req.req.session.user){
-		 	res.render('shedule', {user: req.req.session.user.name,table: scheldure})}
+		 	res.res.render('shedule', {user: req.req.session.user.name,table: scheldure})}
 		 else
-			{res.render('shedule',{table:scheldure})}
+			{res.res.render('shedule',{table:scheldure})}
 	   }
 	}
 	 });
