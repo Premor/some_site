@@ -937,7 +937,7 @@ function authorize(credentials, callback,req,res,next) {
 	   auth: auth,
 	   spreadsheetId: '1H0h_AVS5naqA3SmIIIVPn5caSQSXV7_cIBjvTbL0ZBQ',
 	   range: 'Test!A:H',
-	 }, function(err, response) {
+	 }, function(err, response,req,next) {
 	   if (err) {
 			next('The API returned an error: ' + err);
 	   }
