@@ -967,11 +967,11 @@ function authorize(credentials, callback,req,res,next) {
 		   
 		 }
 		 scheldure.month=rows[0][0]
-		 console.log(req)
-		 console.log(req.req)
-		 console.log(req.session)
-		 if (req.session.user){
-		 	res.render('shedule', {user: req.session.user.name,table: scheldure})}
+		 //console.log(req)
+		 //console.log(req.req)
+		 //console.log(req.session)
+		 if (req.req.session.user){
+		 	res.render('shedule', {user: req.req.session.user.name,table: scheldure})}
 		 else
 			{res.render('shedule',{table:scheldure})}
 	   }
