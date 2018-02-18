@@ -42,6 +42,19 @@ var storage = multer.diskStorage({
   })
   }
 })
+//
+var readline = require('readline');
+var google = require('googleapis').google;
+
+var googleAuth = require('google-auth-library');
+//console.log(google)
+// If modifying these scopes, delete your previously saved credentials
+// at ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json
+var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
+    process.env.USERPROFILE) + '/.credentials/';
+var TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
+//
 
 var upload = multer({ storage: storage })
 
@@ -407,10 +420,18 @@ app.get('/price',function(req, res, next){
 })
 
 app.get('/shedule',function(req, res, next){
-	if (req.session.user)
-		res.render('shedule', {user: req.session.user.name})
-	else
-		res.render('shedule')
+			// Load client secrets from a local file.
+		fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+			if (err) {
+			next('Error loading client secret file: ' + err);
+			
+			}
+			else{
+			// Authorize a client with the loaded credentials, then call the
+			// Google Sheets API.
+			authorize(JSON.parse(content), listMajors,res,next);
+			}
+		});
 })
 
 app.get('/courses',function(req, res, next){
@@ -832,6 +853,129 @@ app.use(function(err, req, res, next){
 		{return next(err)}
 	res.render('login', {wrong: true})
 })
+
+
+/**
+ * Create an OAuth2 client with the given credentials, and then execute the
+ * given callback function.
+ *
+ * @param {Object} credentials The authorization client credentials.
+ * @param {function} callback The callback to call with the authorized client.
+ */
+function authorize(credentials, callback,req,res,next) {
+	var clientSecret = credentials.installed.client_secret;
+	var clientId = credentials.installed.client_id;
+	var redirectUrl = credentials.installed.redirect_uris[0];
+	var auth = new googleAuth();
+	var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+	fs.readFile(TOKEN_PATH, function(err, token) {
+		if (err) {
+		  getNewToken(oauth2Client, callback,req,res,next);
+		} else {
+		  oauth2Client.credentials = JSON.parse(token);
+		  callback(oauth2Client,req,res,next);
+		}
+	  });
+	}
+
+	/**
+	* Get and store new token after prompting for user authorization, and then
+	* execute the given callback with the authorized OAuth2 client.
+	*
+	* @param {google.auth.OAuth2} oauth2Client The OAuth2 client to get token for.
+	* @param {getEventsCallback} callback The callback to call with the authorized
+	*     client.
+	*/
+   function getNewToken(oauth2Client, callback,req,res,next) {
+	 var authUrl = oauth2Client.generateAuthUrl({
+	   access_type: 'offline',
+	   scope: SCOPES
+	 });
+	 console.log('Authorize this app by visiting this url: ', authUrl);
+	 var rl = readline.createInterface({
+	   input: process.stdin,
+	   output: process.stdout
+	 });
+	 rl.question('Enter the code from that page here: ', function(code) {
+	   rl.close();
+	   oauth2Client.getToken(code, function(err, token) {
+		 if (err) {
+		   console.log('Error while trying to retrieve access token', err);
+		   return;
+		 }
+		 oauth2Client.credentials = token;
+		 storeToken(token);
+		 callback(oauth2Client,req,res,next);
+	   });
+	 });
+   }
+   
+   /**
+	* Store token to disk be used in later program executions.
+	*
+	* @param {Object} token The token to store to disk.
+	*/
+   function storeToken(token) {
+	 try {
+	   fs.mkdirSync(TOKEN_DIR);
+	 } catch (err) {
+	   if (err.code != 'EEXIST') {
+		 throw err;
+	   }
+	 }
+	 fs.writeFile(TOKEN_PATH, JSON.stringify(token));
+	 console.log('Token stored to ' + TOKEN_PATH);
+   }
+   
+   /**
+	* Print the names and majors of students in a sample spreadsheet:
+	* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+	*/
+   function listMajors(auth,req,res,next) {
+	 var sheets = google.sheets('v4');
+	 sheets.spreadsheets.values.get({
+	   auth: auth,
+	   spreadsheetId: '1H0h_AVS5naqA3SmIIIVPn5caSQSXV7_cIBjvTbL0ZBQ',
+	   range: 'Test!A:H',
+	 }, function(err, response) {
+	   if (err) {
+			next('The API returned an error: ' + err);
+	   }
+	   else{
+	   var rows = response.values;
+	   
+	   if (rows.length == 0) {
+		 next('No data found.');
+	   } else {
+		 
+		 var scheldure = {month:'',monday:['','','','','',''],tuesday:['','','','','',''],wednesday:['','','','','',''],thursday:['','','','','',''],friday:['','','','','',''],saturday:['','','','','',''],sunday:['','','','','',''] }
+		 for (var i = 1,g=0; i < rows.length; i+=3,g++) {
+		   
+		   for (var j=1; j<rows[i].length;j++)
+		   {
+			 switch(j){
+			   case(1):{scheldure.monday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.monday[g].available=true}else{scheldure.monday[g].available=false};break}
+			   case(2):{scheldure.tuesday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.tuesday[g].available=true}else{scheldure.tuesday[g].available=false};break}
+			   case(3):{scheldure.wednesday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.wednesday[g].available=true}else{scheldure.wednesday[g].available=false};break}
+			   case(4):{scheldure.thursday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.thursday[g].available=true}else{scheldure.thursday[g].available=false};break}
+			   case(5):{scheldure.friday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.friday[g].available=true}else{scheldure.friday[g].available=false};break}
+			   case(6):{scheldure.saturday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.saturday[g].available=true}else{scheldure.saturday[g].available=false};break}
+			   case(7):{scheldure.sunday[g]={date:rows[i][j],courses:rows[i+1][j],available:true};if (rows[i+2][j]=='свободно') {scheldure.sunday[g].available=true}else{scheldure.sunday[g].available=false};break}
+			   default:console.log("error! Coloumn = "+i+" Row = "+j)
+			 } 
+		   }
+		   
+		 }
+		 scheldure.month=rows[0][0]
+		 if (req.session.user){
+		 	res.render('shedule', {user: req.session.user.name,table: scheldure})}
+		 else
+			{res.render('shedule',{table:scheldure})}
+	   }
+	}
+	 });
+   }
+   
 
 
 app.listen(3000)
