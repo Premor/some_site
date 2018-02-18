@@ -87,6 +87,13 @@ p {
   display: inline-block;
 }
 
+/*album_form*/
+.album_form {
+  padding-left:0 !important;
+}
+
+
+
 /*owl-carousel*/
 
 
@@ -97,6 +104,7 @@ p {
   color: #fff;
   z-index: 20;
   position: relative;
+  //top: -50px;
 }
 
 .top_menu a {
@@ -135,12 +143,12 @@ p {
 /*logo*/
 
 .logo {
-  font-family: 'Bradobrei';
+  font-family: 'bradobrei';
   font-size: 89px;
 }
 
 .logo p {
-  color: #000;
+  color: #313131;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -257,6 +265,7 @@ p {
   width: 100%;
 }*/
 
+
 .owl-dots {
   position: relative;
   bottom: 30px;
@@ -316,6 +325,18 @@ p {
 .info {
   color: #000000;
   font-family: 'Bebas Neue'
+}
+
+.second_slide {
+  position: relative;
+  top: 250px;
+  left: 5%;
+  width:50%;
+  text-align: center;
+}
+
+.second_slide .info {
+  color: #ffffff;
 }
 
 .info.header p {
@@ -419,6 +440,7 @@ body,
   min-height: 100%;
   padding-bottom: 0px;
 }
+
 footer {
   height: 128px;
   margin-top: -128px;
@@ -551,7 +573,7 @@ footer a {
 /*about_us*/
 
 .person_name_header {
-  margin-bottom: 13px;
+  margin-bottom: 4px;
 }
 
 .person_name_header p{

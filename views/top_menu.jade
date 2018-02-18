@@ -42,11 +42,11 @@ button.menu-btn.hidden-lg.hidden-md.m-btn
         //contacts-login block
         .cl_block.hidden-xs.hidden-sm
           div.telephone
-            p #{user}
+            p.username_in_tel #{user}
           if(user==null)
             p.log_reg
-              a(href="/login")Вход
-              a(href="/registration")Регистрация
+              a(href="/login") Вход
+              a(href="/registration") Регистрация
           else
             p.log_reg
               a(href="/perarea").right_menu_button Личный кабинет

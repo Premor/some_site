@@ -70,6 +70,10 @@ p {
 .itemSortable {
   display: inline-block; }
 
+/*album_form*/
+.album_form {
+  padding-left: 0 !important; }
+
 /*owl-carousel*/
 /*top_menu*/
 .top_menu {
@@ -107,11 +111,11 @@ p {
 
 /*logo*/
 .logo {
-  font-family: 'Bradobrei';
+  font-family: 'bradobrei';
   font-size: 89px; }
 
 .logo p {
-  color: #000;
+  color: #313131;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -257,6 +261,16 @@ p {
 .info {
   color: #000000;
   font-family: "Bebas Neue"; }
+
+.second_slide {
+  position: relative;
+  top: 250px;
+  left: 5%;
+  width: 50%;
+  text-align: center; }
+
+.second_slide .info {
+  color: #ffffff; }
 
 .info.header p {
   font-size: 31px; }
@@ -440,7 +454,7 @@ footer a {
 
 /*about_us*/
 .person_name_header {
-  margin-bottom: 13px; }
+  margin-bottom: 4px; }
 
 .person_name_header p {
   font-family: 'Bebas Neue';

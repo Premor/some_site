@@ -51,5 +51,11 @@
   src: local("Bebas Neue Thin"), local("BebasNeue-Thin"), url("bebasneuethin.woff2") format("woff2"), url("bebasneuethin.woff") format("woff"), url("bebasneuethin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal; }
+@font-face {
+  font-family: "bakery";
+  src: url("../fonts/bakery/bakery-regular.otf");
+  src: url("../fonts/bakery/bakery-regular.ttf"), url("../fonts/bakery/bakery-regular.otf") format("otf"), url("../fonts/bakery/bakery-regular.ttf") format("ttf");
+  font-style: normal;
+  font-weight: normal; }
 
 /*# sourceMappingURL=fonts.css.map */

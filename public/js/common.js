@@ -36,13 +36,14 @@ $(document).ready(function() {
 		message = "Добрый вечер"
 	}
 
-	name = $('.telephone').text();
-	if (name!='') {
-		$('div.telephone').html('<p>' + message + ',' + name + '!</p>');
+	name = $('.username_in_tel').text();
+	console.log((name).indexOf(' '));
+	var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'];
+	if (name[0] in alphabet) {
+		$('.username_in_tel').text(message + ', ' + name + '!');
 	} else {
-		$('div.telephone').html('<p>' + message + ',' + name + '!</p>');
+		$('.username_in_tel').text(message + '!');
 	}
-
 
 	//md5 password hash
 	$('.log_pass').on('submit', function() {
@@ -166,9 +167,7 @@ $(document).ready(function() {
 		var needImg = $(this).parents('.parTest').children('.sobka');
 		var path = needImg.attr('src');
 		var lastEl = path.slice(path.lastIndexOf('/')+1, path.lastIndexOf('.'));
-		alert(lastEl);
 		var albumPath = $("#ph_" + lastEl).val();
-		alert(albumPath);
 		$.ajax({
 			url: '/albumschange/'+ albumPath,
 			type: 'DELETE',

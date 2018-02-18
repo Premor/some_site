@@ -71,3 +71,13 @@
     font-weight: 100;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: "bakery";
+	src: url("../fonts/bakery/bakery-regular.otf");
+	src: url("../fonts/bakery/bakery-regular.ttf"),
+	url("../fonts/bakery/bakery-regular.otf") format("otf"),
+	url("../fonts/bakery/bakery-regular.ttf") format("ttf");
+	font-style: normal;
+	font-weight: normal;
+}
