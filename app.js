@@ -937,7 +937,7 @@ function authorize(credentials, callback,req,res,next) {
 	   auth: auth,
 	   spreadsheetId: '1H0h_AVS5naqA3SmIIIVPn5caSQSXV7_cIBjvTbL0ZBQ',
 	   range: 'Test!A:H',
-	 }, function(err, response,req,next) {
+	 }, function(err, response) {
 	   if (err) {
 			next('The API returned an error: ' + err);
 	   }
@@ -967,6 +967,8 @@ function authorize(credentials, callback,req,res,next) {
 		   
 		 }
 		 scheldure.month=rows[0][0]
+		 console.log(req)
+		 console.log(req.session)
 		 if (req.session.user){
 		 	res.render('shedule', {user: req.session.user.name,table: scheldure})}
 		 else
