@@ -429,7 +429,7 @@ app.get('/shedule',function(req, res, next){
 			else{
 			// Authorize a client with the loaded credentials, then call the
 			// Google Sheets API.
-			authorize(JSON.parse(content), listMajors,res,next);
+			authorize(JSON.parse(content), listMajors,req,res,next);
 			}
 		});
 })
@@ -970,10 +970,10 @@ function authorize(credentials, callback,req,res,next) {
 		 //console.log(req)
 		 //console.log(req.req)
 		 //console.log(req.session)
-		 if (req.req.session.user){
-		 	res.res.render('shedule', {user: req.req.session.user.name,table: scheldure})}
+		 if (req.session.user){
+		 	res.render('shedule', {user: req.session.user.name,table: scheldure})}
 		 else
-			{res.res.render('shedule',{table:scheldure})}
+			{res.render('shedule',{table:scheldure})}
 	   }
 	}
 	 });
