@@ -63,8 +63,8 @@
             img(src="public/img/example.png" alt="")
           .album_name
             p name#1
-        //-if(count>4)
-        //-   count=4;
+        -if(count>4)
+          -count=4;
         while i < count
           form(method = "POST" action = "/gallery")
             input(type="text" value="#{list.english[i]}" name="album_name").danone
