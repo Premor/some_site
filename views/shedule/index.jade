@@ -2,6 +2,50 @@
     include ../layout.jade
     
     include ../top_menu.jade
+        - var yearListEng = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December']
+        - var yearList = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Октябрь', 'Сентябрь', 'Декабрь']
+        - var mNum = yearList.indexOf(table.month);
+        - var prev = mNum-1; next = mNum+1;
+        - if (mNum==0) prev = 11;
+        - if (mNum==11) next = 0;
+        - var i=0, j=0;
+    .container.all_table
+        .col-md-12
+                .row
+                    table
+                        tr.months_row
+                            td.months
+                                i(class="fa fa-angle-left")
+                                | #{yearList[prev]}
+                            td.main_month #{yearList[mNum]}
+                            td.months 
+                                p #{yearList[next]}
+                                    i(class="fa fa-angle-right")
+                    table
+                        tr.week_row
+                            td.monday Понедельник
+                            td.tuesday Вторник
+                            td.wednesday Среда
+                            td.thirsday Четверг
+                            td.friday Пятница
+                            td.saturday Суббота
+                            td.sunday Воскресенье
+                        tr.days_row
+                            td 1
+                            td 2
+                            td 3
+                            td 4
+                            td 5
+                            td 6
+                            td 7
+                        tr.days_row
+                            td 1
+                            td 2
+                            td 3
+                            td 4
+                            td 5
+                            td 6
+                            td 7
 
 include ../footer.jade
 
