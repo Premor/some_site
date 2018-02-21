@@ -1,4 +1,4 @@
-.content
+.emerg_content
   include ./../includes/layout.jade
     
   include ./../includes/top_menu.jade
@@ -12,14 +12,14 @@
           .header.col-md-12
             p Курсы
         while i < count
-        .album_form
-            form
-              input(type="text" value="#{i}").danone
-              .album_name #{courses_json[i].name.russian}
-              p #{courses_json[i].briefing_desc}
-              a(href="courseschange/#{courses_json[i].name.english}") Подробнее
-              button.del_course Удалить
-          - i++
+          .album_form
+              form
+                input(type="text" value="#{i}").danone
+                .album_name #{courses_json[i].name.russian}
+                p #{courses_json[i].briefing_desc}
+                a(href="courseschange/#{courses_json[i].name.english}") Подробнее
+                button.del_course Удалить
+            - i++
         .row
           .col-md-6
           .col-md-6.addingBlock
