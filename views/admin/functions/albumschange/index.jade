@@ -32,7 +32,7 @@
                 .mainHeader Добавление альбома
                 //form(action="/albumschange", method="post")
                 form.adder
-                  input(type="text" required placeholder="Название альбома" name="new_album_ru" pattern="[А-Яа-яЁё]{2,15}").col-md-12.new_album_ru
+                  input(type="text" required placeholder="Название альбома" name="new_album_ru" pattern="[А-Яа-яЁё\\s]{2,15}").col-md-12.new_album_ru
                   input(type="text" required placeholder="Album name" name="new_album_en" pattern="[A-Za-z]{2,15}").col-md-12.new_album_en
                   input(type="text" value="#{sobaka}" name="chiposa").danone
                   input(type="file" name="main").albumCo
