@@ -30,7 +30,7 @@
                             td.friday Пятница
                             td.saturday Суббота
                             td.sunday Воскресенье
-                        while(i<6)
+                        while i < 6
                             tr.days_row
                                 td #{table.monday[i].courses}
                                 td #{table.tuesday[i].courses}
@@ -39,6 +39,7 @@
                                 td #{table.friday[i].courses}
                                 td #{table.saturday[i].courses}
                                 td #{table.sunday[i].courses}
+                            - i = i - 1
                             
 include ../footer.jade
 
