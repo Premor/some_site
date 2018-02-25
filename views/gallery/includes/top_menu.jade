@@ -8,25 +8,23 @@ nav.pushy.pushy-right
         li.pushy-link
           a(href="/login") Вход
         li.pushy-link
-          a(href="#") Регистрация
+          a(href="/registration") Регистрация
       else
         li.pushy-link
-          a(href="perarea") #{user}
+          a(href="/perarea") #{user}
         li.pushy-link
           a(href="/logout") Выйти
       li.pushy-link
-        a(href="#") О нас
+        a(href="/about_us") О нас
       li.pushy-link
-        a(href="#") Курсы
+        a(href="/courses") Курсы
       li.pushy-link
-          a(href="#") Цены
+        a(href="/shedule") Расписание
       li.pushy-link
-        a(href="#") Расписание
+        a(href="/gallery") Галерея
       li.pushy-link
-        a(href="") Галерея
-      li.pushy-link
-        a(href="") Контакты
-      
+        a(href="/contacts") Контакты
+
 button.menu-btn.hidden-lg.hidden-md.m-btn
   i(aria-hidden="true").class.fa.fa-bars
 .container
@@ -36,22 +34,21 @@ button.menu-btn.hidden-lg.hidden-md.m-btn
       .col-md-6.col-xs-4
         a(href="/")
           p
-            span W
-            | 'Studio
+            span Face
+            | Art
       .col-md-3.col-xs-4
         //contacts-login block
         .cl_block.hidden-xs.hidden-sm
-          p.telephone 
-            i(aria-hidden="true").fa.fa-mobile
-            span.sel  +7 (903) 000-00-00
-          if(user==null)      
+          div.telephone
+            p.username_in_tel #{user}
+          if(user==null)
             p.log_reg
-              a(href="/login")Вход
-              a(href="/registration")Регистрация
+              a(href="/login") Вход
+              a(href="/registration") Регистрация
           else
             p.log_reg
-              a(href="/perarea") #{user}
-              a(href="/logout") Выйти
+              a(href="/perarea").right_menu_button Личный кабинет
+              a(href="/logout").right_menu_button Выйти
   .underlogo
     .col-md-3.col-xs-4
     .col-md-6.col-xs-4
@@ -66,15 +63,13 @@ button.menu-btn.hidden-lg.hidden-md.m-btn
           nav.hd_buttons
               ul
                 a(href="/about_us")
-                  li О нас
+                  li.about_us_selected О нас
                 a(href="/courses") 
                   //wst = width sixteen
-                  li.wst Курсы
-                a(href="/price") 
-                  li Цены
+                  li.courses_selected.wst Курсы
                 a(href="/shedule") 
-                  li Расписание
+                  li.shedule_selected Расписание
                 a(href="/gallery") 
-                  li Галерея
+                  li.gallery_selected Галерея
                 a(href="/contacts") 
-                  li Контакты
+                  li.contacts_selected Контакты

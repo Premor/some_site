@@ -250,6 +250,10 @@ p {
 .small_devices .onslide {
   top: 100px; }
 
+/*
+.small_devices .owl-dots {
+  display: none;
+}*/
 .small_devices .button {
   width: 84px;
   height: 18px;
@@ -428,6 +432,9 @@ footer a {
   text-align: right;
   margin-top: 20px;
   margin-bottom: 13px; }
+
+.small_footer.contacts, .small_footer.diamant {
+  font-size: 12px !important; }
 
 /*login, registration*/
 .all_center_block {
