@@ -30,23 +30,16 @@
                             td.friday Пятница
                             td.saturday Суббота
                             td.sunday Воскресенье
-                        tr.days_row
-                            td 1
-                            td 2
-                            td 3
-                            td 4
-                            td 5
-                            td 6
-                            td 7
-                        tr.days_row
-                            td 1
-                            td 2
-                            td 3
-                            td 4
-                            td 5
-                            td 6
-                            td 7
-
+                        while(i<6)
+                            tr.days_row
+                                td #{table.monday[i].courses}
+                                td #{table.tuesday[i].courses}
+                                td #{table.wednesday[i].courses}
+                                td #{table.thursday[i].courses}
+                                td #{table.friday[i].courses}
+                                td #{table.saturday[i].courses}
+                                td #{table.sunday[i].courses}
+                            
 include ../footer.jade
 
 include ../layout_ft.jade
