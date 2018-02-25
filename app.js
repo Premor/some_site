@@ -95,7 +95,10 @@ var User = sequelize.define('Users', {
   },
   id_videos:{
   	type: Sequelize.ARRAY(Sequelize.INTEGER)
-  }
+  },
+  phone:{
+	type: Sequelize.STRING
+}
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });
@@ -778,7 +781,7 @@ app.get('/logout', function(req, res, next){
 })
 
 app.post('/registration', function(req, res, next){
-	User.count({where:{login: req.body.mbphn}}).then(function(user){
+	User.count({where:{login: req.body.email}}).then(function(user){
 		if (user){
 			res.render('registration', { used: true})
 		}
@@ -787,9 +790,10 @@ app.post('/registration', function(req, res, next){
 		//}
 		else{
 			User.create({
-				login: req.body.mbphn,
+				login: req.body.email,
 				password: req.body.pass,
-				email: req.body.email
+				email: req.body.email,
+				phone: req.body.mbphn
 			})
 			res.send('suc')
 		}
