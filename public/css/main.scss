@@ -99,6 +99,7 @@ p {
 /*owl-carousel*/
 
 
+
 /*top_menu*/
 
 .top_menu {
@@ -294,6 +295,33 @@ p {
 
 .owl-next {
   right: 0px;
+}
+
+.small_devices {
+  margin-top: 40px;
+}
+
+.small_devices .info.header p {
+  font-size: 10px;
+}
+
+.small_devices .info.text p {
+  font-size: 10px;
+}
+
+.small_devices .onslide {
+  top:100px;  
+}
+
+.small_devices .button {
+  width: 84px;
+  height: 18px;
+  font-size: 13px;
+  margin-right: 20px;
+}
+
+.fluid_no_padding {
+  padding: 0 !important;
 }
 
 .button {
