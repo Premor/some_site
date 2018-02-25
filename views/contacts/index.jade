@@ -2,11 +2,17 @@
     include ../layout.jade
     
     include ../top_menu.jade
-
-    p Адрес: Г. Москва, ул. Рязанский проспект, 22/2
-    p Телефон: +7 (964) 575 - 78 - 36
-    img(src="public/img/map.png" alt="")
-
+    
+    .container
+        .col-md-12
+            .row
+                p Адрес: Г. Москва, ул. Рязанский проспект, 22/2
+                p Телефон: +7 (964) 575 - 78 - 36
+            .row
+                .col-md-3
+                .col-md-6
+                    iframe(src="https://yandex.ru/map-widget/v1/-/CBeObYWTKD" width="560" height="400" frameborder="0")
+                .col-md-3
 include ../footer.jade
 
 include ../layout_ft.jade
