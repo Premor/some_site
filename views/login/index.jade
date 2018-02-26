@@ -2,21 +2,45 @@
   include ../layout.jade
 
   include ../top_menu.jade
-  .all_center_block
+  .all_center_block.on_reg.hidden-sm.hidden-md.hidden-lg
+    .container
+      .col-md-12
+        .row
+          if(user="undefined")
+            form.log_pass
+              p.bebas Вход
+              .login
+                .header.mid
+                  p.roboto_mobi E-mail:
+                input(type="text" name="log" placeholder="")
+              .pass
+                .header.mid
+                  p.roboto_mobi Пароль:
+                input(type="password" name="pass" placeholder="")
+              button.button.on_reg_but(type="submit") Войти!  
+          else
+            p Вы уже залогинены!
+  
+  .all_center_block.on_reg.hidden-xs
     .container
       .col-md-12
         .row
           if(user="undefined")
             form.log_pass
               .login
-                .header.mid
-                  p Логин
-                input(type="text" name="log" placeholder="name = 'log'")
+                .header.mid.col-md-12
+                  .col-md-6
+                    .roboto E-mail:
+                  .col-md-6
+                    input.disb(type="text" name="log" placeholder="name = 'log'")
               .pass
                 .header.mid
-                  p Пароль
-                input(type="password" name="pass" placeholder="name = 'pass'")
-              button(type="submit") Войти!  
+                  .col-md-6
+                    .roboto Пароль:
+                  .col-md-6
+                    input.disb(type="password" name="pass" placeholder="name = 'pass'")
+              .col-md-12
+                button.button.on_reg_but(type="submit") Войти!  
           else
             p Вы уже залогинены!
 

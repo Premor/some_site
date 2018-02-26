@@ -149,6 +149,7 @@ p {
 .logo {
   font-family: 'bradobrei';
   font-size: 89px;
+  z-index:7;
 }
 
 .logo p {
@@ -156,7 +157,7 @@ p {
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
-  z-index:3;
+  z-index:7;
 }
 
 .logo p span {
@@ -238,6 +239,8 @@ p {
   border: medium none;
   background-color: transparent;
   font-size: 26px;
+  position: relative;
+  z-index:100;
 }
 
 .cl_block p {
@@ -262,7 +265,7 @@ p {
   margin-top: 8px;
   position: relative;
   top: -115px;
-  z-index: 5;
+  z-index: 3;
 }
 /*
 .carousel img {
@@ -316,6 +319,10 @@ p {
 .small_devices .owl-dots {
   display: none;
 }*/
+
+.slide {
+  z-index:4;
+}
 
 .small_devices .button {
   width: 84px;
@@ -402,6 +409,12 @@ p {
   display: block;
 }
 
+.disb {
+  display: inline-block;
+  float: left;
+}
+
+
 .noDec {
   outline: none;
   border: none;
@@ -454,10 +467,14 @@ p {
 
 /*footer*/
 
+.content, .emerg_content {
+  margin-bottom: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
-}
+}/*
 html,
 body,
 .wrapper {
@@ -480,7 +497,7 @@ footer {
   height: 128px;
   margin-top: -128px;
 }
-
+*/
 footer {
   background-color: #000;
   color: #fff;
@@ -539,11 +556,31 @@ footer a {
   margin-bottom: 13px;
 }
 
-.small_footer.contacts, .small_footer.diamant {
+.small_footer .contacts, .small_footer .diamant {
   font-size: 12px !important;
+  text-align: center !important;
 }
 
+.small_footer .soc {
+  padding: 0;
+}
 
+.small_footer {
+}
+
+.small_footer .ro_sq {
+  height: 30px;
+  width: 30px;
+  font-size: 15px;
+}
+
+.small_footer .diamant {
+  clear:both;
+}
+
+.underline_bd {
+  border-bottom: 1px dotted white;
+}
 
 /*login, registration*/
 
@@ -552,6 +589,36 @@ footer a {
   margin-top: 10vh;
   margin-bottom: 150px;
   margin-top: 150px;
+}
+
+.all_center_block.on_reg {
+  margin-top: 15px;
+}
+
+.on_reg_but {
+  font-size: 21px;
+  margin-top: 10px;
+  margin-right: 0;  
+}
+
+.bebas {
+  font-family: 'Bebas Neue';
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.roboto {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;  
+  font-weight: 700;
+  display: inline-block;
+  float:right;
+}
+
+.roboto_mobi {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;  
+  font-weight: 700;
 }
 
 

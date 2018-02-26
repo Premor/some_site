@@ -97,18 +97,28 @@
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
   .logo {
-    font-size: 20px;
+    font-size: 27px;
+    margin-bottom: 5px;
   }
 
   .underlogo p {
-    font-size: 12px;
+    font-size: 17px;
   }
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
   .logo {
-    font-size: 12px;
+    font-size: 27px;
+    margin-bottom: 5px;
+  }
+
+  .underlogo p {
+    font-size: 15px;
+  }
+
+  .m-btn {
+    margin-right: 10px;
   }
 }
 

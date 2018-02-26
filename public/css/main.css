@@ -116,14 +116,15 @@ p {
 /*logo*/
 .logo {
   font-family: 'bradobrei';
-  font-size: 89px; }
+  font-size: 89px;
+  z-index: 7; }
 
 .logo p {
   color: #313131;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
-  z-index: 3; }
+  z-index: 7; }
 
 .logo p span {
   color: #6B1453; }
@@ -191,7 +192,9 @@ p {
   float: right;
   border: medium none;
   background-color: transparent;
-  font-size: 26px; }
+  font-size: 26px;
+  position: relative;
+  z-index: 100; }
 
 .cl_block p {
   font-family: 'Bebas Neue';
@@ -211,7 +214,7 @@ p {
   margin-top: 8px;
   position: relative;
   top: -115px;
-  z-index: 5; }
+  z-index: 3; }
 
 /*
 .carousel img {
@@ -254,6 +257,9 @@ p {
 .small_devices .owl-dots {
   display: none;
 }*/
+.slide {
+  z-index: 4; }
+
 .small_devices .button {
   width: 84px;
   height: 18px;
@@ -323,6 +329,10 @@ p {
 .dibl {
   display: block; }
 
+.disb {
+  display: inline-block;
+  float: left; }
+
 .noDec {
   outline: none;
   border: none;
@@ -364,29 +374,37 @@ p {
   top: 0px; }
 
 /*footer*/
+.content, .emerg_content {
+  margin-bottom: 20px; }
+
 * {
   margin: 0;
   padding: 0; }
 
+ /*
 html,
 body,
 .wrapper {
-  height: 100%; }
+  height: 100%;
+}
 
 .emerg_content {
   box-sizing: border-box;
   min-height: 100%;
-  padding-bottom: 150px; }
+  padding-bottom: 150px;
+}
 
 .content {
   box-sizing: border-box;
   min-height: 100%;
-  padding-bottom: 0px; }
+  padding-bottom: 0px;
+}
 
 footer {
   height: 128px;
-  margin-top: -128px; }
-
+  margin-top: -128px;
+}
+*/
 footer {
   background-color: #000;
   color: #fff; }
@@ -433,8 +451,23 @@ footer a {
   margin-top: 20px;
   margin-bottom: 13px; }
 
-.small_footer.contacts, .small_footer.diamant {
-  font-size: 12px !important; }
+.small_footer .contacts, .small_footer .diamant {
+  font-size: 12px !important;
+  text-align: center !important; }
+
+.small_footer .soc {
+  padding: 0; }
+
+.small_footer .ro_sq {
+  height: 30px;
+  width: 30px;
+  font-size: 15px; }
+
+.small_footer .diamant {
+  clear: both; }
+
+.underline_bd {
+  border-bottom: 1px dotted white; }
 
 /*login, registration*/
 .all_center_block {
@@ -442,6 +475,31 @@ footer a {
   margin-top: 10vh;
   margin-bottom: 150px;
   margin-top: 150px; }
+
+.all_center_block.on_reg {
+  margin-top: 15px; }
+
+.on_reg_but {
+  font-size: 21px;
+  margin-top: 10px;
+  margin-right: 0; }
+
+.bebas {
+  font-family: 'Bebas Neue';
+  font-size: 31px;
+  font-weight: 700; }
+
+.roboto {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;
+  font-weight: 700;
+  display: inline-block;
+  float: right; }
+
+.roboto_mobi {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;
+  font-weight: 700; }
 
 /*admin*/
 /*photochange*/

@@ -25,20 +25,20 @@ nav.pushy.pushy-right
       li.pushy-link
         a(href="/contacts") Контакты
 
-button.menu-btn.hidden-lg.hidden-md.m-btn
+button.menu-btn.hidden-lg.hidden-md.hidden-sm.m-btn
   i(aria-hidden="true").class.fa.fa-bars
 .container
   .logo
     .row
-      .col-md-3.col-xs-4
-      .col-md-6.col-xs-4
+      .col-md-3.col-xs-3
+      .col-md-6.col-xs-6
         a(href="/")
           p
             span Face
             | Art
-      .col-md-3.col-xs-4
+      .col-md-3.col-xs-3
         //contacts-login block
-        .cl_block.hidden-xs.hidden-sm
+        .cl_block.hidden-xs
           div.telephone
             p.username_in_tel #{user}
           if(user==null)
@@ -56,7 +56,7 @@ button.menu-btn.hidden-lg.hidden-md.m-btn
         p Школа стилистов
     .col-md-4.col-xs-4
 
-.container-fluid.top_menu.hidden-xs.hidden-sm
+.container-fluid.top_menu.hidden-xs
   .container
     .row
       .col-md-12
