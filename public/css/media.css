@@ -10,7 +10,7 @@
     top: -110px; }
 
   .album_form img {
-    width: 95%; } }
+    width: 100%; } }
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
   .logo {
@@ -31,10 +31,10 @@
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
   .logo {
-    font-size: 30px; }
+    font-size: 7  0px; }
 
   .underlogo p {
-    font-size: 16px; }
+    font-size: 25px; }
 
   .owl-next {
     top: -60px; }
@@ -75,8 +75,42 @@
     font-size: 27px;
     margin-bottom: 5px; }
 
+  .owl-next {
+    top: -20px;
+    right: -10px;
+    font-size: 10px;
+    display: none !important; }
+
+  .owl-prev {
+    top: -20px;
+    left: -10px;
+    display: none !important; }
+
   .underlogo p {
-    font-size: 17px; } }
+    font-size: 17px; }
+
+  .carousel {
+    margin-top: -45px; }
+
+  .container-fluid, .col-md-12, .col-md-4, .col-md-6, .album_form, .row {
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
+
+  .container {
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
+
+  .small_footer {
+    margin-top: -150px; }
+
+  .albums {
+    margin-right: 10px;
+    margin-left: 10px; }
+
+  .album_name {
+    margin-bottom: 15px; } }
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {
   .logo {
@@ -87,7 +121,30 @@
     font-size: 15px; }
 
   .m-btn {
-    margin-right: 10px; } }
+    margin-right: 17px; }
+
+  .carousel {
+    margin-top: -40px; }
+
+  .container-fluid, .col-md-12, .col-md-4, .col-md-6, .album_form, .row {
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
+
+  .container {
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
+
+  .small_footer {
+    margin-top: -150px; }
+
+  .albums {
+    margin-right: 10px;
+    margin-left: 10px; }
+
+  .album_name {
+    margin-bottom: 15px; } }
 /*==========  Mobile First Method  ==========*/
 /* Custom, iPhone Retina */
 /* Extra Small Devices, Phones */

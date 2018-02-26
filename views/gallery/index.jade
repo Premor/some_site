@@ -5,11 +5,11 @@
     
   -   var i = 0
   -   var co = count
-  .container
+  .container.hidden-xs.hidden-sm
     .albums.no_top
       .row
         .header.col-md-12
-          p Альбомы
+          p Альбомы 
       .row
         while i < count
           form(method = "POST" action = "/gallery")
@@ -21,6 +21,24 @@
                 .album_name
                   p.tal #{list.russian[i]}
           - i= i+1
+  - i = 0
+  .container
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p Альбомы
+      .row
+        while i < count
+          form(method = "POST" action = "/gallery").col-xs-6
+            input(type="text" value="#{list.english[i]}" name="album_name").danone
+            .album_form.col-md-3
+              button(type="submit" value="#{list.russian[i]}").dibl.noDec
+                .album_img
+                  img(src="public/img/main/#{i}.#{encoding[i].main_enc}" alt="")
+                .album_name
+                  p.tal #{list.russian[i]}
+          - i= i+1
+        
         
 include ./../footer.jade
 

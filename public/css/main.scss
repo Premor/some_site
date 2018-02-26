@@ -95,6 +95,22 @@ p {
   display: inline-block !important;*/
 }
 
+.album_form_mobi .album_form:nth-child(1) {
+  padding-left: 0px !important;
+}
+
+.ab_us_sm_footer {
+  margin-top: 150 !important;
+}
+
+.contacts_sm_footer {
+  margin-top: 170 !important;
+}
+
+.map {
+  display: inline-block;
+  text-align: center;
+}
 
 /*owl-carousel*/
 
@@ -153,7 +169,8 @@ p {
 }
 
 .logo p {
-  color: #313131;
+  //color: #313131;
+  color: black;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -225,7 +242,7 @@ p {
 
 .m-btn {
   margin-top: 10px;
-  margin-right: 60px;
+  margin-right: 20px;
   position: relative;
   z-index: 20;
 }
@@ -304,17 +321,37 @@ p {
   margin-top: 40px;
 }
 
+.small_devices .info {
+  top: 60px;
+  position: relative;
+}
+
 .small_devices .info.header p {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .small_devices .info.text p {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .small_devices .onslide {
   top:100px;  
 }
+
+.small_devices a.block_center {
+  top: 60px;
+  position: relative;
+}
+
+.mobi_first a.block_center {
+  left: 20px;
+
+}
+
+.mobi_first .info {
+  left: 20px;
+}
+
 /*
 .small_devices .owl-dots {
   display: none;
@@ -474,7 +511,9 @@ p {
 * {
   margin: 0;
   padding: 0;
-}/*
+}
+
+/*
 html,
 body,
 .wrapper {
