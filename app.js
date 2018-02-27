@@ -440,8 +440,8 @@ app.get('/shedule',function(req, res, next){
 })
 
 app.get('/courses',function(req, res, next){
-	//fs.readFile('./public/img/courses.json',function(err,data){
-	FR.readJSON(__dirname+'/public/img/courses.json',function(err,data){
+	fs.readFile('./public/img/courses.json',function(err,data){
+	//FR.readJSON(__dirname+'/public/img/courses.json',function(err,data){
 				if (err)
 					next(err);
 				else
@@ -460,7 +460,7 @@ app.post('/courses',function(req, res, next){
 })
 
 app.get('/courses/:selected',function(req, res, next){
-	FR.readJSON(__dirname+'/public/img/courses.json',function(err,data){
+	fs.readFile('./public/img/courses.json',function(err,data){
 				if (err)
 					next(err);
 				else
