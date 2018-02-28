@@ -434,10 +434,26 @@ app.get('/shedule',function(req, res, next){
 			else{
 			// Authorize a client with the loaded credentials, then call the
 			// Google Sheets API.
-			authorize(JSON.parse(content), listMajors,req,res,next);
+			authorize(JSON.parse(content), listMajors,req,res,next,-1);
 			}
 		});
 })
+
+
+app.post('/shedule', function(req,res,next){
+	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+		if (err) {
+		next('Error loading client secret file: ' + err);
+		
+		}
+		else{
+		// Authorize a client with the loaded credentials, then call the
+		// Google Sheets API.
+		authorize(JSON.parse(content), listMajors,req,res,next,req.body.month);
+		}
+	});
+})
+
 
 app.get('/courses',function(req, res, next){
 	fs.readFile('./public/img/courses.json',function(err,data){
@@ -869,7 +885,7 @@ app.use(function(err, req, res, next){
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
-function authorize(credentials, callback,req,res,next) {
+function authorize(credentials, callback,req,res,next,month) {
 	var clientSecret = credentials.installed.client_secret;
 	var clientId = credentials.installed.client_id;
 	var redirectUrl = credentials.installed.redirect_uris[0];
@@ -877,10 +893,10 @@ function authorize(credentials, callback,req,res,next) {
 	var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 	fs.readFile(TOKEN_PATH, function(err, token) {
 		if (err) {
-		  getNewToken(oauth2Client, callback,req,res,next);
+		  getNewToken(oauth2Client, callback,req,res,next,month);
 		} else {
 		  oauth2Client.credentials = JSON.parse(token);
-		  callback(oauth2Client,req,res,next);
+		  callback(oauth2Client,req,res,next,month);
 		}
 	  });
 	}
@@ -938,11 +954,16 @@ function authorize(credentials, callback,req,res,next) {
 	* Print the names and majors of students in a sample spreadsheet:
 	* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
 	*/
-   function listMajors(auth,req,res,next) {
+   function listMajors(auth,req,res,next,Date_month) {
 	 var sheets = google.sheets('v4');
-	 var Dt=new Date();
-  	 var month= '';
-  	 switch(Dt.getMonth()){
+	 var Dt_month = -1;
+	 if (Date_month==(-1))
+	 	{var Dt=new Date();
+		   var month= '';
+		   Dt_month= Dt.getMonth();}
+	 else
+	 { Dt_month = Date_month }
+  	 switch(Dt_month){
   	   case(0):{month = 'January' ;break;}
   	   case(1):{month = 'February'; break;}
   	   case(2):{month = 'March';break;}
