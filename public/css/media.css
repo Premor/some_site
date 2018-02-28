@@ -46,7 +46,26 @@
     font-size: 25px; }
 
   .albums .header p {
-    font-size: 21px; } }
+    font-size: 21px; }
+
+  p.cont_info {
+    font-weight: 700;
+    text-align: center; }
+
+  .marra {
+    text-align: center; }
+
+  .howto {
+    text-align: center; }
+
+  .marra {
+    text-align: center; }
+
+  .malla {
+    text-align: center; }
+
+  .cont_cont {
+    margin-bottom: 10px; } }
 /*For Carousel*/
                 /*
 @media only screen and (max-width : ???px) {
@@ -110,7 +129,26 @@
     margin-left: 10px; }
 
   .album_name {
-    margin-bottom: 15px; } }
+    margin-bottom: 15px; }
+
+  p.cont_info {
+    font-weight: 700;
+    text-align: center; }
+
+  .marra {
+    text-align: center; }
+
+  .howto {
+    text-align: center; }
+
+  .marra {
+    text-align: center; }
+
+  .malla {
+    text-align: center; }
+
+  .cont_cont {
+    margin-bottom: 10px; } }
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {
   .logo {
@@ -144,7 +182,26 @@
     margin-left: 10px; }
 
   .album_name {
-    margin-bottom: 15px; } }
+    margin-bottom: 15px; }
+
+  p.cont_info {
+    font-weight: 700;
+    text-align: center; }
+
+  .marra {
+    text-align: center; }
+
+  .howto {
+    text-align: center; }
+
+  .marra {
+    text-align: center; }
+
+  .malla {
+    text-align: center; }
+
+  .cont_cont {
+    margin-bottom: 10px; } }
 /*==========  Mobile First Method  ==========*/
 /* Custom, iPhone Retina */
 /* Extra Small Devices, Phones */

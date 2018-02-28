@@ -100,9 +100,17 @@ p {
   font-weight: bold;
   text-align: center !important; }
 
+.courses_header p {
+  font-family: 'Roboto Condensed';
+  text-transform: uppercase;
+  font-weight: 700; }
+
 p.cont_info {
   font-weight: 700;
   text-align: right; }
+
+.hidden {
+  display: none; }
 
 .marra {
   text-align: right; }
@@ -110,8 +118,32 @@ p.cont_info {
 .howto {
   text-align: center; }
 
+.album_form_mobi .album_img img {
+  width: 540px;
+  height: 540px; }
+
 .mt13 {
   margin-top: 13px; }
+
+li.header_for_program {
+  font-family: 'Roboto Condensed';
+  font-weight: 700;
+  list-style-type: none; }
+
+li.text_for_program {
+  font-family: 'Roboto Condensed';
+  font-weight: 300;
+  list-style-type: none; }
+
+.price_courses {
+  font-weight: 700; }
+
+.date_from_gt {
+  position: relative;
+  font-weight: 700; }
+
+table td {
+  padding: 0; }
 
 /*owl-carousel*/
 /*top_menu*/
@@ -636,7 +668,8 @@ td {
   text-align: center;
   width: 25%;
   font-size: 22px;
-  color: #a5a5a5; }
+  color: #a5a5a5;
+  cursor: pointer; }
 
 .months i {
   font-size: 25px;

@@ -14,16 +14,16 @@
                 .row
                     table
                         tr.months_row
-                            td.months
+                            td.months.prev_month(data="#{prev}")
                                 i(class="fa fa-angle-left")
                                 | #{yearList[prev]}
                             td.main_month #{yearList[mNum]}
-                            td.months 
+                            td.months.next_month(data="#{next}")
                                 p #{yearList[next]}
                                     i(class="fa fa-angle-right")
-                    table
+                    table(cellpadding="0px")
                         tr.week_row
-                            td.monday Понедельник
+                            td.monday Понедельник 
                             td.tuesday Вторник
                             td.wednesday Среда
                             td.thirsday Четверг
@@ -32,13 +32,41 @@
                             td.sunday Воскресенье
                         while i < 6
                             tr.days_row
-                                td #{table.monday[i].courses}
-                                td #{table.tuesday[i].courses}
-                                td #{table.wednesday[i].courses}
-                                td #{table.thursday[i].courses}
-                                td #{table.friday[i].courses}
-                                td #{table.saturday[i].courses}
-                                td #{table.sunday[i].courses}
+                                td 
+                                    if table.monday[i].date!="пусто"
+                                        .date_from_gt #{table.monday[i].date}
+                                        if table.monday[i].courses!="пусто"
+                                            | #{table.monday[i].courses}
+                                td
+                                    if table.tuesday[i].date!="пусто"
+                                        .date_from_gt #{table.tuesday[i].date}
+                                        if table.tuesday[i].courses!="пусто"
+                                            p #{table.tuesday[i].courses}
+                                td 
+                                    if table.wednesday[i].date!="пусто"
+                                        .date_from_gt #{table.wednesday[i].date}
+                                        if table.wednesday[i].courses!="пусто"
+                                            p #{table.wednesday[i].courses}
+                                td 
+                                    if table.thursday[i].date!="пусто"
+                                        .date_from_gt #{table.thursday[i].date}
+                                        if table.thursday[i].courses!="пусто"
+                                            p #{table.thursday[i].courses}
+                                td
+                                    if table.friday[i].date!="пусто"
+                                        .date_from_gt #{table.friday[i].date}
+                                        if table.friday[i].courses!="пусто"
+                                            p #{table.friday[i].courses}
+                                td
+                                    if table.saturday[i].date!="пусто"
+                                        .date_from_gt #{table.saturday[i].date}
+                                        if table.saturday[i].courses!="пусто"
+                                            p #{table.saturday[i].courses}
+                                td
+                                    if table.sunday[i].date!="пусто"
+                                        .date_from_gt #{table.sunday[i].date}
+                                        if table.sunday[i].date!="пусто"
+                                            p #{table.sunday[i].courses}
                             - i = i + 1
                             
 include ../footer.jade

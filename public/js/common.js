@@ -17,6 +17,16 @@ $(document).ready(function() {
 		} else if (location.href[i]=='/') f++;
 	}
 
+
+	$('.click_for_swipe').on('click',function() {
+		var ourId = $(this).parents('.courses_header').children('.hidden').attr('id');
+		$('#' + ourId).attr( "style", "display: block !important;" )
+		alert($('#' + ourId).css("display"))
+		$('.hidden').attr( "style", "display: block !important;" )
+
+		alert($('.hidden').css("display"))
+	})
+
 	if (buf.indexOf('?')!=-1) buf=buf.slice(0,buf.indexOf('?')); 	
 	var message = '';
 	buf = buf + '_selected'
@@ -84,6 +94,25 @@ $(document).ready(function() {
 		})
 		return false;
 	})*/
+
+
+	$('.prev_month').on('click',function(){
+		var month = $(this).attr('data');
+		$.ajax({
+			url: '/shedule'+month,
+			type: 'get',
+			success: window.location.replace('/shedule'+month)
+		})
+	})
+
+	$('.next_month').on('click',function(){
+		var month = $(this).attr('data');
+		$.ajax({
+			url: '/shedule'+month,
+			type: 'get',
+			success: window.location.replace('/shedule'+ month)
+		})
+	})
 
 	$('.albumschange_form').on('click','.delbut',function() {
 		var engName = $(this).parents('.albumschange_form').children('.danone').val();

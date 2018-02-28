@@ -13,15 +13,23 @@
 			.albums.no_top
 				.row
 					.header.col-md-12
-						p #{courses_json[num].name.russian} 
+						p Курс "#{courses_json[num].name.russian}"
 					.col-md-12
 						ul
+							.course_desc
+								p #{courses_json[num].briefing_desc}
+								p.price_courses Цена курса: #{courses_json[num].price} руб.
+							.courses_header
+								br
+								p Программа курса
+								br
 							while i < courses_json[num].program.length
-								li День #{i+1}:
+								li.header_for_program День #{i+1}:
 									ul
 										while j < courses_json[num].program[i].length
-											li #{courses_json[num].program[i][j]}
+											li.text_for_program #{courses_json[num].program[i][j]}
 											- j++ 
+										br
 								- i++
 								- j=0
 
