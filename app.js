@@ -440,7 +440,39 @@ app.get('/shedule',function(req, res, next){
 })
 
 
-app.post('/shedule', function(req,res,next){
+app.get('shedule/:month', function(req,res,next){
+	if (parseInt(req.params.month)>11 && parseInt(req.params.month)<0)
+	{
+		fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+			if (err) {
+			next('Error loading client secret file: ' + err);
+			
+			}
+			else{
+			// Authorize a client with the loaded credentials, then call the
+			// Google Sheets API.
+			authorize(JSON.parse(content), listMajors,req,res,next,-1);
+			}
+		});
+	}
+	else
+	{
+		fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+			if (err) {
+			next('Error loading client secret file: ' + err);
+			
+			}
+			else{
+			// Authorize a client with the loaded credentials, then call the
+			// Google Sheets API.
+			authorize(JSON.parse(content), listMajors,req,res,next,parseInt(req.params.month));
+			}
+		});
+	}
+})
+
+//app.post('/shedule', function(req,res,next){
+	/*
 	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 		if (err) {
 		next('Error loading client secret file: ' + err);
@@ -452,7 +484,8 @@ app.post('/shedule', function(req,res,next){
 		authorize(JSON.parse(content), listMajors,req,res,next,req.body.month);
 		}
 	});
-})
+	*/
+//})
 
 
 app.get('/courses',function(req, res, next){
@@ -957,9 +990,10 @@ function authorize(credentials, callback,req,res,next,month) {
    function listMajors(auth,req,res,next,Date_month) {
 	 var sheets = google.sheets('v4');
 	 var Dt_month = -1;
+	 var month= '';
 	 if (Date_month==(-1))
 	 	{var Dt=new Date();
-		   var month= '';
+		   
 		   Dt_month= Dt.getMonth();}
 	 else
 	 { Dt_month = Date_month }
