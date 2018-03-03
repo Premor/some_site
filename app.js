@@ -440,7 +440,7 @@ app.get('/shedule',function(req, res, next){
 })
 
 
-app.get('/shedule/:month', function(req,res,next){
+app.get('/shedule:month', function(req,res,next){
 	if (parseInt(req.params.month)>11 && parseInt(req.params.month)<0)
 	{
 		fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -508,7 +508,7 @@ app.post('/courses',function(req, res, next){
 	res.redirect('/courses/'+req.body.course_name)
 })
 
-app.get('/courses:selected',function(req, res, next){
+app.get('/courses/:selected',function(req, res, next){
 	fs.readFile('./public/img/courses.json',function(err,data){
 				if (err)
 					next(err);
