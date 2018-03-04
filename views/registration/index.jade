@@ -12,21 +12,22 @@
               p.bebas Регистрация
                 .registrn
                   .email
-                    .header.mid
+                    .header.mid.col-xs-12.col-md-12
                       p.roboto_mobi Ваш e-mail адрес:
                       input(type="text" name="email" placeholder="example@mail.com")
                   //Мобильный телефон (mbphn)
-                  .reg.mbphn 
-                    .header.mid
+                  .reg.mbphne
+                    .header.mid.col-xs-12.col-md-12
                       p.roboto_mobi Ваш телефон:
-                      input(type="text" name="mbphn" placeholder="+7(999)999-99-99")
+                      .middle
+                        input(type="text" name="mbphn" placeholder="+7(999)999-99-99")
                       //Допилю потом форму номера, в которую можно вводить только определенные цифры.
                   .reg.pass
-                    .header.mid
+                    .header.mid.col-xs-12.col-md-12
                       p.roboto_mobi Пароль:
                     input(type="password" name="pass" placeholder="")
                   .reg.ver.pass
-                    .header.mid
+                    .header.mid.col-xs-12.col-md-12
                       p.roboto_mobi Повторите пароль:
                     input(type="password" name="ver_pass" placeholder="")
                     //Сравнение паролей добавлю позже.
@@ -48,14 +49,12 @@
                         .roboto Ваш e-mail адрес:
                       .col-md-6
                         input.disb(type="text" name="email" placeholder="example@mail.com")
-                  //Мобильный телефон (mbphn)
-                  .reg.mbphn 
+                  .reg.mbphne
                     .header.mid.col-md-12
                       .col-md-6
                         .roboto Ваш телефон:
                       .col-md-6
                         input.disb(type="text" name="mbphn" placeholder="+7 (999) 999 - 99 - 99")
-                      //Допилю потом форму номера, в которую можно вводить только определенные цифры.
                   .reg.pass
                     .header.mid.col-md-12
                       .col-md-6
@@ -68,7 +67,6 @@
                         .roboto Повторите пароль:
                       .col-md-6
                         input.disb(type="password" name="ver_pass" placeholder="")
-                    //Сравнение паролей добавлю позже.
                   button(type="submit").button.on_reg_but Готово!  
           else
             p Вы уже зарегистрированы!  

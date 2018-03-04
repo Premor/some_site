@@ -438,7 +438,9 @@ table td {
 
 .disb {
   display: inline-block;
-  float: left; }
+  float: left;
+  width: 240px;
+  height: 32px; }
 
 .noDec {
   outline: none;
@@ -652,6 +654,10 @@ footer a {
   display: table-cell;
 }
 */
+.middle {
+  text-align: center;
+  display: inline-block; }
+
 .all_table {
   margin-bottom: 50px; }
 

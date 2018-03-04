@@ -548,6 +548,8 @@ table td {
 .disb {
   display: inline-block;
   float: left;
+  width: 240px;
+  height: 32px;
 }
 
 
@@ -819,6 +821,11 @@ footer a {
   display: table-cell;
 }
 */
+
+.middle {
+  text-align: center;
+  display: inline-block;
+}
 
 .all_table {
   margin-bottom: 50px;
