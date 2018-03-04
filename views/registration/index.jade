@@ -40,7 +40,7 @@
       .col-md-12
         .row
           if (user="undefined")
-            form(action="/registration" method="post").reg_pass
+            form(action="/registration" method="post").reg_pass_mobi
               p.bebas Регистрация
                 .registrn
                   .email
@@ -48,25 +48,25 @@
                       .col-md-6
                         .roboto Ваш e-mail адрес:
                       .col-md-6
-                        input.disb(type="text" name="email" placeholder="example@mail.com")
+                        input.disb(type="text" name="emailmobi" placeholder="example@mail.com")
                   .reg.mbphne
                     .header.mid.col-md-12
                       .col-md-6
                         .roboto Ваш телефон:
                       .col-md-6
-                        input.disb(type="text" name="mbphn" placeholder="+7 (999) 999 - 99 - 99")
+                        input.disb(type="text" name="mbphnmobi" placeholder="+7 (999) 999 - 99 - 99")
                   .reg.pass
                     .header.mid.col-md-12
                       .col-md-6
                         .roboto Введите пароль:
                       .col-md-6
-                        input.disb(type="password" name="pass" placeholder="")
+                        input.disb(type="password" name="passmobi" placeholder="")
                   .reg.ver.pass
                     .header.mid.col-md-12
                       .col-md-6
                         .roboto Повторите пароль:
                       .col-md-6
-                        input.disb(type="password" name="ver_pass" placeholder="")
+                        input.disb(type="password" name="ver_passmobi" placeholder="")
                   button(type="submit").button.on_reg_but Готово!  
           else
             p Вы уже зарегистрированы!  

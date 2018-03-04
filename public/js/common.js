@@ -180,10 +180,27 @@ $(document).ready(function() {
 	$('.reg_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
+		alert($('input[name$="pass"]').val());
 		$.ajax({
 			url: '/registration',
 			type: 'POST',
 			data: {'pass': md5_hash_pass, 'mbphn': $('input[name$="mbphn"]').val(), 'email' : $('input[name$="email"]').val()},
+			success: function(data) {
+					if (data == 'suc') {
+						window.location.replace('/login');
+					}
+				}
+		})
+		return false;
+	})
+
+	$('.reg_pass_mobi').on('submit', function() {
+		var pass = $("input[name$='passmobi']").val();
+		var md5_hash_pass = $.md5(pass, null, false);
+		$.ajax({
+			url: '/registration',
+			type: 'POST',
+			data: {'pass': md5_hash_pass, 'mbphn': $('input[name$="mbphnmobi"]').val(), 'email' : $('input[name$="emailmobi"]').val()},
 			success: function(data) {
 					if (data == 'suc') {
 						window.location.replace('/login');
