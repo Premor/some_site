@@ -30,10 +30,12 @@
                     while i < courses_json[num].program.length
                       li.header_for_program День #{i+1}:
                         ul
-                            li.text_for_program #{courses_json[num].program[i]}
+                          while j<courses_json[num].program[i].length
+                            li.text_for_program #{courses_json[num].program[i][j]}
                             - j++ 
                         br
                       - i++
+                      - j = 0
                     - i = 0
             - num=num+1     
           
