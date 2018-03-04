@@ -17,14 +17,23 @@ $(document).ready(function() {
 		} else if (location.href[i]=='/') f++;
 	}
 
-
+	
 	$('.click_for_swipe').on('click',function() {
-		var ourId = $(this).parents('.courses_header').children('.hidden').attr('id');
+		var ourId = $(this).parents('.courses_header').children('.hidden_from_eyes').attr('id');
 		$('#' + ourId).attr( "style", "display: block !important;" )
-		alert($('#' + ourId).css("display"))
-		$('.hidden').attr( "style", "display: block !important;" )
-
-		alert($('.hidden').css("display"))
+		var arrowDown = $(this).children('.fa-caret-down');
+		var arrowUp =$(this).children('.fa-caret-up')
+		if($(this).attr('clicked')=='false') {
+			$('#' + ourId).attr( "style", "display: block !important;" )
+			$(this).attr("clicked",true);
+			arrowUp.attr( "style", "display: inline-block !important;" );
+			arrowDown.attr( "style", "display: none !important;" )
+		} else {
+			$('#' + ourId).attr( "style", "display: none !important;" )
+			arrowUp.attr( "style", "display: none !important;" );
+			arrowDown.attr( "style", "display: inline-block !important;" )
+			$(this).attr("clicked",false);
+		}
 	})
 
 	if (buf.indexOf('?')!=-1) buf=buf.slice(0,buf.indexOf('?')); 	
@@ -59,10 +68,31 @@ $(document).ready(function() {
 	$('.log_pass').on('submit', function() {
 		var pass = $("input[name$='pass']").val();
 		var md5_hash_pass = $.md5(pass, null, false);
+		console.log(pass);
 		$.ajax({
 			url: '/login',
 			type: 'POST',
 			data: {'log' : $('input[name$="log"]').val(), 'pass': md5_hash_pass},
+			success: function(data) {
+				if (data == 'suc adm true') {
+					window.location.replace('/admin');
+				} else
+					if (data == 'suc adm false') {
+						window.location.replace('/')
+					}
+			}
+		})
+		return false;
+	})
+
+	$('.log_pass_mobi').on('submit', function() {
+		var pass = $("input[name$='pass_mobi']").val();
+		var md5_hash_pass = $.md5(pass, null, false);
+		console.log(pass);
+		$.ajax({
+			url: '/login',
+			type: 'POST',
+			data: {'log' : $('input[name$="log_mobi"]').val(), 'pass': md5_hash_pass},
 			success: function(data) {
 				if (data == 'suc adm true') {
 					window.location.replace('/admin');

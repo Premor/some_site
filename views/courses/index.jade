@@ -18,20 +18,23 @@
                   p #{courses_json[num].briefing_desc}
                   p.price_courses Цена курса: #{courses_json[num].price} руб.
                 .courses_header
+                  .click_for_swipe(id="#{num}" clicked = "false")
+                    i.fa.fa-caret-down
+                    i.fa.fa-caret-up.hidden_from_eyes
+                    | &nbsp; &nbsp;
+                    span.dotted Программа курса 
                   br
-                  p(class="click_for_swipe" id="#{num}") Программа курса
                   br
-                  div(id="cont_courses_#{num}")
+                  div(id="cont_courses_#{num}").hidden_from_eyes
                     //.hidden
                     while i < courses_json[num].program.length
                       li.header_for_program День #{i+1}:
                         ul
-                          while j < courses_json[num].program[i].length
-                            li.text_for_program #{courses_json[num].program[i][j]}
+                            li.text_for_program #{courses_json[num].program[i]}
                             - j++ 
                         br
                       - i++
-                      - j=0
+                    - i = 0
             - num=num+1     
           
   include ../footer.jade

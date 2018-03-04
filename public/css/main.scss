@@ -31,6 +31,8 @@ body textarea:required:valid {
 body, html {
   width: 100%;
   height: 100%;
+  min-height: 100%;
+  position: relative; 
 }
 
 
@@ -136,7 +138,7 @@ p.cont_info {
   text-align: right;
 }
 
-.hidden {
+.hidden_from_eyes {
   display: none;
 }
 
@@ -146,6 +148,22 @@ p.cont_info {
 
 .howto {
   text-align: center;
+}
+
+.click_for_swipe {
+  font-family: 'Bebas Neue';
+  display: inline-block;
+  font-size: 27px;
+  margin-top: 10px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.dotted {
+  border-bottom: 1px dotted #000;
 }
 
 .album_form_mobi .album_img img {
@@ -178,8 +196,19 @@ li.text_for_program {
   font-weight: 700;
 }
 
+.vat {
+  vertical-align: top;
+}
+
 table td {
   padding:0;
+}
+
+.navbar-fixed-bottom {
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
 /*owl-carousel*/
@@ -575,7 +604,6 @@ table td {
 /*footer*/
 
 .content, .emerg_content {
-  margin-bottom: 20px;
 }
 
 * {
@@ -614,6 +642,9 @@ footer {
 
 }
 
+.on_main_footer {
+}
+
 footer a {
   color: #fff;
 }
@@ -649,7 +680,7 @@ footer a {
   color: #fff;
 }
 
-.ro_sq:nth-child(1), .ro_sq:nth-child(2) {
+.ro_sq:nth-child(1), .ro_sq:nth-child(2), .ro_sq:nth-child(3) {
   margin-right: 20px;
 }
 
@@ -675,6 +706,8 @@ footer a {
 }
 
 .small_footer {
+  position: relative;
+  bottom: 0;
 }
 
 .small_footer .ro_sq {
@@ -685,6 +718,17 @@ footer a {
 
 .small_footer .diamant {
   clear:both;
+}
+
+.mbphn {
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 25px;
+  text-align: left !important;
+}
+
+.cl_block_left {
+  margin-top: 21px;
 }
 
 .underline_bd {
@@ -702,6 +746,7 @@ footer a {
 
 .all_center_block.on_reg {
   margin-top: 15px;
+  margin-bottom: 432px;
 }
 
 .on_reg_but {
@@ -774,6 +819,10 @@ footer a {
   display: table-cell;
 }
 */
+
+.all_table {
+  margin-bottom: 50px;
+}
 
 /*Courseschange*/
 .addingBlock {
