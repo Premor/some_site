@@ -647,6 +647,10 @@ footer a {
 .mycourses:hover .yt-sett {
   color: red; }
 
+.mrgi {
+  margin-top: 13px;
+  margin-bottom: 103px; }
+
 /*
 .login_window {
   text-align: center;
