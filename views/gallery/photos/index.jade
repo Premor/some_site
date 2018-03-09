@@ -11,7 +11,7 @@
   -   while(encoding[k].album_name!=engl_name){
   -      k= k+1
   -   }
-  .container
+  .container.hidden-xs
     .albums.no_top
       .row
         .header.col-md-12
@@ -21,6 +21,19 @@
           .album_form.col-md-3
             a(href="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" data-fancybox-group="group").photo_img.fancybox
               img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka")
+            .album_name
+          - i= i+1
+  - i = 0
+  .container.hidden-lg.hidden-sm.hidden-md
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p #{list.russian[j]}
+      .row
+        while i < count
+          .album_form.col-md-3
+            a(href="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" data-fancybox-group="group").photo_img.fancybox
+              img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka").noheight
             .album_name
           - i= i+1
 
