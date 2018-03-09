@@ -9,15 +9,16 @@
           if(user="undefined")
             form.log_pass_mobi
               p.bebas Вход
-              .login
-                .header.mid
+              .login.col-md-12
+                .header.mid.col-md-12
                   p.roboto_mobi E-mail:
                 input(type="text" name="log_mobi" placeholder="")
-              .pass
-                .header.mid
+              .pass.col-md-12
+                .header.mid.col-md-12
                   p.roboto_mobi Пароль:
                 input(type="password" name="pass_mobi" placeholder="")
-                button.button.on_reg_but(type="submit") Войти!  
+                .col-md-12
+                  button.button.on_reg_but(type="submit") Войти!  
           else
             p Вы уже залогинены!
   
