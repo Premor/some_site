@@ -360,6 +360,11 @@ table td {
 .mobi_first .info {
   left: 20px; }
 
+.bug_fix a.block_center{
+  top: 160px;
+  left:20px;
+}
+
 /*
 .small_devices .owl-dots {
   display: none;
