@@ -365,6 +365,9 @@ table td {
   left:20px;
 }
 
+.white_font p {
+  color: #ffffff;
+}
 /*
 .small_devices .owl-dots {
   display: none;

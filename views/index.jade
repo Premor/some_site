@@ -35,6 +35,19 @@
                     p Перейти!
               img(src="public/img/car.png", alt="")
             .slide
+              .onslide.first_slide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car5.png", alt="")
+            .slide
               .onslide.second_slide
                 .info.header
                   p Зарегистрируйся и получи бесплатный урок
@@ -47,6 +60,19 @@
                   a(href="/mycourses").button.block_center
                     p Перейти!
               img(src="public/img/car4.png", alt="")
+            .slide
+              .onslide.first_slide.white_font
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car6.png", alt="")
   .container-fluid.hidden-lg.hidden-md.small_devices.hidden-sm
     //.fluid_no_padding
     .carousel
@@ -79,19 +105,6 @@
                   a(href="/mycourses").button.block_center
                     p Перейти!
               img(src="public/img/car3mobi.png", alt="")
-            .slide.mobi_sec
-              .onslide.second_slide
-                .info.header
-                  p Зарегистрируйся и получи бесплатный урок
-                .info.text
-                  p Видео-урок от ведущих преподавателей школы
-                if !user  
-                  a(href="/registration").button.block_center
-                    p Получить!
-                else
-                  a(href="/mycourses").button.block_center
-                    p Перейти!
-              img(src="public/img/car4mobi.png", alt="")
             .slide.mobi_first
               .onslide
                 .info.header
@@ -105,6 +118,32 @@
                   a(href="/mycourses").button.block_center
                     p Перейти!
               img(src="public/img/car5mobi.png", alt="")
+            .slide.mobi_sec
+              .onslide.second_slide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car4mobi.png", alt="")
+            .slide.mobi_first.white_font
+              .onslide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car6mobi.png", alt="")
 
   - var i = 0
   .container
