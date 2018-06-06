@@ -1,0 +1,79 @@
+nav.pushy.pushy-right
+  pushy-content
+    ul 
+      li
+        button.menu-btn.rgt
+          i(aria-hidden="true").class.fa.fa-times
+      if (user==null)
+        li.pushy-link
+          a(href="/login") Вход
+        li.pushy-link
+          a(href="/registration") Регистрация
+      else
+        li.pushy-link
+          a(href="/perarea") #{user}
+        li.pushy-link
+          a(href="/logout") Выйти
+      li.pushy-link
+        a(href="/about_us") О нас
+      li.pushy-link
+        a(href="/courses") Курсы
+      li.pushy-link
+        a(href="/shedule") Расписание
+      li.pushy-link
+        a(href="/gallery") Галерея
+      li.pushy-link
+        a(href="/contacts") Контакты
+
+button.menu-btn.hidden-lg.hidden-md.hidden-sm.m-btn
+  i(aria-hidden="true").class.fa.fa-bars
+.container
+  .logo
+    .row
+      .col-md-3.col-xs-3
+        .cl_block_left.hidden-xs
+
+          p.mbphn 
+            i.fa.fa-mobile
+            |  +7 (964) 575 - 78 - 36
+      .col-md-6.col-xs-6
+        a(href="/")
+          p
+            span Face
+            | Art
+      .col-md-3.col-xs-3
+        .cl_block.hidden-xs
+          div.telephone
+            p.username_in_tel #{user}
+          if(user==null)
+            p.log_reg
+              a(href="/login") Вход
+              a(href="/registration") Регистрация
+          else
+            p.log_reg
+              a(href="/perarea").right_menu_button Личный кабинет
+              a(href="/logout").right_menu_button Выйти
+  .underlogo
+    .col-md-3.col-xs-4
+    .col-md-6.col-xs-4
+      .row
+        p Школа стилистов
+    .col-md-4.col-xs-4
+
+.container-fluid.top_menu.hidden-xs
+  .container
+    .row
+      .col-md-12
+          nav.hd_buttons
+              ul
+                a(href="/about_us")
+                  li.about_us_selected О нас
+                a(href="/courses") 
+                  //wst = width sixteen
+                  li.courses_selected.wst Курсы
+                a(href="/shedule") 
+                  li.shedule_selected Расписание
+                a(href="/gallery") 
+                  li.gallery_selected Галерея
+                a(href="/contacts") 
+                  li.contacts_selected Контакты

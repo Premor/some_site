@@ -1,0 +1,954 @@
+@import "colorize";
+@import "variables";
+
+//Test Comment for .gitignore
+@mixin phd {
+  color: #666;
+  opacity: 1;
+}
+
+*::-webkit-input-placeholder {
+	@include phd;
+}
+*:-moz-placeholder {
+	@include phd;
+}
+*::-moz-placeholder {
+	@include phd;
+}
+*:-ms-input-placeholder {
+	@include phd;
+}
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+  /**/
+}
+body input:required:valid,
+body textarea:required:valid {
+  /**/
+}
+body, html {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: relative; 
+}
+
+
+
+body, html {
+	font-family: "Roboto Condensed", sans-serif;
+	font-size: 20px;
+  margin: 0px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+a {
+  color: #313131;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.changer {
+  text-align: center;
+}
+
+.mainHeader {
+  font-family: 'Bebas Neue';
+  font-weight: 500;
+  font-size: 31px;
+}
+
+.block_center {
+  display: block;
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+/*sortable*/
+.sortable-placeholder {
+  border: 1px dashed #CCC;
+	background: none;
+  width: 250px;
+  height: 270px;
+  display: inline-block;
+}
+
+.itemSortable {
+  display: inline-block;
+}
+
+/*album_form*/
+.album_form:nth-child(1) {
+  padding-left:0 !important;
+  /*padding-right:0 !important;
+  text-align: left !important;
+  display: inline-block !important;*/
+}
+
+.album_form_mobi .album_form:nth-child(1) {
+  padding-left: 0px !important;
+}
+
+.ab_us_sm_footer {
+  margin-top: 150 !important;
+}
+
+.contacts_sm_footer {
+  margin-top: 170 !important;
+}
+
+.map {
+  margin-top: 13px;
+}
+
+.map .header {
+  font-family: 'Bebas Neue';
+  font-size: 31px;
+  font-weight: 700;
+}
+
+
+.head_cont p {
+  font-family: 'Roboto Condensed';
+  font-size: 21px;
+  font-weight: bold;
+  text-align: center !important;
+}
+
+.courses_header p {
+  font-family: 'Roboto Condensed';
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p.cont_info {
+  font-weight: 700;
+  text-align: right;
+}
+
+.hidden_from_eyes {
+  display: none;
+}
+
+.marra {
+  text-align: right;
+}
+
+.howto {
+  text-align: center;
+}
+
+.click_for_swipe {
+  font-family: 'Bebas Neue';
+  display: inline-block;
+  font-size: 27px;
+  margin-top: 10px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.dotted {
+  border-bottom: 1px dotted #000;
+}
+
+.album_form_mobi .album_img img {
+  width: 540px;
+  height: 540px;
+}
+
+.mt13 {
+  margin-top: 13px;
+}
+
+li.header_for_program {
+  font-family: 'Roboto Condensed';
+  font-weight: 700;
+  list-style-type: none;
+}
+
+li.text_for_program {
+  font-family: 'Roboto Condensed';
+  font-weight: 300;
+  list-style-type: none;
+}
+
+.price_courses {
+  font-weight: 700;
+}
+
+.date_from_gt {
+  position: relative;
+  font-weight: 700;
+}
+
+.vat {
+  vertical-align: top;
+}
+
+table td {
+  padding:0;
+}
+
+.navbar-fixed-bottom {
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+/*owl-carousel*/
+
+
+
+/*top_menu*/
+
+.top_menu {
+  background-color: #000;
+  color: #fff;
+  z-index: 20;
+  position: relative;
+  //top: -50px;
+}
+
+.top_menu a {
+  color: #fff;
+}
+
+.right_menu_button {
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.hd_buttons ul {
+  list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+
+.hd_buttons li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 14%;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 22px;
+}
+
+.hd_buttons li:hover {
+  background-color: $w_vertwo;
+}
+
+/*logo*/
+
+.logo {
+  font-family: 'bradobrei';
+  font-size: 89px;
+  z-index:7;
+}
+
+.logo p {
+  //color: #313131;
+  color: black;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  z-index:7;
+}
+
+.logo p span {
+  color: $w_vertwo;
+}
+
+.underlogo p {
+  font-size: 31px;
+  font-family: 'Bebas Neue';
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 300;
+}
+
+.underlogo p::selection {
+   background: transparent;
+}
+.underlogo p::-moz-selection {
+   background: transparent;
+}
+
+.logo p::selection {
+   background: transparent;
+}
+.logo p::-moz-selection {
+   background: transparent;
+}
+
+.logo span::selection {
+   background: transparent;
+}
+.logo span::-moz-selection {
+   background: transparent;
+}
+
+.underlogo {
+  text-align: center;
+  margin-top: 0px;
+  position: relative;
+  top: -20px;
+}
+
+.cl_block {
+    margin-top: 21px;
+}
+
+.log_reg {
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 25px;
+  text-align: right;
+}
+/*
+.rgt {
+  float: left !important;
+}*/
+
+.pushy ul {
+  padding: 0px;
+}
+
+.pushy li {
+  list-style-type: none;
+}
+
+.m-btn {
+  margin-top: 10px;
+  margin-right: 20px;
+  position: relative;
+  z-index: 20;
+}
+
+.menu-btn p {
+  font-size: 15px;
+}
+
+.menu-btn {
+  float: right;
+  border: medium none;
+  background-color: transparent;
+  font-size: 26px;
+  position: relative;
+  z-index:100;
+}
+
+.cl_block p {
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 25px;
+  color: #313131;
+  text-align: right;
+}
+
+.cl_block a:hover {
+  font-weight: 400;
+}
+
+.cl_block a:nth-child(2) {
+  margin-left: 15px;
+}
+
+/*carousel*/
+
+.carousel {
+  margin-top: 8px;
+  position: relative;
+  top: -115px;
+  z-index: 3;
+}
+/*
+.carousel img {
+  width: 100%;
+}*/
+
+
+.owl-dots {
+  position: relative;
+  bottom: 30px;
+  margin-bottom: 50px;
+}
+
+.owl-nav {
+  position: relative;
+  top: -120px;
+}
+
+.owl-prev, .owl-next {
+  color: #fff;
+  position: absolute;
+  top: -150px;
+  font-size: 3em;
+}
+
+.owl-prev {
+  left: 0px;
+
+}
+
+.owl-next {
+  right: 0px;
+}
+
+.small_devices {
+  margin-top: 40px;
+}
+
+.small_devices .info {
+  top: 60px;
+  position: relative;
+}
+
+.small_devices .info.header p {
+  font-size: 14px;
+}
+
+.small_devices .info.text p {
+  font-size: 12px;
+}
+
+.small_devices .onslide {
+  top:100px;  
+}
+
+.small_devices a.block_center {
+  top: 60px;
+  position: relative;
+}
+
+.mobi_first a.block_center {
+  left: 20px;
+
+}
+
+.mobi_first .info {
+  left: 20px;
+}
+
+/*
+.small_devices .owl-dots {
+  display: none;
+}*/
+
+.slide {
+  z-index:4;
+}
+
+.small_devices .button {
+  width: 84px;
+  height: 18px;
+  font-size: 13px;
+  margin-right: 20px;
+}
+
+.fluid_no_padding {
+  padding: 0 !important;
+}
+
+.button {
+  font-family: 'Bebas Neue';
+  font-size: 25px;
+  background-color: #501640;
+  display: block;
+  width: 167px;
+  height: 36px;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  border-radius: 18px;
+  font-weight: 300;
+  margin-right: 50px;
+}
+
+.button:hover {
+  font-weight:500;
+}
+
+.onslide {
+  position: relative;
+  top: 250px;
+  left: 45%;
+  width:50%;
+  text-align: center;
+ // padding-top: 50px;
+
+}
+
+.info {
+  color: #000000;
+  font-family: 'Bebas Neue'
+}
+
+.second_slide {
+  position: relative;
+  top: 250px;
+  left: 5%;
+  width:50%;
+  text-align: center;
+}
+
+.second_slide .info {
+  color: #ffffff;
+}
+
+.info.header p {
+  font-size: 31px;
+}
+/*
+.info.text {
+  display: inline-block;
+  text-align: center;
+}*/
+
+.info.text p {
+  font-size: 20px;
+  font-family: "Roboto Condensed";
+  margin-bottom: 20px;
+  font-weight: 300;
+  text-align: center;
+}
+
+
+/*albums*/
+
+.danone {
+  display: none;
+}
+
+.dibl {
+  display: block;
+}
+
+.disb {
+  display: inline-block;
+  float: left;
+  width: 240px;
+  height: 32px;
+}
+
+
+.noDec {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  padding: 0 !important;
+}
+
+.albums {
+  margin-top: 14px;
+  position: relative;
+  top: -200px;
+}
+
+.albums .header p {
+  font-family: 'Bebas Neue';
+  font-weight: 700;
+  font-size: 31px;
+}
+
+.album_img img {
+  width: 270px;
+  height: 270px;
+  object-fit: cover;
+}
+
+.album_pic_img {
+  margin-bottom: 30px;
+}
+
+.album_name {
+  font-weight: 700;
+  font-family: 'Roboto Condensed';
+  font-size: 20px;
+
+}
+
+.photo_img {
+  margin-bottom: 20px;
+}
+
+.photo_img img {
+  width: 270px;
+  height: 270px;
+  object-fit: cover;
+}
+
+.no_top {
+  top:0px;
+}
+
+.mtop {
+  margin-top: 150px !important;
+}
+
+.noheight {
+  height: inherit !important;
+}
+
+/*footer*/
+
+.content, .emerg_content {
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+html,
+body,
+.wrapper {
+  height: 100%;
+}
+
+.emerg_content {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding-bottom: 150px;
+}
+
+.content {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding-bottom: 0px;
+}
+
+footer {
+  height: 128px;
+  margin-top: -128px;
+}
+*/
+footer {
+  background-color: #000;
+  color: #fff;
+  //margin-top: 40px; //-120px;
+
+}
+
+.on_main_footer {
+}
+
+footer a {
+  color: #fff;
+}
+
+.contacts, .diamant {
+  font-family: 'Bebas Neue';
+  font-size: 20px;
+}
+
+.diamant p:nth-child(1) {
+  margin-top: 20px; 
+}
+
+.soc {
+  text-align: center;
+  margin-top: 40px;
+  padding-left: 49px;
+}
+
+.ro_sq{
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 8px;
+  color: #000;
+  font-size: 30px;
+  padding-top: 9px;
+}
+
+.ro_sq:hover {
+  background-color: $w_vertwo;
+  color: #fff;
+}
+
+.ro_sq:nth-child(1), .ro_sq:nth-child(2), .ro_sq:nth-child(3) {
+  margin-right: 20px;
+}
+
+.contacts {
+  text-align: left;
+  margin-top: 11px;
+  margin-bottom: 5px;
+}
+
+.diamant {
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 13px;
+}
+
+.small_footer .contacts, .small_footer .diamant {
+  font-size: 12px !important;
+  text-align: center !important;
+}
+
+.small_footer .soc {
+  padding: 0;
+}
+
+.small_footer {
+  position: relative;
+  bottom: 0;
+}
+
+.small_footer .ro_sq {
+  height: 30px;
+  width: 30px;
+  font-size: 15px;
+}
+
+.small_footer .diamant {
+  clear:both;
+}
+
+.mbphn {
+  font-family: 'Bebas Neue';
+  font-weight: 300;
+  font-size: 25px;
+  text-align: left !important;
+}
+
+.cl_block_left {
+  margin-top: 21px;
+}
+
+.underline_bd {
+  border-bottom: 1px dotted white;
+}
+
+/*login, registration*/
+
+.all_center_block {
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 150px;
+  margin-top: 150px;
+}
+
+.all_center_block.on_reg {
+  margin-top: 15px;
+  margin-bottom: 432px;
+}
+
+.on_reg_but {
+  font-size: 21px;
+  margin-top: 10px;
+  margin-right: 0;  
+}
+
+.bebas {
+  font-family: 'Bebas Neue';
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.roboto {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;  
+  font-weight: 700;
+  display: inline-block;
+  float:right;
+}
+
+.roboto_mobi {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;  
+  font-weight: 700;
+}
+
+
+/*admin*/
+
+/*photochange*/
+
+.download {
+  border: dashed 1px black;
+  display: block;
+}
+
+
+/*personal area*/
+.personal-data-left {
+  text-align: right;
+}
+
+.personal-data-right {
+  text-align: left;
+  margin-top: 33px;
+}
+
+.data-italic {
+  font-style: italic;
+}
+
+.dtchng-sett:hover {
+  font-weight: bold;
+}
+
+.dtchng-sett {
+  display: block;
+}
+
+.mycourses:hover .yt-sett {
+  color: red;
+}
+
+.mrgi {
+  margin-top: 13px;
+  margin-bottom: 103px;
+}
+
+/*
+.login_window {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+*/
+
+.middle {
+  text-align: center;
+  display: inline-block;
+}
+
+.all_table {
+  margin-bottom: 50px;
+}
+
+/*Courseschange*/
+.addingBlock {
+  border: black dashed 1px;
+  margin-bottom: 100px;
+}
+
+/*Delete refresh button*/
+.rotateBtn {
+  display: none !important;
+}
+
+/*about_us*/
+
+.person_name_header {
+  margin-bottom: 4px;
+}
+
+.person_name_header p{
+  font-family: 'Bebas Neue';
+  text-align: center;
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.ab_us_page {
+  margin-top: 13px;
+}
+
+.ab_us_page .album_img {
+  margin-bottom:13px;
+}
+
+.junior_position {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+
+
+.all_table {
+  margin-top: 13px;
+}
+
+.months_row {
+  height: 53px;
+}
+
+table {
+  width:100%
+}
+
+td {
+  border: 1px solid #313131;
+}
+
+.months, .main_month {
+  border: 0;
+  font-family: 'Bebas Neue';
+  font-size: 31px;
+  font-weight: 700;
+}
+
+.months {
+  background-color: #313131;
+  text-align: center;
+  width: 25%;
+  font-size: 22px;
+  color: #a5a5a5;
+  cursor: pointer;
+}
+
+.months i {
+  font-size: 25px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.main_month {
+  background-color:#6b1753;
+  text-align: center;
+  color: #ffffff;
+  width: 50%;
+}
+
+.days_row {
+  height: 76px;
+}
+$width: 100%/7;
+
+.week_row {
+  background-color: #5b5b5b;
+  color: #d1d1d1;
+  text-align: center;
+  font-family: 'Roboto Condensed';
+  font-weight: 300;
+  height: 31px;
+}
+
+.week_row td {
+  border-left: 1px solid #313131;
+  width: $width;
+  border-top: 0;  
+  border-bottom: 1px solid #5b5b5b;
+}
+
+.tal {
+  text-align-last: left;
+}

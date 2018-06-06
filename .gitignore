@@ -1,4 +1,10 @@
+
 /node_modules/*
 package.json
 package-lock.json
 test.js
+public/img
+public/video
+public/backup
+front/
+

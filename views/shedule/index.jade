@@ -1,0 +1,74 @@
+.content
+    include ../layout.jade
+    
+    include ../top_menu.jade
+        //- var yearListEng = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December']
+        - var yearList = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь' , 'Декабрь']
+        - var mNum = yearList.indexOf(table.month);
+        - var prev = mNum-1; next = mNum+1;
+        - if (mNum==0) prev = 11;
+        - if (mNum==11) next = 0;
+        - var i=0, j=0;
+    .container.all_table
+        .col-md-12
+                .row
+                    table
+                        tr.months_row
+                            td.months.prev_month(data="#{prev}")
+                                i(class="fa fa-angle-left")
+                                | #{yearList[prev]}
+                            td.main_month #{yearList[mNum]}
+                            td.months.next_month(data="#{next}")
+                                p #{yearList[next]}
+                                    i(class="fa fa-angle-right")
+                    table(cellpadding="0px")
+                        tr.week_row
+                            td.monday Понедельник 
+                            td.tuesday Вторник
+                            td.wednesday Среда
+                            td.thirsday Четверг
+                            td.friday Пятница
+                            td.saturday Суббота
+                            td.sunday Воскресенье
+                        while i < 6
+                            tr.days_row
+                                td.vat
+                                    if table.monday[i].date!="пусто"
+                                        .date_from_gt #{table.monday[i].date}
+                                        if table.monday[i].courses!="пусто"
+                                            | #{table.monday[i].courses}
+                                td.vat
+                                    if table.tuesday[i].date!="пусто"
+                                        .date_from_gt #{table.tuesday[i].date}
+                                        if table.tuesday[i].courses!="пусто"
+                                            p #{table.tuesday[i].courses}
+                                td.vat 
+                                    if table.wednesday[i].date!="пусто"
+                                        .date_from_gt #{table.wednesday[i].date}
+                                        if table.wednesday[i].courses!="пусто"
+                                            p #{table.wednesday[i].courses}
+                                td.vat 
+                                    if table.thursday[i].date!="пусто"
+                                        .date_from_gt #{table.thursday[i].date}
+                                        if table.thursday[i].courses!="пусто"
+                                            p #{table.thursday[i].courses}
+                                td.vat
+                                    if table.friday[i].date!="пусто"
+                                        .date_from_gt #{table.friday[i].date}
+                                        if table.friday[i].courses!="пусто"
+                                            p #{table.friday[i].courses}
+                                td.vat
+                                    if table.saturday[i].date!="пусто"
+                                        .date_from_gt #{table.saturday[i].date}
+                                        if table.saturday[i].courses!="пусто"
+                                            p #{table.saturday[i].courses}
+                                td.vat
+                                    if table.sunday[i].date!="пусто"
+                                        .date_from_gt #{table.sunday[i].date}
+                                        if table.sunday[i].date!="пусто"
+                                            p #{table.sunday[i].courses}
+                            - i = i + 1
+                            
+    include ../footer.jade
+
+include ../layout_ft.jade

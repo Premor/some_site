@@ -1,0 +1,89 @@
+.emerg_content
+  include ../layout.jade
+
+  include ./../top_menu.jade
+    
+  -   var i = 0
+  -   var co = count
+  .container.hidden-xs.hidden-sm
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p Альбомы 
+      .row
+        while i < count
+          form(method = "POST" action = "/gallery")
+            input(type="text" value="#{list.english[i]}" name="album_name").danone
+            .album_form.col-md-3
+              button(type="submit" value="#{list.russian[i]}").dibl.noDec
+                .album_img
+                  img(src="public/img/main/#{i}.#{encoding[i].main_enc}" alt="")
+                .album_name
+                  p.tal #{list.russian[i]}
+          - i= i+1
+  - i = 0
+  .container.hidden-md.hidden-lg
+    .albums.no_top
+      .row
+        .header.col-md-12
+          p Альбомы
+      .row
+        while i < count
+          form(method = "POST" action = "/gallery").col-xs-12
+            input(type="text" value="#{list.english[i]}" name="album_name").danone
+            .album_form.col-md-3
+              button(type="submit" value="#{list.russian[i]}").dibl.noDec
+                .album_img
+                  img(src="public/img/main/#{i}.#{encoding[i].main_enc}" alt="").noheight
+                .album_name
+                  p.tal #{list.russian[i]}
+          - i= i+1
+        
+
+footer.container-fluid.hidden-xs.hidden-sm
+  .container
+    .row
+        .col-md-4.col-lg-4
+          .contacts
+            p Face Art Школа стилистов ....-2017
+            p Адрес: Г. Москва, ул. Рязанский проспект, 22/2
+            p Телефон: +7 (964) 575 - 78 - 36
+            a(href="/contacts").underline_bd Как проехать?
+        .col-md-4.col-sm-4.col-xs-4.col-lg-4.soc
+          a(href="https://vk.com/id15140215").ro_sq
+            i(aria-hidden="true").fa.fa-vk
+          a(href="https://www.instagram.com/faceart.msk/").ro_sq
+            i(aria-hidden="true").fa.fa-instagram
+          a(href="https://telegram.me/ivanna_nails").ro_sq
+            i(aria-hidden="true").fa.fa-telegram
+          a(href="https://www.youtube.com/channel/UCHljhioqC73ovELBU4qGnSQ").ro_sq
+            i(aria-hidden="true").fa.fa-youtube
+        .col-md-4.col-sm-4.col-xs-4.col-lg-4.diamant
+          p Дизайн сайта:
+          p 
+            a(href="#") Diamant Studio
+
+footer.container-fluid.hidden-lg.hidden-md.small_footer.mtop
+  .container
+    .row
+      .col-md-12.col-lg-12
+        .contacts
+          p Face Art Школа стилистов ....-2017
+          p г. Москва, ул. Рязанский проспект, 22/2
+          p +7 (964) 575 - 78 - 36
+          a(href="/contacts").underline_bd Как проехать?
+        .col-sm-12.col-xs-12.soc
+          a(href="https://vk.com/id15140215").ro_sq
+            i(aria-hidden="true").fa.fa-vk
+          a(href="https://www.instagram.com/anna_shkolastilistov/").ro_sq
+            i(aria-hidden="true").fa.fa-instagram
+          a(href="#").ro_sq
+            i(aria-hidden="true").fa.fa-telegram
+          a(href="#").ro_sq
+            i(aria-hidden="true").fa.fa-youtube
+        .col-md-12.col-sm-12.col-xs-12.col-lg-12.diamant
+          p Дизайн сайта:
+          p 
+            a(href="#") Diamant Studio
+  
+include ./../layout_ft.jade

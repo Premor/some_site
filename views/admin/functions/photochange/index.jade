@@ -1,0 +1,52 @@
+.emerg_content
+  include ./../includes/layout.jade
+
+  include ./../includes/top_menu.jade
+
+  - if (is_admin)
+      - var i = 0, j = 0, k=0
+      - var co = count
+      -   while(list.english[j] != engl_name) {
+      -      j= j+1
+      -   }
+      -   while(encoding[k].album_name != engl_name){
+      -      k= k+1
+      -   }
+      .container
+        .albums.no_top
+          .row
+            .header.col-md-12
+              p #{list.russian[j]}
+          .row
+            .sortable  
+              while i < count
+                .itemSortable(id="#{i}")
+                  .album_form.col-md-3
+                    .album_img
+                      form.parTest
+                        img(src="../public/img/#{engl_name}/#{i}.#{encoding[k].encoding[i]}" alt="" class="sobka")
+                        input(type="text" value="#{engl_name}" id="ph_#{i}").danone
+                        input(type="text" value="#{count}" id="co").danone
+                        button(value="#{i}" class="del") 
+                          i.fa.fa-trash(aria-hidden="true")
+                - i= i+1
+                
+      .container
+        .row
+          .col-md-3
+          .col-md-3
+          .col-md-6.download
+            form(action="/albumschange/#{engl_name}", method="post", enctype="multipart/form-data")
+              input(type="file", min="1", max="500", multiple="true", name="#{engl_name}")
+              button(type="submit") ТЫК
+            p #{engl_name}
+  - else
+    .container
+      .row
+        .col-md-12.all_center_block
+          p Вы не залогинены.
+      
+include ./../../../footer.jade
+
+
+include ./../../../layout_ft.jade

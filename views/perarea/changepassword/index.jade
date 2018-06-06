@@ -1,0 +1,22 @@
+.emerg_content
+	include ./../includes/layout.jade
+	
+	include ./../../top_menu.jade
+
+	.container
+		.col-md-3
+		.col-md-6
+			form.passwordchanger
+				p Введите старый пароль:
+				input(type="text").oldpass
+				p Введите новый пароль:
+				input(type="text").newpass_once
+				p Повторите пароль:
+				input(type="text").newpass_twice
+				button Изменить пароль!
+		.col-md-3
+
+
+include ./../../footer.jade
+
+include ./../includes/layout_ft.jade

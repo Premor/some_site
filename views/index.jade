@@ -1,0 +1,147 @@
+.emerg_content
+  include layout.jade
+
+  include top_menu.jade
+  
+  .container.medium_devices.hidden-xs.reg_width
+    .carousel
+      .row
+        .col-md-12
+          .owl-carousel.owl-theme
+            .slide
+              .onslide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                    a(href="/registration").button.block_center
+                      p Получить!
+                  else
+                    a(href="/mycourses").button.block_center
+                      p Перейти!
+              img(src="public/img/car_example.png", alt="")
+            .slide
+              .onslide.second_slide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car.png", alt="")
+            .slide
+              .onslide.second_slide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car4.png", alt="")
+  .container-fluid.hidden-lg.hidden-md.small_devices.hidden-sm
+    //.fluid_no_padding
+    .carousel
+      .row
+        .col-md-12
+          .owl-carousel.owl-theme
+            .slide.mobi_first
+              .onslide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car2mini_v2.png", alt="")
+            .slide.mobi_sec
+              .onslide.second_slide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+               if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car3mobi.png", alt="")
+            .slide.mobi_sec
+              .onslide.second_slide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car4mobi.png", alt="")
+            .slide.mobi_first
+              .onslide
+                .info.header
+                  p Зарегистрируйся и получи бесплатный урок
+                .info.text
+                  p Видео-урок от ведущих преподавателей школы
+                if !user  
+                  a(href="/registration").button.block_center
+                    p Получить!
+                else
+                  a(href="/mycourses").button.block_center
+                    p Перейти!
+              img(src="public/img/car5mobi.png", alt="")
+
+  - var i = 0
+  .container
+    .albums
+      .row
+        .header.col-md-12
+          p Альбомы
+      .row
+        //.album_form.col-md-3
+          .album_img
+            img(src="public/img/example.png" alt="")
+          .album_name
+            p name#1
+        -if(count>4)
+          -count=4;
+        while i < count
+          form(method = "POST" action = "/gallery")
+            input(type="text" value="#{list.english[i]}" name="album_name").danone
+            .album_form.col-md-3
+              button(type="submit" value="#{list.russian[i]}").dibl.noDec
+                .album_img
+                  img(src="public/img/main/#{i}.#{encoding[i].main_enc}" alt="")
+                .album_name
+                  p.tal #{list.russian[i]}
+          - i= i+1
+
+        //while i < count
+          .album_form.col-md-3.col-sm-3.col-xs-3.col-lg-3
+            .album_img
+              img(src="public/img/main/#{i}" alt="")
+            .album_name
+              p #{list.russian[i]}
+          - i= i+1
+      
+
+      
+  .on_main_footer
+    include ./footer.jade
+
+    include ./layout_ft.jade

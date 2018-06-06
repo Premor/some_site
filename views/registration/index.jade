@@ -1,0 +1,75 @@
+.content
+  include ../layout.jade
+
+  include ../top_menu.jade
+
+  .all_center_block.on_reg.hidden-md.hidden-lg
+    .container
+      .col-md-12
+        .row
+          if (user="undefined")
+            form(action="/registration" method="post").reg_pass
+              p.bebas Регистрация
+                .registrn
+                  .email
+                    .header.mid.col-xs-12.col-md-12
+                      p.roboto_mobi Ваш e-mail адрес:
+                      input(type="text" name="email" placeholder="example@mail.com")
+                  //Мобильный телефон (mbphn)
+                  .reg.mbphne
+                    .header.mid.col-xs-12.col-md-12
+                      p.roboto_mobi Ваш телефон:
+                      .middle
+                        input(type="text" name="mbphn" placeholder="+7(999)999-99-99")
+                      //Допилю потом форму номера, в которую можно вводить только определенные цифры.
+                  .reg.pass
+                    .header.mid.col-xs-12.col-md-12
+                      p.roboto_mobi Пароль:
+                    input(type="password" name="pass" placeholder="")
+                  .reg.ver.pass
+                    .header.mid.col-xs-12.col-md-12
+                      p.roboto_mobi Повторите пароль:
+                    input(type="password" name="ver_pass" placeholder="")
+                    //Сравнение паролей добавлю позже.
+                  button(type="submit").button.on_reg_but Готово!  
+          else
+            p Вы уже зарегистрированы!  
+          
+  .all_center_block.on_reg.hidden-xs.hidden-sm
+    .container
+      .col-md-12
+        .row
+          if (user="undefined")
+            form(action="/registration" method="post").reg_pass_mobi
+              p.bebas Регистрация
+                .registrn
+                  .email
+                    .header.mid.col-md-12
+                      .col-md-6
+                        .roboto Ваш e-mail адрес:
+                      .col-md-6
+                        input.disb(type="text" name="emailmobi" placeholder="example@mail.com")
+                  .reg.mbphne
+                    .header.mid.col-md-12
+                      .col-md-6
+                        .roboto Ваш телефон:
+                      .col-md-6
+                        input.disb(type="text" name="mbphnmobi" placeholder="+7 (999) 999 - 99 - 99")
+                  .reg.pass
+                    .header.mid.col-md-12
+                      .col-md-6
+                        .roboto Введите пароль:
+                      .col-md-6
+                        input.disb(type="password" name="passmobi" placeholder="")
+                  .reg.ver.pass
+                    .header.mid.col-md-12
+                      .col-md-6
+                        .roboto Повторите пароль:
+                      .col-md-6
+                        input.disb(type="password" name="ver_passmobi" placeholder="")
+                  button(type="submit").button.on_reg_but Готово!  
+          else
+            p Вы уже зарегистрированы!  
+include ../footer.jade
+
+include ../layout_ft.jade

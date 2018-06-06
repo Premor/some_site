@@ -1,0 +1,51 @@
+.content
+  include ../layout.jade
+
+  include ../top_menu.jade
+  .all_center_block.on_reg.hidden-sm.hidden-md.hidden-lg
+    .container
+      .col-md-12
+        .row
+          if(user="undefined")
+            form.log_pass_mobi
+              p.bebas Вход
+              .login.col-md-12
+                .header.mid.col-md-12
+                  p.roboto_mobi E-mail:
+                input(type="text" name="log_mobi" placeholder="")
+              .pass.col-md-12
+                .header.mid.col-md-12
+                  p.roboto_mobi Пароль:
+                input(type="password" name="pass_mobi" placeholder="")
+                .col-md-12
+                  button.button.on_reg_but(type="submit") Войти!  
+          else
+            p Вы уже залогинены!
+  
+  .all_center_block.on_reg.hidden-xs
+    .container
+      .col-md-12
+        .row
+          if(user="undefined")
+            form.log_pass
+              p.bebas Вход
+              .login
+                .header.mid.col-md-12 
+                  .col-md-6
+                    .roboto E-mail:
+                  .col-md-6
+                    input.disb(type="text" name="log" placeholder="")
+              .pass
+                .header.mid
+                  .col-md-6
+                    .roboto Пароль:
+                  .col-md-6
+                    input.disb(type="password" name="pass" placeholder="")
+              .col-md-12
+                button.button.on_reg_but(type="submit") Войти!  
+          else
+            p Вы уже залогинены!
+
+include ../footer.jade          
+
+include ../layout_ft.jade

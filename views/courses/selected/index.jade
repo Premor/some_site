@@ -1,0 +1,38 @@
+.emerg_content
+	include ./../includes/layout.jade
+	
+	include ./../includes/top_menu.jade
+
+	- var courses_json = JSON.parse(courses)
+	- var num = 0
+		while courses_json[num].name.english != selected_name
+			- num++
+	- var i = 0
+	- var j = 0
+		.container
+			.albums.no_top
+				.row
+					.header.col-md-12
+						p Курс "#{courses_json[num].name.russian}"
+					.col-md-12
+						ul
+							.course_desc
+								p #{courses_json[num].briefing_desc}
+								p.price_courses Цена курса: #{courses_json[num].price} руб.
+							.courses_header
+								br
+								p Программа курса
+								br
+							while i < courses_json[num].program.length
+								li.header_for_program День #{i+1}:
+									ul
+										while j < courses_json[num].program[i].length
+											li.text_for_program #{courses_json[num].program[i][j]}
+											- j++ 
+										br
+								- i++
+								- j=0
+
+include ./../../footer.jade
+
+include ./../includes/layout_ft.jade
